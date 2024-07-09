@@ -1,0 +1,9 @@
+title: 'Commentaires trimestriels'
+sites:
+  - default
+propagate: false
+template: commentaires_trimestriels/show
+revisions: false
+date_behavior:
+  past: public
+  future: private

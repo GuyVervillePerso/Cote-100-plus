@@ -1,0 +1,9 @@
+title: 'Billets mensuels'
+sites:
+  - default
+propagate: false
+template: billets_mensuels/show
+revisions: false
+date_behavior:
+  past: public
+  future: private

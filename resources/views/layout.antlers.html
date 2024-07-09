@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title ?? site:name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+        rel="stylesheet">
+    {{ vite src="resources/js/site.js|resources/css/site.css" }}
+</head>
+<body>
+<header>
+    {{ asset url='/assets/cote100plus.svg' }}
+        <img src="{{ url }}" alt="{{ alt }}"/>
+    {{ /asset }}
+</header>
+<section>
+
+    {{ template_content }}
+</section>
+<footer>
+    test
+</footer>
+</body>
+</html>

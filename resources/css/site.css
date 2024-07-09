@@ -1,0 +1,37 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+body, .roboto-flex-body, .font-sans {
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "XOPQ" 96,
+    "XTRA" 468,
+    "YOPQ" 79,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+}
+.montserrat-title {
+                 font-family: "Montserrat", sans-serif;
+                 font-optical-sizing: auto;
+                 font-weight: 300;
+                 font-style: normal;
+             }
+section, header, footer{
+    @apply w-full px-[30px] lg:px-[50px] lg:max-w-maxSite mx-auto
+}
+.fondPerdu{
+    @apply px-0
+}
+footer{
+    @apply bg-darkGray text-white  mt-8 py-8
+}

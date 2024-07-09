@@ -1,0 +1,57 @@
+prestige:
+  title: Prestige
+  permissions:
+    - 'access default site'
+    - 'access anglais site'
+    - 'view pages entries'
+    - 'view entre_les_lignes entries'
+    - 'view billets_mensuels entries'
+    - 'view commentaires_trimestriels entries'
+  preferences:
+    nav:
+      top_level:
+        'top_level::dashboard': '@hide'
+base:
+  title: Base
+  permissions:
+    - 'view pages entries'
+    - 'view entre_les_lignes entries'
+    - 'view billets_mensuels entries'
+    - 'view commentaires_trimestriels entries'
+redaction:
+  title: Rédaction
+  permissions:
+    - 'view pages entries'
+    - 'edit pages entries'
+    - 'create pages entries'
+    - 'publish pages entries'
+    - 'reorder pages entries'
+    - 'edit other authors pages entries'
+    - 'publish other authors pages entries'
+    - 'view entre_les_lignes entries'
+    - 'edit entre_les_lignes entries'
+    - 'create entre_les_lignes entries'
+    - 'publish entre_les_lignes entries'
+    - 'reorder entre_les_lignes entries'
+    - 'edit other authors entre_les_lignes entries'
+    - 'publish other authors entre_les_lignes entries'
+    - 'view billets_mensuels entries'
+    - 'edit billets_mensuels entries'
+    - 'create billets_mensuels entries'
+    - 'publish billets_mensuels entries'
+    - 'reorder billets_mensuels entries'
+    - 'edit other authors billets_mensuels entries'
+    - 'publish other authors billets_mensuels entries'
+    - 'view commentaires_trimestriels entries'
+    - 'edit commentaires_trimestriels entries'
+    - 'create commentaires_trimestriels entries'
+    - 'publish commentaires_trimestriels entries'
+    - 'reorder commentaires_trimestriels entries'
+    - 'edit other authors commentaires_trimestriels entries'
+    - 'publish other authors commentaires_trimestriels entries'
+  preferences:
+    nav:
+      fields: '@hide'
+      tools: '@hide'
+      settings: '@hide'
+      users: '@hide'

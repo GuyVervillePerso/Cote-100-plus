@@ -1,0 +1,17 @@
+title: 'Entre les lignes'
+sites:
+  - default
+propagate: false
+template: entre_les_lignes/show
+layout: layout
+mount: e68cd371-0905-4e89-9e3d-b481ac2813c1
+revisions: false
+sort_dir: desc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

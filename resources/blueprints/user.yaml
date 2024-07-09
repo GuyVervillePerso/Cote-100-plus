@@ -1,0 +1,59 @@
+title: User
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              localizable: false
+          -
+            handle: email
+            field:
+              type: text
+              input_type: email
+              display: 'Email Address'
+              listable: true
+              input: email
+              localizable: false
+          -
+            handle: roles
+            field:
+              type: user_roles
+              mode: select
+              width: 50
+              listable: true
+              filterable: false
+              localizable: false
+          -
+            handle: groups
+            field:
+              type: user_groups
+              mode: select
+              width: 50
+              listable: true
+              filterable: false
+              localizable: false
+          -
+            handle: avatar
+            field:
+              type: assets
+              max_files: 1
+              container: assets
+              width: 50
+              localizable: false
+          -
+            handle: langue_preferee
+            field:
+              options:
+                fr: Français
+                en: Anglais
+              default: fr
+              type: select
+              display: 'Langue préférée'
+              localizable: false
+              width: 50
