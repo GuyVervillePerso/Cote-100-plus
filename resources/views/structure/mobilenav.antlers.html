@@ -1,0 +1,62 @@
+<div x-data="{ menu: false }">
+    <div @click="menu = !menu"
+        class="absolute top-16 left-3">
+        {{ asset url='/assets/access.svg' }}
+            <img class="mt-1" src="{{ url }}" alt="{{ alt }}"/>
+        {{ /asset }}
+    </div>
+    <div x-show="menu" class="mt-14 bg-white max-w-xl uppercase" x-data="{selected:0}">
+        <ul id="mobileMenu">
+            <li @click="selected = null"><a href="/">À LA UNE</a></li>
+            <li>
+                <button type="button"
+                        @click="selected !== 1 ? selected = 1 : selected = null">
+                    <div class="flex items-center justify-between">
+                        <span class="uppercase">Commentaires</span>
+                        <span x-show="selected" aria-hidden="true" class="ml-4">&minus;</span>
+                        <span x-show="!selected" aria-hidden="true" class="ml-4">&plus;</span>
+                    </div>
+                </button>
+                <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1"
+                     x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                    <ul>
+                        {{ partial:menu/comments }}
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <button type="button"
+                        @click="selected !== 2 ? selected = 2 : selected = null">
+                    <div class="flex items-center justify-between">
+                        <span class="uppercase">Portefeulle et analyses</span>
+                        <span x-show="selected" aria-hidden="true" class="ml-4">&minus;</span>
+                        <span x-show="!selected" aria-hidden="true" class="ml-4">&plus;</span>
+                    </div>
+                </button>
+                <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container2"
+                     x-bind:style="selected == 2 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                    <ul>
+                        {{ partial:menu/portfolio }}
+                    </ul>
+                </div>
+            </li>
+            <li @click="selected = null"><a href="/">Multimédia</a></li>
+            <li>
+                <button type="button"
+                        @click="selected !== 3 ? selected = 3 : selected = null">
+                    <div class="flex items-center justify-between">
+                        <span class="uppercase">Services exclusifs</span>
+                        <span x-show="selected" aria-hidden="true" class="ml-4">&minus;</span>
+                        <span x-show="!selected" aria-hidden="true" class="ml-4">&plus;</span>
+                    </div>
+                </button>
+                <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container3"
+                     x-bind:style="selected == 3 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                    <ul>
+                        {{ partial:menu/services }}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

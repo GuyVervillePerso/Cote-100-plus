@@ -16,6 +16,10 @@ export default {
             lg: ['20px', '28px'],
             xl: ['24px', '32px'],
         },
+        fontFamily: {
+            'montserrat': ['Montserrat', 'sans-serif'],
+            'roboto-flex': ['Roboto Flex', 'sans-serif'],
+        },
         extend: {
             maxWidth: {
                 maxSite: '1440px',
@@ -24,11 +28,6 @@ export default {
                 'darkGray': '#343537',
                 'gray65': '#BDBEC1',
                 'gray80': '#F0F0F0',
-            },
-
-            fontFamily: {
-                'roboto-flex': ['Roboto Flex', 'sans-serif'],
-                'montserrat': ['Montserrat', 'sans-serif'],
             },
 
         },

@@ -1,15 +1,38 @@
-    <div class="flex justify-between maxContainer">
-        <div class="flex space-x-4 align-middle">
-            {{ partial:structure/logo }}
-            <div class="font-montserrat uppercase text-xl tracking-wider">{{ trans:site.yourfinancialletter }}</div>
+<div class="md:flex md:justify-between maxContainer">
+    <div class="flex space-x-4 align-middle">
+        {{ partial:structure/logo }}
+        <div
+            class="montserrat-title uppercase text-md lg:text-xl tracking-wider">{{ trans:site.yourfinancialletter }}</div>
+    </div>
+<div class="absolute md:relative top-16 right-3 md:top-0 md:right-0 ">
+    {{ if logged_in }}
+        <nav id="topNav">
+            <ul>
+                {{ partial:menu/lidrop }}
+                    {{ slot:menuPosition }}topMenu{{ /slot:menuPosition }}
+                    {{ slot:title }}
+                    <div class="flex space-x-2 items-center">
+                        {{ asset url='/assets/person.svg' }}
+                            <img class="mt-1" src="{{ url }}" alt="{{ alt }}"/>
+                        {{ /asset }}
+                        <div class="text-sm leading-tight pt-1">Bonjour Robert Laplante</div>
+                        {{ asset url='/assets/threedots.svg' }}
+                            <img class="mt-1 pl-2 max-h-[20px]" src="{{ url }}" alt="{{ alt }}"/>
+                        {{ /asset }}
+                    </div>
+                    {{ /slot:title }}
+                    <li><a href="#">Mes informations</a></li>
+                    <li><a href="#">Changer mon mot de passe</a></li>
+                    <li><a href="#">Mon abonnement</a></li>
+                    <li><a href="#">Offrir en cadeau</a></li>
+                    <li><a href="#">Déconnexion</a></li>
+                {{ /partial:menu/lidrop }}
+            </ul>
+        </nav>
+{{ else }}
+        <div class="space-x-4">
+        <a href="#">{{ trans:site.subscribe }}</a><span>|</span><a href="#">{{ trans:site.connect }}</a>
         </div>
-        <div class="flex space-x-2 items-center">
-            {{ asset url='/assets/person.svg' }}
-                <img class="mt-1" src="{{ url }}" alt="{{ alt }}"/>
-            {{ /asset }}
-            <div class="text-sm leading-tight pt-1">Bonjour Robert Laplante</div>
-        {{ asset url='/assets/threedots.svg' }}
-            <img class="mt-1 pl-2 max-h-[20px]" src="{{ url }}" alt="{{ alt }}"/>
-        {{ /asset }}
-        </div>
+{{ /if }}
+    </div>
     </div>

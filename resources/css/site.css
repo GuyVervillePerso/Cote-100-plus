@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 
-body, .roboto-flex-body, .font-sans {
+.roboto-flex-body, .font-sans {
     font-family: "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -21,14 +21,14 @@ body, .roboto-flex-body, .font-sans {
     "YTUC" 712;
 }
 
-.montserrat-title {
+h1, h2, h3, h4, h5, h6, .montserrat-title {
                  font-family: "Montserrat", sans-serif;
                  font-optical-sizing: auto;
                  font-weight: 300;
                  font-style: normal;
              }
 section, footer, .maxContainer{
-    @apply w-full px-[30px] lg:px-[50px] lg:max-w-maxSite mx-auto
+    @apply w-full px-[15px] md:px-[30px] lg:px-[50px] lg:max-w-maxSite mx-auto
 }
 .fondPerdu{
     @apply px-0
@@ -37,24 +37,45 @@ footer{
     @apply bg-darkGray text-white mt-8 py-8
 }
 header{
-    @apply py-3;
-}
-.menuActive{
-    @apply font-bold border-b-[3px]
-    border-black
-}
-.submenu{
-    @apply origin-top-right absolute top-full min-w-[300px] bg-white border border-slate-200 rounded-lg shadow-xl [&[x-cloak]]:hidden py-3
-}
-.submenu li{
-    @apply py-3 px-4 font-light border-t border-gray65
-}
-.submenu li:last-child{
-    @apply border-b
-}
-.submenu li.inactive{
-    @apply bg-gray80
+    @apply py-3 mb-12 border-b md:border-0 border-gray65 ;
 }
 #desktopNav a{
-    @apply pb-2 tracking-wider
+    @apply tracking-wider
+}
+#desktopNav ul li{
+    @apply pb-1 border-white border-b-[3px]
+}
+#desktopNav ul li:hover.alone{
+    @apply  border-gray65
+}
+#desktopNav ul li.menuActive{
+    @apply font-bold border-black
+}
+.submenu{
+    @apply origin-top-right absolute top-full min-w-[320px] bg-white border border-slate-200 rounded-lg shadow-xl [&[x-cloak]]:hidden py-3
+}
+.submenu.topMenu{
+    @apply right-0 uppercase
+}
+
+#desktopNav .submenu li, #topNav .submenu li{
+    @apply py-3 px-4 font-light border-t border-gray65 border-b-0
+}
+#desktopNav .submenu li:last-child, #topNav .submenu li:last-child{
+    @apply border-b
+}
+#desktopNav .submenu li.inactive{
+    @apply bg-gray80
+}
+#topNav{
+    @apply font-sans
+}
+#mobileMenu>li{
+    @apply w-full px-4 py-3 text-left border-b border-gray-200 uppercase
+}
+#mobileMenu>li ul{
+    @apply mt-2
+}
+#mobileMenu>li ul li{
+    @apply w-full px-6 py-2 text-left uppercase
 }
