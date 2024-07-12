@@ -1,0 +1,15 @@
+    <div class="flex justify-between maxContainer">
+        <div class="flex space-x-4 align-middle">
+            {{ partial:structure/logo }}
+            <div class="font-montserrat uppercase text-xl tracking-wider">{{ trans:site.yourfinancialletter }}</div>
+        </div>
+        <div class="flex space-x-2 items-center">
+            {{ asset url='/assets/person.svg' }}
+                <img class="mt-1" src="{{ url }}" alt="{{ alt }}"/>
+            {{ /asset }}
+            <div class="text-sm leading-tight pt-1">Bonjour Robert Laplante</div>
+        {{ asset url='/assets/threedots.svg' }}
+            <img class="mt-1 pl-2 max-h-[20px]" src="{{ url }}" alt="{{ alt }}"/>
+        {{ /asset }}
+        </div>
+    </div>

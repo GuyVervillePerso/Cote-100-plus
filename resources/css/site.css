@@ -20,18 +20,41 @@ body, .roboto-flex-body, .font-sans {
     "YTLC" 514,
     "YTUC" 712;
 }
+
 .montserrat-title {
                  font-family: "Montserrat", sans-serif;
                  font-optical-sizing: auto;
                  font-weight: 300;
                  font-style: normal;
              }
-section, header, footer{
+section, footer, .maxContainer{
     @apply w-full px-[30px] lg:px-[50px] lg:max-w-maxSite mx-auto
 }
 .fondPerdu{
     @apply px-0
 }
 footer{
-    @apply bg-darkGray text-white  mt-8 py-8
+    @apply bg-darkGray text-white mt-8 py-8
+}
+header{
+    @apply py-3;
+}
+.menuActive{
+    @apply font-bold border-b-[3px]
+    border-black
+}
+.submenu{
+    @apply origin-top-right absolute top-full min-w-[300px] bg-white border border-slate-200 rounded-lg shadow-xl [&[x-cloak]]:hidden py-3
+}
+.submenu li{
+    @apply py-3 px-4 font-light border-t border-gray65
+}
+.submenu li:last-child{
+    @apply border-b
+}
+.submenu li.inactive{
+    @apply bg-gray80
+}
+#desktopNav a{
+    @apply pb-2 tracking-wider
 }

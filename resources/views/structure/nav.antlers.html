@@ -1,0 +1,35 @@
+<div class="border-t border-b border-gray-300 mt-2 py-2 maxContainer text-[13px]">
+    <nav id="desktopNav">
+        <ul class="flex space-x-8 flex-wrap items-center font-medium text-sm uppercase">
+            <li><a class="menuActive" href="#">À la une</a></li>
+            {{ partial:menu/lidrop }}
+                {{ slot:title }}Commentaires{{ /slot:title }}
+                <li><a href="#">Entre les lignes</a></li>
+                <li><a href="#">Billets mensuels</a></li>
+                <li><a href="#">Billets trimestriels</a></li>
+            {{ /partial:menu/lidrop }}
+            {{ partial:menu/lidrop }}
+                {{ slot:title }}Portefeuille et Analyses{{ /slot:title }}
+                <li><a href="#">Aperçu du portefeuille</a></li>
+                <li><a href="#">Analyses détaillées</a></li>
+            {{ /partial:menu/lidrop }}
+            <li><a href="#">Multimédia</a></li>
+            {{ partial:menu/lidrop }}
+                {{ slot:title }}Services exclusifs{{ /slot:title }}
+                <li class="inactive"><a href="#">Diagnostic de portefeuille {{ partial:menu/lock }}</a></li>
+                <li><a href="#">Profil d'investisseur</a></li>
+                <li><a href="#">Objectifs de retraite</a></li>
+                <li><a href="#">Documents partagés</a></li>
+                <li><a href="#">Rapports personnalisés</a></li>
+                <li><a href="#">Trousses fiscales</a></li>
+                <li><a href="#">Politique de placement</a></li>
+                <li><a href="#">Prendre rendez-vous</a></li>
+                <li><a href="#">Accès BNRI</a></li>
+            {{ /partial:menu/lidrop }}
+        </ul>
+    </nav>
+</div>
+{{ push:scripts }}
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{{ /push:scripts }}

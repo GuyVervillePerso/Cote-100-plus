@@ -14,16 +14,15 @@
 </head>
 <body>
 <header>
-    {{ asset url='/assets/cote100plus.svg' }}
-        <img src="{{ url }}" alt="{{ alt }}"/>
-    {{ /asset }}
+    {{ partial:structure/top_header }}
+    {{ partial:structure/nav }}
 </header>
 <section>
-
     {{ template_content }}
 </section>
 <footer>
-    test
+    {{ partial:structure/footer }}
 </footer>
+{{ stack:scripts }}
 </body>
 </html>

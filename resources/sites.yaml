@@ -7,3 +7,4 @@ anglais:
   name: Anglais
   url: '{{ config:app:url }}/en'
   locale: en_CA
+  lang: en
