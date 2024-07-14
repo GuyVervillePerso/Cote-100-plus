@@ -14,10 +14,12 @@ prestige:
 base:
   title: Base
   permissions:
-    - 'view pages entries'
+    - 'access default site'
+    - 'access anglais site'
     - 'view entre_les_lignes entries'
     - 'view billets_mensuels entries'
     - 'view commentaires_trimestriels entries'
+    - 'view pages entries'
 redaction:
   title: Rédaction
   permissions:

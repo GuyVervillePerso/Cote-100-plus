@@ -1,9 +1,19 @@
 title: 'Billets mensuels'
 sites:
   - default
-propagate: false
+  - anglais
+propagate: true
 template: billets_mensuels/show
+layout: layout
+mount: 9523823f-d45f-484a-9cfe-d30090cefd95
 revisions: false
+date: true
+sort_dir: asc
 date_behavior:
   past: public
   future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

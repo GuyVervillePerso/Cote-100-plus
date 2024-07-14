@@ -1,22 +1,24 @@
 <div class="border-t border-b border-gray-300 mt-2 pt-2 maxContainer text-[13px]">
     <nav id="desktopNav">
         <ul class="flex space-x-8 flex-wrap items-center font-medium text-sm uppercase">
-            <li class="menuActive alone"><a href="#">À la une</a></li>
-            {{ partial:menu/lidrop }}
-            {{ slot:title }}Commentaires{{ /slot:title }}
-            {{ partial:menu/comments }}
-            {{ /partial:menu/lidrop }}
-            {{ partial:menu/lidrop }}
-            {{ slot:title }}Portefeuille et Analyses{{ /slot:title }}
-            {{ partial:menu/portfolio }}
-            {{ /partial:menu/lidrop }}
-            <li class="alone"><a href="#">Multimédia</a></li>
-            {{ partial:menu/lidrop }}
-            {{ slot:title }}Services exclusifs{{ /slot:title }}
-        <li class="inactive"><a href="#">Diagnostic de portefeuille
-            {{ partial:menu/lock }}</a></li>
-                {{ partial:menu/services }}
-            {{ /partial:menu/lidrop }}
+            {{ nav:collection:pages include_home="true" }}
+            {{ if children }}
+                {{ partial:menu/lidrop }}
+                    {{ slot:title }}{{ title }}{{ /slot:title }}
+                    {{ children }}
+                        {{ user:in group="clients" }}
+                            <li><a href="{{ url }}">{{ title }}</a></li>
+                        {{ /user:in }}
+                        {{ user:not_in group="clients" }}
+                            <li class="notAllowed cursor-not-allowed"><a href="#">{{ title }}{{partial:menu/lock}}</a></li>
+                        {{ /user:not_in }}
+                    {{ /children }}
+                {{ /partial:menu/lidrop }}
+            {{ else }}
+                <li class="alone {{ if is_current || is_parent }}menuActive"{{ /if }}><a href="{{ if is_logged_in && User:can:view }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></li>
+            {{ /if }}
+            {{ /nav:collection:pages }}
         </ul>
     </nav>
+
 </div>

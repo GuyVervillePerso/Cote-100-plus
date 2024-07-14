@@ -2,11 +2,12 @@ title: Pages
 sites:
   - default
   - anglais
-propagate: true
+propagate: false
 template: default
 layout: layout
 revisions: false
 route: '{parent_uri}/{slug}'
+date: true
 sort_dir: asc
 preview_targets:
   -

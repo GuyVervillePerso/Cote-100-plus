@@ -15,7 +15,7 @@
                         {{ asset url='/assets/person.svg' }}
                             <img class="mt-1" src="{{ url }}" alt="{{ alt }}"/>
                         {{ /asset }}
-                        <div class="text-sm leading-tight pt-1">Bonjour Robert Laplante</div>
+                        <div class="text-sm leading-tight pt-1">{{trans:site.welcome}} {{ current_user:name }}</div>
                         {{ asset url='/assets/threedots.svg' }}
                             <img class="mt-1 pl-2 max-h-[20px]" src="{{ url }}" alt="{{ alt }}"/>
                         {{ /asset }}

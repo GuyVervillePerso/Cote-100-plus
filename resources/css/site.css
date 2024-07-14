@@ -64,7 +64,7 @@ header{
 #desktopNav .submenu li:last-child, #topNav .submenu li:last-child{
     @apply border-b
 }
-#desktopNav .submenu li.inactive{
+.notAllowed, #desktopNav .submenu li.notAllowed{
     @apply bg-gray80
 }
 #topNav{
