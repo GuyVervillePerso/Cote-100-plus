@@ -1,11 +1,14 @@
 <div class="flex justify-between">
     <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 text-md md:text-base">
-        <a href="#">Termes et conditions</a>
-        <a href="#">Politique de confidentialité</a>
-        <a href="#">Nouvelles</a>
-        <a href="#">Archives</a>
+        {{ collection:pages_diverses }}
+               <a href="{{ url }}">{{ title }}</a>
+        {{ /collection:pages_diverses }}
     </div>
-    <div id="footerLanguage">English</div>
+    <div id="footerLanguage">
+            {{ locales self="false" }}
+                <a class="text-white" href="{{ permalink }}">{{ locale:name }}</a>
+            {{ /locales }}
+    </div>
 </div>
 <div class="text-sm mt-8 text-gray65">
     ©2024 Cote 100. {{ trans:site.rights }}
