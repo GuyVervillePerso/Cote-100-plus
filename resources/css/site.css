@@ -79,3 +79,7 @@ header{
 #mobileMenu>li ul li{
     @apply w-full px-6 py-2 text-left uppercase
 }
+.tableau table{
+    @apply border border-gray65
+
+}

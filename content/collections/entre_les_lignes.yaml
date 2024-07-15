@@ -6,6 +6,8 @@ propagate: true
 template: entre_les_lignes/show
 layout: layout
 mount: e68cd371-0905-4e89-9e3d-b481ac2813c1
+taxonomies:
+  - categories
 revisions: false
 date: true
 sort_dir: desc

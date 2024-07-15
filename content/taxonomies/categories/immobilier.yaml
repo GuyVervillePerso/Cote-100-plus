@@ -1,0 +1,10 @@
+title: Immobilier
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1721069087
+blueprint: category
+localizations:
+  anglais:
+    title: 'Real estate'
+    slug: real-estate
+    updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+    updated_at: 1721069111

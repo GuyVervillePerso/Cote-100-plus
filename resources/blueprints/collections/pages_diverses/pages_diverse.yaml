@@ -14,19 +14,29 @@ tabs:
               validate:
                 - required
           -
-            handle: content
+            handle: html_content
             field:
-              type: markdown
-              display: Content
+              remove_empty_nodes: false
+              type: bard
+              display: HTML
               localizable: true
-          -
-            handle: author
-            field:
-              type: users
-              display: Author
-              default: current
-              localizable: true
-              max_items: 1
+              smart_typography: true
+              reading_time: true
+              word_count: true
+              sets:
+                contenu:
+                  display: contenu
+                  icon: content-book-open
+                  sets:
+                    table_set:
+                      display: Tableau
+                      fields:
+                        -
+                          handle: tableau
+                          field:
+                            type: table
+                            display: Tableau
+                            localizable: false
           -
             handle: template
             field:
