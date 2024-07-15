@@ -10,29 +10,64 @@ tabs:
             field:
               type: text
               required: true
-              localizable: false
+              localizable: true
               validate:
                 - required
           -
-            handle: content
+            handle: chapeau
             field:
               type: markdown
-              display: Content
+              display: Chapeau
               localizable: true
           -
-            handle: author
+            handle: html_content
             field:
-              type: users
-              display: Author
-              default: current
+              reading_time: true
+              word_count: true
+              remove_empty_nodes: false
+              type: bard
+              display: HTML
               localizable: true
-              max_items: 1
+              sets:
+                nouveau_groupe_densembles:
+                  display: "Nouveau groupe d'ensembles"
+                  sets:
+                    table_set:
+                      display: Tableau
+                      fields:
+                        -
+                          handle: table_set
+                          field:
+                            type: table_on_steroids
+                            display: Tableau
+                            localizable: false
+                    image:
+                      display: Image
+                      fields:
+                        -
+                          handle: inline_image
+                          field:
+                            container: assets
+                            type: assets
+                            display: Image
+                            localizable: false
+                            folder: graphs
+                            max_files: 1
+                            min_files: 1
+                            mode: grid
+                            restrict: true
           -
-            handle: template
+            handle: main_visual
             field:
-              type: template
-              display: Template
-              localizable: true
+              container: assets
+              type: assets
+              display: 'Visuel principal'
+              localizable: false
+              folder: blog
+              max_files: 1
+              min_files: 1
+              mode: grid
+              restrict: true
   sidebar:
     display: Sidebar
     sections:
@@ -53,3 +88,20 @@ tabs:
               localizable: false
               validate:
                 - required
+          -
+            handle: categories
+            field:
+              type: terms
+              taxonomies:
+                - categories
+              display: Catégories
+              mode: select
+              localizable: false
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              localizable: true
+              max_items: 1

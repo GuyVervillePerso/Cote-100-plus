@@ -2,7 +2,7 @@ title: 'Entre les lignes'
 sites:
   - default
   - anglais
-propagate: true
+propagate: false
 template: entre_les_lignes/show
 layout: layout
 mount: e68cd371-0905-4e89-9e3d-b481ac2813c1
