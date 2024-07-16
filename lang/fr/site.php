@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'btl' => 'Entre les lignes',
     'connect' => 'Se connecter',
     'rights' => 'Tous droits réservés.',
     'showMenu' => 'Afficher le sous-menu pour',

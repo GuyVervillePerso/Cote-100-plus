@@ -24,10 +24,29 @@ tabs:
             field:
               reading_time: true
               word_count: true
-              remove_empty_nodes: false
+              remove_empty_nodes: true
               type: bard
               display: HTML
               localizable: true
+              buttons:
+                - h2
+                - h3
+                - h4
+                - h5
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - table
+                - superscript
+                - subscript
+                - horizontalrule
+                - image
+              smart_typography: true
+              container: assets
               sets:
                 nouveau_groupe_densembles:
                   display: "Nouveau groupe d'ensembles"
@@ -45,13 +64,13 @@ tabs:
                       display: Image
                       fields:
                         -
-                          handle: inline_image
+                          handle: image_inline
                           field:
                             container: assets
                             type: assets
                             display: Image
                             localizable: false
-                            folder: graphs
+                            folder: blog
                             max_files: 1
                             min_files: 1
                             mode: grid

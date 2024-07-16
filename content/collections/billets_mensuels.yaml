@@ -7,6 +7,7 @@ template: billets_mensuels/show
 layout: layout
 mount: 9523823f-d45f-484a-9cfe-d30090cefd95
 revisions: false
+route: '{parent_uri}/{slug}'
 date: true
 sort_dir: asc
 date_behavior:

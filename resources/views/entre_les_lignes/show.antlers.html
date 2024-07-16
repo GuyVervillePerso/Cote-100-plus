@@ -1,0 +1,7 @@
+{{ user:can do="view" }}
+{{ trans:site.btl }}
+<h1>{{ title }}</h1>
+{{ html_content }}
+    {{ partial src="sets/{type}" }}
+{{ /html_content }}
+{{ /user:can }}
