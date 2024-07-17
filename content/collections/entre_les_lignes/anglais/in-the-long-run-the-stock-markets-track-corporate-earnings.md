@@ -1,17 +1,18 @@
 ---
-id: 2c3b6ead-dde5-4da1-a008-d5e035c41ef9
-origin: 1fb21729-7e30-440e-81cf-fa68238bd030
+id: c8615beb-2894-472b-b257-761cddd9476b
+origin: 71ed4810-8ab8-489c-a678-83b8336b183f
 title: 'In the long run, the stock markets track corporate earnings'
+chapeau: 'A friend recently shared an article with me which includes an excerpt from a speech presented at the National Press Club by Peter Lynch, the famous fund manager, on October 7, 1994. Here is this excerpt:'
 html_content:
   -
     type: paragraph
     content:
       -
         type: text
-        text: "“Some event will come out of left field, and the market will go down, or the market will go up. Volatility will occur. Markets will continue to have these ups and downs. … Basic corporate profits have grown about 8% a year historically. So, corporate profits double about every nine years. The stock market ought to double about every nine years. So I think — the market is about 3,800 today, or 3,700 — I'm pretty convinced the next 3,800 points will be up; it won't be down. The next 500 points, the next 600 points — I don’t know which way they’ll go. So, the markets ought to double in the next eight or nine years. They’ll double again in eight or nine years after that. Because profits go up 8% a year, and stocks will follow. That's all there is to it.”"
         marks:
           -
             type: italic
+        text: "“Some event will come out of left field, and the market will go down, or the market will go up. Volatility will occur. Markets will continue to have these ups and downs. … Basic corporate profits have grown about 8% a year historically. So, corporate profits double about every nine years. The stock market ought to double about every nine years. So I think — the market is about 3,800 today, or 3,700 — I'm pretty convinced the next 3,800 points will be up; it won't be down. The next 500 points, the next 600 points — I don’t know which way they’ll go. So, the markets ought to double in the next eight or nine years. They’ll double again in eight or nine years after that. Because profits go up 8% a year, and stocks will follow. That's all there is to it.”"
   -
     type: paragraph
     content:
@@ -32,10 +33,10 @@ html_content:
         text: 'When Peter Lynch said, '
       -
         type: text
-        text: '“something will come out of left field”'
         marks:
           -
             type: italic
+        text: '“something will come out of left field”'
       -
         type: text
         text: ", he certainly wasn't thinking of the COVID-19 pandemic that hit the stock markets in March 2020 or Russia's invasion of Ukraine in February 2022. It is precisely the kind of unpredictable events that occur sporadically and cause stock markets to fall. But in the long term, such events become less important in the face of the almost uninterrupted march of economic growth and corporate profits. Look at the evolution of the Dow Jones Industrial Average index from 1994 to today and try to identify the crises that caused it to fall:"
@@ -45,10 +46,8 @@ html_content:
       -
         type: image
         attrs:
-          src: 'https://cote100.com/site/assets/files/1573/djia.1447x0-is.png'
-  -
-    type: paragraph
-    content:
+          src: 'asset::assets::blog/djia.1447x0-is.png'
+          alt: null
       -
         type: text
         text: 'In my opinion, the main drops of the index since 1994 correspond to the following crises:'
@@ -115,6 +114,6 @@ html_content:
       -
         type: text
         text: 'Over the long term, corporate profits will continue to grow, and stocks will follow this progression fairly faithfully.'
-chapeau: 'A friend recently shared an article with me which includes an excerpt from a speech presented at the National Press Club by Peter Lynch, the famous fund manager, on October 7, 1994. Here is this excerpt:'
-slug: in-the-long-run-the-stock-markets-track-corporate-earnings
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1721227667
 ---

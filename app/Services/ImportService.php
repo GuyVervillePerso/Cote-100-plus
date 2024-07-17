@@ -2,23 +2,24 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
+use Exception;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use League\Csv\Reader;
-use Carbon\Carbon;
-use Statamic\Support\Arr;
-use Statamic\Facades\Term;
+use League\HTMLToMarkdown\HtmlConverter;
 use Statamic\Facades\Asset;
 use Statamic\Facades\Entry;
-use League\HTMLToMarkdown\HtmlConverter;
+use Statamic\Facades\Term;
 use Tiptap\Editor;
 use Tiptap\Extensions;
 use Tiptap\Marks;
 use Tiptap\Nodes;
-use Illuminate\Support\Facades\Storage;
 
 class ImportService
 {
     protected $tags = [];
+
     protected $lang = 'default';
 
     public function __construct()
@@ -42,28 +43,29 @@ class ImportService
 
         $jsonPath = storage_path('app/import/entre_les_lignes.json');
         $json = json_decode(file_get_contents($jsonPath), true);
-        foreach (array_slice($json['pages'], 0, 10) as $item) {
+        foreach (array_slice($json['pages'], 40, 40) as $item) {
             $this->importJsonEntry($item);
         }
     }
 
-    protected function importJsonEntry($item)
+    protected function importJsonEntry($item): void
     {
         $entry_fr = Entry::query()
             ->where('collection', 'entre_les_lignes')
             ->where('slug', $item['settings']['name'])
             ->first();
 
-        if (!$entry_fr) {
+        if (! $entry_fr) {
             $entryTags = $this->getEntryTags($item['data']['blog_article_categories']);
             $carbon = Carbon::parse($item['data']['blog_publication_date']);
             $slugFr = $item['settings']['name'];
             $slugEn = $item['settings']['name_en'];
             $titleFr = $item['data']['title']['default'];
             $titleEn = $item['data']['title']['en'];
-            $contentFr = $this->createEntry($item['data']['blog_content']['default']);
-            $contentEn = $this->createEntry($item['data']['blog_content']['en']);
-            ray($contentFr)->green();
+            ray($titleFr)->green();
+            $contentFr = $this->reformatImageContent($this->createEntry($item['data']['blog_content']['default']));
+            $contentEn = $this->reformatImageContent($this->createEntry($item['data']['blog_content']['en']));
+
             $dataFr = [
                 'title' => $titleFr,
                 'html_content' => $contentFr,
@@ -110,10 +112,81 @@ class ImportService
                         ->origin($entry_fr_id) // Set the origin ID
                         ->save();
                 }
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 dd($e);
             }
         }
+    }
+
+    protected function getEntryTags($tagArray = [])
+    {
+        $tagResults = [];
+        if (count($tagArray) > 0) {
+            foreach ($tagArray as $tag) {
+                $t = str_replace('/', '', $tag);
+                if (in_array($t, $this->tags)) {
+                    $tagResults[] = $t;
+                }
+            }
+        }
+
+        return $tagResults;
+    }
+
+    protected function reformatImageContent($content): array
+    {
+        foreach ($content as $key => $item) {
+            if (isset($item['content'][0]['type'])) {
+                if ($item['content'][0]['type'] == 'image') {
+                    $basename = basename($item['content'][0]['attrs']['src']);
+                    $imageArray[$basename] = ['url' => $item['content'][0]['attrs']['src']];
+                    $content[$key]['content'][0]['attrs']['src'] = 'asset::assets::blog/'.$this->moveImages($imageArray, true);
+                }
+            }
+
+        }
+
+        return $content;
+    }
+
+    protected function moveImages($images, $sendFilename = false)
+    {
+        if (count($images) == 0) {
+            return [];
+        }
+        foreach ($images as $key => $image) {
+            $filename = $key;
+            $imageUrl = $image['url'];
+            // Get the image content from the URL
+            try {
+                $imageContent = file_get_contents($imageUrl);
+            } catch (Exception $e) {
+                return '';
+            }
+
+            // Define a temporary path to store the image
+            $tempPath = storage_path('app/public/temp.jpg');
+            // Use Laravel's File facade to put the image content into the temporary path
+            File::put($tempPath, $imageContent);
+
+            // Create an uploaded file instance for the image
+            $file = new UploadedFile($tempPath, $filename);
+            // Create an asset, set the container and the path, then upload the file
+            $asset = Asset::make()
+                ->container('assets')
+                ->path('blog/'.$filename);
+            $asset->upload($file);
+            // Save the asset
+            $asset->save();
+
+            // Delete the temporary file
+            File::delete($tempPath);
+        }
+        if ($sendFilename) {
+            return $filename;
+        }
+
+        return $asset->id;
     }
 
     protected function createEntry($data)
@@ -144,7 +217,7 @@ class ImportService
         // Loop through each row in the CSV (except the header row)
         foreach ($csv as $record) {
             // Map the CSV row data to Statamic fields
-            if ($record['name_fr'] == "") {
+            if ($record['name_fr'] == '') {
                 $record['name_fr'] = $record['name_en'];
             }
             $entry_fr = Entry::query()
@@ -181,10 +254,10 @@ class ImportService
                 $dataFr['tags'] = $entryTags;
             }
 
-            if ($record['legend_fr'] == "" && $record['legend_en'] != "") {
+            if ($record['legend_fr'] == '' && $record['legend_en'] != '') {
                 $dataFr['legend'] = $record['legend_en'];
             }
-            if ($record['legend_fr'] != "") {
+            if ($record['legend_fr'] != '') {
                 $dataFr['legend'] = $record['legend_fr'];
             }
             if (count($finalImages) > 0) {
@@ -204,7 +277,7 @@ class ImportService
                 'seo_description' => $seoDescriptionEn,
                 'slug' => $record['name_en'],
             ];
-            if ($record['legend_en'] != "") {
+            if ($record['legend_en'] != '') {
                 $dataFr['legend'] = $record['legend_en'];
             }
             try {
@@ -230,73 +303,26 @@ class ImportService
                         ->date($carbon)
                         ->save();
                 }
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 dd($e);
             }
         }
     }
-
-    protected function moveImages($images)
-    {
-        if (count($images) == 0) {
-            return [];
-        }
-        foreach ($images as $key => $image) {
-            $filename = $key;
-            $imageUrl = $image['url'];
-            // Get the image content from the URL
-            $imageContent = file_get_contents($imageUrl);
-
-            // Define a temporary path to store the image
-            $tempPath = storage_path('app/public/temp.jpg');
-            // Use Laravel's File facade to put the image content into the temporary path
-            File::put($tempPath, $imageContent);
-
-            // Create an uploaded file instance for the image
-            $file = new \Illuminate\Http\UploadedFile($tempPath, $filename);
-            // Create an asset, set the container and the path, then upload the file
-            $asset = Asset::make()
-                ->container('assets')
-                ->path('blog/' . $filename);
-            $asset->upload($file);
-            // Save the asset
-            $asset->save();
-
-            // Delete the temporary file
-            File::delete($tempPath);
-        }
-        return $asset->id;
-    }
-
 
     protected function cleanText($text): string
     {
         $text = str_replace('\[\[s\]\]', ' ', $text);
         $text = str_replace('* *', ' ', $text);
         $text = str_replace('\[\[etoile\]\]', '* * * * *', $text);
-        $text = str_replace("'", "’", $text);
+        $text = str_replace("'", '’', $text);
+
         return $text;
     }
 
-    protected function getEntryTags($tagArray = [])
-    {
-        $tagResults = [];
-        if (count($tagArray) > 0) {
-            foreach ($tagArray as $tag) {
-                $t = str_replace('/', '', $tag);
-                if (in_array($t, $this->tags)) {
-                    $tagResults[] = $t;
-                }
-            }
-        }
-        return $tagResults;
-    }
-
-    protected
-    function truncateForSeo($content)
+    protected function truncateForSeo($content)
     {
         // Check if the content is binary
-        if (!mb_check_encoding($content, 'UTF-8')) {
+        if (! mb_check_encoding($content, 'UTF-8')) {
             // Content is binary, convert to UTF-8
             $content = mb_convert_encoding($content, 'UTF-8');
         }
@@ -323,6 +349,7 @@ class ImportService
         $text = str_replace("\t", ' ', $text);
         $text = str_replace('  ', ' ', $text);
         $text = strip_tags($text);
+
         return $text;
     }
 }
