@@ -43,7 +43,7 @@ class ImportService
 
         $jsonPath = storage_path('app/import/entre_les_lignes.json');
         $json = json_decode(file_get_contents($jsonPath), true);
-        foreach (array_slice($json['pages'], 40, 40) as $item) {
+        foreach ($json['pages'] as $item) {
             $this->importJsonEntry($item);
         }
     }
@@ -115,6 +115,8 @@ class ImportService
             } catch (Exception $e) {
                 dd($e);
             }
+        } else {
+            ray('existant')->green();
         }
     }
 
