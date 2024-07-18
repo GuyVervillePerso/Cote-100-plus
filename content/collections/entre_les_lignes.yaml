@@ -9,7 +9,9 @@ mount: e68cd371-0905-4e89-9e3d-b481ac2813c1
 taxonomies:
   - categories
 revisions: false
-route: '{parent_uri}/{slug}'
+route:
+  default: '{parent_uri}/commentaires/entre-les-lignes/{slug}'
+  anglais: '{parent_uri}/comments/between-the-lines/{slug}'
 date: true
 sort_dir: desc
 date_behavior:

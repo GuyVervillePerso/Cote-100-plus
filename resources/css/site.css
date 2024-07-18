@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 
-.roboto-flex-body, .font-sans {
+.roboto-flex-body, .roboto-supertitle, .font-sans, .condensed, .condensedMedium {
     font-family: "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -21,65 +21,135 @@
     "YTUC" 712;
 }
 
+.condensed {
+    font-variation-settings: "wdth" 70;
+}
+
+.condensedMedium {
+    font-variation-settings: "wdth" 70;
+    font-weight: 500;
+}
+
 h1, h2, h3, h4, h5, h6, .montserrat-title {
-                 font-family: "Montserrat", sans-serif;
-                 font-optical-sizing: auto;
-                 font-weight: 300;
-                 font-style: normal;
-             }
-section, footer, .maxContainer{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+h1.title {
+    font-variation-settings: "wdth" 70;
+    @apply font-roboto-flex text-[72px] font-medium leading-none mb-7 uppercase
+}
+
+h2 {
+    @apply text-[24px] font-medium leading-none mt-6 mb-4 uppercase
+}
+
+.montserrat-title {
+    font-weight: 300;
+}
+
+.roboto-supertitle {
+    font-variation-settings: "wdth" 70;
+    @apply uppercase tracking-wider text-limeGreen font-light text-[36px] mb-3
+}
+
+.share {
+    @apply tracking-wider text-limeGreen font-medium
+}
+
+
+section, footer, .maxContainer {
     @apply w-full px-[15px] md:px-[30px] lg:px-[50px] lg:max-w-maxSite mx-auto
 }
-.fondPerdu{
+
+.fondPerdu {
     @apply px-0
 }
-footer{
+
+footer {
     @apply bg-darkGray text-white mt-8 py-8
 }
-header{
-    @apply py-3 mb-12 border-b md:border-0 border-gray65 ;
+
+header {
+    @apply py-3 mb-6 border-b md:border-0 border-gray65 ;
 }
-#desktopNav a{
+
+#desktopNav a {
     @apply tracking-wider
 }
-#desktopNav ul li{
+
+#desktopNav ul li {
     @apply pb-1 border-white border-b-[3px]
 }
-#desktopNav ul li:hover.alone{
-    @apply  border-gray65
+
+#desktopNav ul li:hover.alone {
+    @apply border-gray65
 }
-#desktopNav ul li.menuActive{
+
+#desktopNav ul li.menuActive {
     @apply font-bold border-black
 }
-.submenu{
+
+.submenu {
     @apply origin-top-right absolute top-full min-w-[320px] bg-white border border-slate-200 rounded-lg shadow-xl [&[x-cloak]]:hidden py-3
 }
-.submenu.topMenu{
+
+.submenu.topMenu {
     @apply right-0 uppercase
 }
 
-#desktopNav .submenu li, #topNav .submenu li{
+#desktopNav .submenu li, #topNav .submenu li {
     @apply py-3 px-4 font-light border-t border-gray65 border-b-0
 }
-#desktopNav .submenu li:last-child, #topNav .submenu li:last-child{
+
+#desktopNav .submenu li:last-child, #topNav .submenu li:last-child {
     @apply border-b
 }
-.notAllowed, #desktopNav .submenu li.notAllowed{
+
+.notAllowed, #desktopNav .submenu li.notAllowed {
     @apply bg-gray80
 }
-#topNav{
+
+#topNav {
     @apply font-sans
 }
-#mobileMenu>li{
+
+#mobileMenu > li {
     @apply w-full px-4 py-3 text-left border-b border-gray-200 uppercase
 }
-#mobileMenu>li ul{
+
+#mobileMenu > li ul {
     @apply mt-2
 }
-#mobileMenu>li ul li{
+
+#mobileMenu > li ul li {
     @apply w-full px-6 py-2 text-left uppercase
 }
-.tableau table{
+
+.tableau table {
     @apply border border-gray65
 
 }
+
+.chapeau {
+    @apply mb-8
+}
+
+.chapeau p {
+    @apply font-roboto-flex text-lg font-light leading-8 mb-3
+}
+
+.blogContent {
+    @apply font-roboto-flex font-light text-[18px] leading-7
+}
+
+.blogContent p {
+    @apply mb-3
+}
+
