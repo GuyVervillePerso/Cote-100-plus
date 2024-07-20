@@ -1,5 +1,24 @@
-<ul>
-    {{ collection:entre_les_lignes }}
-        <li><a href="{{ url }}">{{ title }}</a></li>
-    {{ /collection:entre_les_lignes }}
-</ul>
+{{ user:can do="view" }}
+<h1 class="title text-limeGreen uppercase">{{ trans:site.btl }}</h1>
+<div class="grid grid-cols-2 gap-8">
+    <div>
+        {{ collection:entre_les_lignes limit="1" }}
+            {{ main_visual }}
+                {{ partial:srcset url="{{url}}" dw="654" dh="400" tw="654" th="400" mw="315" mh="260" }}
+                    {{ /main_visual }}
+            <a href="{{ url }}">{{ title }}</a>
+        {{ /collection:entre_les_lignes }}
+    </div>
+    <div>
+        {{ collection:entre_les_lignes offset="1" limit="2" }}
+            <div class="grid grid-cols-2 gap-8 mb-8">
+                <div>
+                {{ main_visual }}
+                    {{ partial:srcset url="{{url}}" dw="315" dh="260" tw="315" th="260" mw="315" mh="260" }}
+                {{ /main_visual }}
+                </div>
+                <div><a href="{{ url }}">{{ title }}</a></div></div>
+      {{ /collection:entre_les_lignes }}
+    </div>
+</div>
+{{ /user:can }}

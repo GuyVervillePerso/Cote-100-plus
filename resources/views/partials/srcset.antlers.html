@@ -1,0 +1,6 @@
+<picture>
+    <source srcset='{{ glide src="{{url}}" width="{{dw}}" height="{{dh}}" fit="crop_focal" }}' media='(min-width: 1024px)'>
+    <source srcset='{{ glide src="{{url}}" width="{{tw}}" height="{{th}}" fit="crop_focal"}}' media='(min-width: 768px)'>
+    <source srcset='{{ glide src="{{url}}" width="{{mw}}" height="{{mh}}" format='webp' fit="crop_focal"}}'>
+    <img class='block z-10 rounded-md w-full' src='{{ glide src="{{url}}" width="{{dw}}" height="{{dh}}"}}' alt=''>
+</picture>

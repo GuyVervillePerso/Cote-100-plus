@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\ImportService;
 
 class ImportController extends Controller
@@ -14,11 +13,12 @@ class ImportController extends Controller
         $this->importService = $importService;
     }
 
-    public function importBlogEntries()
+    public function importMonthlyEntries()
     {
         // Call the importBlogEntries method of the ImportService
-        $this->importService->importBlogEntries();
+        $this->importService->importMonthlyEntries();
     }
+
     public function importJSONEntries()
     {
         // Call the importJSONEntries method of the ImportService

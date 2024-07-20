@@ -1,0 +1,114 @@
+title: 'Billets mensuel'
+tabs:
+  main:
+    display: Principal
+    sections:
+      - fields:
+          - handle: title
+            field:
+              type: text
+              required: true
+              localizable: true
+              validate:
+                - required
+          - handle: chapeau
+            field:
+              type: markdown
+              display: Chapeau
+              localizable: true
+          - handle: html_content
+            field:
+              reading_time: true
+              word_count: true
+              remove_empty_nodes: true
+              type: bard
+              display: HTML
+              localizable: true
+              buttons:
+                - h2
+                - h3
+                - h4
+                - h5
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - table
+                - superscript
+                - subscript
+                - horizontalrule
+                - image
+              smart_typography: true
+              container: assets
+              sets:
+                nouveau_groupe_densembles:
+                  display: "Nouveau groupe d'ensembles"
+                  sets:
+                    table_set:
+                      display: Tableau
+                      fields:
+                        - handle: table_set
+                          field:
+                            type: table_on_steroids
+                            display: Tableau
+                            localizable: false
+                    image:
+                      display: Image
+                      fields:
+                        - handle: image_inline
+                          field:
+                            container: assets
+                            type: assets
+                            display: Image
+                            localizable: false
+                            folder: blog
+                            max_files: 1
+                            min_files: 1
+                            mode: grid
+                            restrict: true
+          - handle: main_visual
+            field:
+              container: assets
+              type: assets
+              display: 'Visuel principal'
+              localizable: false
+              folder: blog
+              max_files: 1
+              min_files: 1
+              mode: grid
+              restrict: true
+  sidebar:
+    display: Sidebar
+    sections:
+      - fields:
+          - handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          - handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              localizable: false
+              validate:
+                - required
+          - handle: categories
+            field:
+              type: terms
+              taxonomies:
+                - categories
+              display: Catégories
+              mode: select
+              localizable: false
+          - handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              localizable: true
+              max_items: 1

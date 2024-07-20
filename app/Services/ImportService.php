@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use League\Csv\Reader;
 use League\HTMLToMarkdown\HtmlConverter;
 use Statamic\Facades\Asset;
@@ -38,17 +39,168 @@ class ImportService
         }
     }
 
+    public function importMonthlyEntries()
+    {
+        $csvPath = storage_path('app/import/billets_mensuels.tsv');
+        // Create a CSV Reader instance
+        $csv = Reader::createFromPath($csvPath, 'r');
+        $csv->setDelimiter("\t");
+        $csv->setHeaderOffset(0);
+        foreach ($csv as $record) {
+            $this->importTSVEntry($record);
+        }
+    }
+
+    protected function importTSVEntry($record): void
+    {
+        $slugFr = Str::slug($record['title_fr'], '-');
+        $entry_fr = Entry::query()
+            ->where('collection', 'billets_mensuels')
+            ->where('slug', $slugFr)
+            ->first();
+
+        if (! $entry_fr) {
+            $carbon = Carbon::parse($record['date']);
+            $slugEn = $record['title_en'];
+            $titleFr = $record['title_fr'];
+            $titleEn = $record['title_en'];
+            $contentFr = $this->reformatImageContent($this->createEntry($record['content_fr']));
+            $contentEn = $this->reformatImageContent($this->createEntry($record['content_en']));
+
+            $dataFr = [
+                'title' => $titleFr,
+                'html_content' => $contentFr,
+                'updated_at' => $carbon,
+                'author' => '9c87d8d7-e83f-438d-8d13-6efd9c2fae40',
+                'slug' => $slugFr,
+            ];
+            $dataEn = [
+                'title' => $titleEn,
+                'html_content' => $contentEn,
+                'slug' => $slugEn,
+            ];
+            $image[basename($record['image'])] = [
+                'url' => $record['image'],
+            ];
+            $assetId = $this->moveImages($image);
+            if ($assetId) {
+                $dataFr['main_visual'] = $assetId;
+            }
+            try {
+                $entry_fr = Entry::make()
+                    ->locale('default') // Set the locale to French (default)
+                    ->collection('billets_mensuels') // Set the collection handle
+                    ->slug($slugFr) // Set the slug
+                    ->data($dataFr) // Set the data fields
+                    ->date($carbon)
+                    ->save();
+                if ($entry_fr) {
+                    $entry_fr_id = Entry::query()
+                        ->where('collection', 'billets_mensuels')
+                        ->where('slug', $slugFr)
+                        ->first()->id();
+                    Entry::make()
+                        ->locale('anglais') // Set the locale to English
+                        ->collection('billets_mensuels') // Set the collection handle
+                        ->slug($slugEn) // Set the slug
+                        ->data($dataEn) // Set the data fields
+                        ->date($carbon)
+                        ->origin($entry_fr_id) // Set the origin ID
+                        ->save();
+                }
+            } catch (Exception $e) {
+                dd($e);
+            }
+        } else {
+            ray('existant')->green();
+        }
+    }
+
+    protected function reformatImageContent($content): array
+    {
+        foreach ($content as $key => $item) {
+            if (isset($item['content'][0]['type'])) {
+                if ($item['content'][0]['type'] == 'image') {
+                    $basename = basename($item['content'][0]['attrs']['src']);
+                    $imageArray[$basename] = ['url' => $item['content'][0]['attrs']['src']];
+                    $content[$key]['content'][0]['attrs']['src'] = 'asset::assets::blog/'.$this->moveImages($imageArray, true);
+                }
+            }
+
+        }
+
+        return $content;
+    }
+
+    protected function moveImages($images, $sendFilename = false)
+    {
+        if (count($images) == 0) {
+            return [];
+        }
+        foreach ($images as $key => $image) {
+            $filename = $key;
+            $imageUrl = $image['url'];
+            if (trim($imageUrl) == '' || $imageUrl == null) {
+                $imageUrl = 'https://via.placeholder.com/900x400';
+            }
+            // Get the image content from the URL
+            try {
+                $imageContent = file_get_contents($imageUrl);
+            } catch (Exception $e) {
+                return '';
+            }
+
+            // Define a temporary path to store the image
+            $tempPath = storage_path('app/public/temp.jpg');
+            // Use Laravel's File facade to put the image content into the temporary path
+            File::put($tempPath, $imageContent);
+
+            // Create an uploaded file instance for the image
+            $file = new UploadedFile($tempPath, $filename);
+            // Create an asset, set the container and the path, then upload the file
+            $asset = Asset::make()
+                ->container('assets')
+                ->path('blog/'.$filename);
+            $asset->upload($file);
+            // Save the asset
+            $asset->save();
+
+            // Delete the temporary file
+            File::delete($tempPath);
+        }
+        if ($sendFilename) {
+            return $filename;
+        }
+
+        return $asset->id;
+    }
+
+    protected function createEntry($data)
+    {
+        return (new Editor([
+            'extensions' => [
+                new Extensions\StarterKit,
+                new Nodes\Image,
+                new Nodes\Table,
+                new Nodes\TableCell,
+                new Nodes\TableHeader,
+                new Nodes\TableRow,
+                new Marks\Link,
+            ],
+        ]))->setContent($data)->getDocument()['content'];
+    }
+
     public function importJSONEntries()
     {
 
         $jsonPath = storage_path('app/import/entre_les_lignes.json');
         $json = json_decode(file_get_contents($jsonPath), true);
         foreach ($json['pages'] as $item) {
-            $this->importJsonEntry($item);
+            $this->importEntry($item);
         }
     }
 
-    protected function importJsonEntry($item): void
+    protected function importEntry($item): void
     {
         $entry_fr = Entry::query()
             ->where('collection', 'entre_les_lignes')
@@ -62,7 +214,6 @@ class ImportService
             $slugEn = $item['settings']['name_en'];
             $titleFr = $item['data']['title']['default'];
             $titleEn = $item['data']['title']['en'];
-            ray($titleFr)->green();
             $contentFr = $this->reformatImageContent($this->createEntry($item['data']['blog_content']['default']));
             $contentEn = $this->reformatImageContent($this->createEntry($item['data']['blog_content']['en']));
 
@@ -133,77 +284,6 @@ class ImportService
         }
 
         return $tagResults;
-    }
-
-    protected function reformatImageContent($content): array
-    {
-        foreach ($content as $key => $item) {
-            if (isset($item['content'][0]['type'])) {
-                if ($item['content'][0]['type'] == 'image') {
-                    $basename = basename($item['content'][0]['attrs']['src']);
-                    $imageArray[$basename] = ['url' => $item['content'][0]['attrs']['src']];
-                    $content[$key]['content'][0]['attrs']['src'] = 'asset::assets::blog/'.$this->moveImages($imageArray, true);
-                }
-            }
-
-        }
-
-        return $content;
-    }
-
-    protected function moveImages($images, $sendFilename = false)
-    {
-        if (count($images) == 0) {
-            return [];
-        }
-        foreach ($images as $key => $image) {
-            $filename = $key;
-            $imageUrl = $image['url'];
-            // Get the image content from the URL
-            try {
-                $imageContent = file_get_contents($imageUrl);
-            } catch (Exception $e) {
-                return '';
-            }
-
-            // Define a temporary path to store the image
-            $tempPath = storage_path('app/public/temp.jpg');
-            // Use Laravel's File facade to put the image content into the temporary path
-            File::put($tempPath, $imageContent);
-
-            // Create an uploaded file instance for the image
-            $file = new UploadedFile($tempPath, $filename);
-            // Create an asset, set the container and the path, then upload the file
-            $asset = Asset::make()
-                ->container('assets')
-                ->path('blog/'.$filename);
-            $asset->upload($file);
-            // Save the asset
-            $asset->save();
-
-            // Delete the temporary file
-            File::delete($tempPath);
-        }
-        if ($sendFilename) {
-            return $filename;
-        }
-
-        return $asset->id;
-    }
-
-    protected function createEntry($data)
-    {
-        return (new Editor([
-            'extensions' => [
-                new Extensions\StarterKit,
-                new Nodes\Image,
-                new Nodes\Table,
-                new Nodes\TableCell,
-                new Nodes\TableHeader,
-                new Nodes\TableRow,
-                new Marks\Link,
-            ],
-        ]))->setContent($data)->getDocument()['content'];
     }
 
     public function importBlogEntries()
