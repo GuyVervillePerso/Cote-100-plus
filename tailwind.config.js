@@ -9,13 +9,6 @@ export default {
     ],
 
     theme: {
-        fontSize: {
-            sm: ["14px", "20px"],
-            md: ["16px", "24px"],
-            base: ["18px", "24px"],
-            lg: ["20px", "28px"],
-            xl: ["24px", "32px"],
-        },
         fontFamily: {
             montserrat: ["Montserrat", "sans-serif"],
             "roboto-flex": ["Roboto Flex", "sans-serif"],
@@ -35,6 +28,13 @@ export default {
                 gray65: "#BDBEC1",
                 mediumGray: "#888888",
                 limeGreen: "#67B044",
+            },
+            fontSize: {
+                sm: ["14px", "20px"],
+                md: ["16px", "24px"],
+                base: ["18px", "24px"],
+                lg: ["20px", "28px"],
+                xl: ["24px", "32px"],
             },
         },
     },

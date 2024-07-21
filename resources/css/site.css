@@ -3,10 +3,10 @@
 @import "tailwindcss/utilities";
 
 
-.roboto-flex-body, .roboto-supertitle, .font-sans, .condensed, .condensedMedium {
+.roboto-flex-body, .roboto-supertitle, .font-sans, .condensed, .condensedMedium, .condensedSemiMedium, .roboto-flex-light, p {
     font-family: "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-weight: 200;
     font-style: normal;
     font-variation-settings: "slnt" 0,
     "wdth" 100,
@@ -21,13 +21,26 @@
     "YTUC" 712;
 }
 
+p {
+    font-variation-settings: "wdth" 200;
+}
+
 .condensed {
     font-variation-settings: "wdth" 70;
+}
+
+.condensedSemiMedium {
+    font-variation-settings: "wdth" 70;
+    font-weight: 400;
 }
 
 .condensedMedium {
     font-variation-settings: "wdth" 70;
     font-weight: 500;
+}
+
+.roboto-flex-light {
+    font-weight: 200;
 }
 
 h1, h2, h3, h4, h5, h6, .montserrat-title {
@@ -142,7 +155,11 @@ header {
 }
 
 .chapeau p {
-    @apply font-roboto-flex text-lg font-light leading-8 mb-3
+    @apply font-roboto-flex text-lg leading-8 mb-3
+}
+
+.chapeauSidebar p {
+    @apply font-roboto-flex text-base leading-6 mb-3
 }
 
 .blogContent {

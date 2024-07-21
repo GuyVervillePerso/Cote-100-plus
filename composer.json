@@ -12,6 +12,7 @@
         "php": "^8.2",
         "doefom/statamic-browser-detect": "^0.1.1",
         "goellner/table-on-steroids": "^1.3",
+        "jonassiewertsen/statamic-live-search": "^2.1",
         "laravel/framework": "^11",
         "laravel/tinker": "^2.9",
         "league/csv": "^9.16",
