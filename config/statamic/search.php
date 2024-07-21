@@ -30,11 +30,16 @@ return [
             'searchables' => 'all',
             'fields' => ['title'],
         ],
-
-        // 'blog' => [
-        //     'driver' => 'local',
-        //     'searchables' => 'collection:blog',
-        // ],
+        'blog' => [
+            'driver' => 'local',
+            'searchables' => 'collection:entre_les_lignes',
+            'fields' => ['title', 'chapeau', 'html_content'],
+        ],
+        'monthly' => [
+            'driver' => 'local',
+            'searchables' => 'collection:blog',
+            'fields' => ['title', 'chapeau', 'html_content'],
+        ],
 
     ],
 

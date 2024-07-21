@@ -1,4 +1,5 @@
 {{ user:can do="view" }}
+<div id="topBlog">
 <h1 class="title text-limeGreen uppercase">{{ trans:site.btl }}</h1>
 <div class="grid grid-cols-2 gap-8">
     <div>
@@ -9,7 +10,7 @@
     <div class="mt-6">
         {{ partial:greenbutton }}
             {{ trans:site.btl }}{{ /partial:greenbutton }}
-        </div>  
+        </div>
             <h2 class="condensedMedium text-[54px]">
                 <a href="{{ url }}">{{ title }}</a></h2>
             <div class="roboto-flex-light font-light leading-7 text-lg">
@@ -43,5 +44,9 @@
         </div>
     {{ /collection:entre_les_lignes }}
     </div>
+    </div>
+    </div>
+    <div class="bottomSection">
+        {{ livewire:search-form template='partials.search_form' index='blog' categories='categories'}}
     </div>
 {{ /user:can }}
