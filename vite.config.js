@@ -1,6 +1,11 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 // import vue2 from '@vitejs/plugin-vue2';
+import * as Sentry from "@sentry/browser";
+
+Sentry.init({
+    dsn: import.meta.env.VITE_SENTRY_DSN_PUBLIC,
+});
 
 export default defineConfig({
     plugins: [
