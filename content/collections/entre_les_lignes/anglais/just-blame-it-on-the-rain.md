@@ -110,7 +110,7 @@ html_content:
       -
         type: image
         attrs:
-          src: null
+          src: 'asset::assets::blog/logo-les-affaires.png'
           alt: logo-les-affaires.png
         marks:
           -
@@ -121,5 +121,5 @@ html_content:
               target: null
               title: null
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1721670850
+updated_at: 1721745941
 ---
