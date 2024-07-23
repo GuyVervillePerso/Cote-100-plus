@@ -24,7 +24,7 @@
                         {{ /slot:title }}
                         {{ collection:utilitaires_usagers }}
                             {{ if handle === 'logout' }}
-                                <li><a href="/logout">{{ title }}</a></li>
+                                <li><a href="{{ user:logout_url }}">{{title}}</a></li>
                             {{ else }}
                                 <li><a href="{{ url }}">{{ title }}</a></li>
                             {{ /if }}
@@ -33,8 +33,8 @@
                 </ul>
             </nav>
         {{ else }}
-            <div class="space-x-4">
-                <a href="#">{{ trans:site.subscribe }}</a><span>|</span><a href="#">{{ trans:site.connect }}</a>
+            <div class="flex justify-end space-x-4">
+                <a href="#">{{ trans:site.subscribe }}</a><span>|</span>{{ partial:login }}
             </div>
         {{ /if }}
     </div>
