@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.9",
         "league/csv": "^9.16",
         "league/html-to-markdown": "^5.1",
+        "sentry/sentry-laravel": "^4.7",
         "statamic/cms": "^5.0"
     },
     "require-dev": {
