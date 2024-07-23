@@ -75,7 +75,7 @@ return [
     |
     */
 
-    'use_authenticated' => true,
+    'use_authenticated' => false,
 
     'user' => [
         'name' => env('STATAMIC_GIT_USER_NAME', 'Spock'),
