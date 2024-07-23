@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Cache;
 use Jonassiewertsen\LiveSearch\Http\Livewire\Search;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Site;
@@ -73,20 +72,16 @@ class SearchForm extends Search
     protected function getSimpleSearch()
     {
         // Define cache key
-        $cacheKey = 'simple_search_cache';
-
-        // Define cache expiry time in seconds (e.g., 3600 seconds = 1 hour)
-        $expiryTime = 3600;
 
         // Use Laravel Cache::remember function to cache the results
-        return Cache::remember($cacheKey, $expiryTime, function () {
-            return Entry::query()
-                ->where('collection', 'entre_les_lignes')
-                ->where('locale', $this->locale)
-                ->orderBy('date', 'desc')
-                ->offset(3)
-                ->limit(4)
-                ->get();
-        });
+
+        return Entry::query()
+            ->where('collection', 'entre_les_lignes')
+            ->where('locale', $this->locale)
+            ->orderBy('date', 'desc')
+            ->offset(3)
+            ->limit(4)
+            ->get();
+
     }
 }
