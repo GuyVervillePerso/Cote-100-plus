@@ -25,16 +25,6 @@
                 x-transition
                 class="relative max-w-xl w-full bg-white rounded-xl shadow-lg"
             >
-                <!-- Close Button -->
-                <div class="absolute top-0 right-0 pt-4 pr-4">
-                    <button type="button" @click="$dialog.close()" class="bg-gray-50 rounded-lg p-2 text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
-                        <span class="sr-only">Close modal</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                </div>
-
                 <!-- Body -->
                 <div class="p-8">
                     <!-- Title -->
@@ -62,7 +52,7 @@
                         <input type="email" name="email" value="{{ old:email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
                     <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{trans:site.email}}</label>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{trans:site.password}}</label>
                         <input type="password" name="password" value="{{ old:password }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                     </div>
 
@@ -72,14 +62,13 @@
                     <button type="button" x-on:click="$dialog.close()" class="text-limeGreen focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg px-5 py-2.5">
                         {{trans:site.subscribe}}
                     </button>
-
                     <button type="sumbit" x-on:click="$dialog.close()" class="bg-limeGreen focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 px-5 py-2.5 rounded-lg text-white">
                         {{trans:site.login}}
                     </button>
                 </div>
                         {{ /user:login_form }}
                 </div>
-            
+
             </div>
         </div>
     </div>
