@@ -37,6 +37,50 @@ export default {
                 lg: ["20px", "28px"],
                 xl: ["24px", "32px"],
             },
+            fontFamily: {
+                robotoLight: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 300',
+                    },
+                ],
+                robotoRegular: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 400',
+                    },
+                ],
+                robotoMedium: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 500',
+                    },
+                ],
+                robotoBold: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 700',
+                    },
+                ],
+                robotoCondensedLight: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 200, "wdth" 70',
+                    },
+                ],
+                robotoCondensedMedium: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 400, "wdth" 75',
+                    },
+                ],
+                robotoCondensedSemiMedium: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 500, "wdth" 75',
+                    },
+                ],
+            },
         },
     },
 
