@@ -24,6 +24,7 @@ export default {
             colors: {
                 darkGray: "#343537",
                 gray80: "#F0F0F0",
+                gray70: "#EEEEEE",
                 gray90: "#D9D9D9",
                 gray65: "#BDBEC1",
                 mediumGray: "#888888",
