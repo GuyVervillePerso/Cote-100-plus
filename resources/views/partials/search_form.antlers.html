@@ -1,5 +1,5 @@
 <div>
-    <div class="formElements flex justify-between space-x-4 pt-6 pb-8">
+    <div class="formElements flex justify-between space-x-6 pt-8 pb-12">
         {{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
         <input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search" placeholder="
         {{ trans:site.keywords }}">
@@ -23,15 +23,25 @@
     </div>
 
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {{ results }}
-        <div class="grid grid-cols-[150px_1fr] gap-4">
-            <div>
-                {{ image }}
-                {{ partial:image_blog url="{{url}}" dw="150" dh="150" }}
-                {{ /image }}</div>
-            <h2 class="condensedMedium"><a href="{{ url }}">{{ title }}</a></h2>
-        </div>
+        <a href="{{ url }}">
+            <div class="bg-white rounded-2xl p-6 grid grid-cols-[150px_1fr] gap-4 shadow-xl">
+                <div>
+                    {{ image }}
+                    {{ partial:image_blog url="{{url}}" dw="150" dh="150" }}
+                    {{ /image }}
+                </div>
+                <div>
+                    {{ partial:greenbutton }}{{ bubble }}{{ /partial:greenbutton }}
+                    <h2 class="font-robotoCondensedSemiMedium mt-2">
+                        {{ title }}
+                    </h2>
+                    {{ chapeau | truncate:300 }}...
+                    <div class="font-light text-sm text-mediumGray mt-3">{{ date }}</div>
+                </div>
+            </div>
+        </a>
         {{ /results }}
 
     </div>

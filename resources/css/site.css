@@ -47,7 +47,7 @@ p {
     font-weight: 200;
 }
 
-h1, h2, h3, h4, h5, h6, .montserrat-title {
+.montserrat-title {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
@@ -59,8 +59,7 @@ h1 {
 }
 
 h1.title {
-    font-variation-settings: "wdth" 75;
-    @apply font-roboto-flex text-[72px] font-medium leading-none mb-7 uppercase
+    @apply font-robotoCondensedMedium text-[72px] font-medium leading-none mb-7 uppercase
 }
 
 h2 {
@@ -163,15 +162,15 @@ header {
 }
 
 .chapeau p {
-    @apply font-roboto-flex text-lg leading-8 mb-3
+    @apply font-robotoLight text-lg leading-8 mb-3
 }
 
 .chapeauSidebar p {
-    @apply font-roboto-flex text-base leading-6 mb-3
+    @apply font-robotoLight text-base leading-6 mb-3
 }
 
 .blogContent {
-    @apply font-roboto-flex font-light text-[18px] leading-7
+    @apply font-robotoRegular text-[18px] leading-7
 }
 
 .blogContent p {

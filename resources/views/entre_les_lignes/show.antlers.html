@@ -1,30 +1,33 @@
-{{ user:can do="view" }}
-<div class="roboto-supertitle uppercase">{{ trans:site.btl }}</div>
-<h1 class="title">{{ title }}</h1>
-<div class="font-light text-lg text-mediumGray mb-[50px]">
-    {{ date | format('Y-m-d') }}
-</div>
-<div class="roboto-flex-body grid md:grid-cols-[1fr_320px] gap-12">
-    <div>
-        {{ main_visual }}
-        <img class="rounded-2xl mb-[50px]" src="{{ url }}" alt="{{ alt ?? {trans:site.mainvisual} }}">
-        {{ /main_visual }}
-        <div class="chapeau">{{ chapeau }}</div>
-        <div class="blogContent">
-            {{ html_content }}
-            {{ partial src="sets/{type}" }}
-            {{ /html_content }}
+{{ if logged_in }}
+    <section>
+        <div class="roboto-supertitle uppercase">{{ trans:site.btl }}</div>
+        <h1 class="title">{{ title }}</h1>
+        <div class="font-light text-lg text-mediumGray mb-[50px]">
+            {{ date | format('Y-m-d') }}
         </div>
-    </div>
-<div>
-<div class="px-6 py-10 border border-gray90 rounded-lg">
-<div class="uppercase text-xl condensedMedium">{{ trans:site.share_article }}</div>
-<div class="share flex gap-2 align-middle mt-8">
-{{ asset url='/assets/share.svg' }}
-        <img class="max-h-6" src="{{ url }}" alt="{{ alt }}"/>
-{{ /asset }}
-{{ trans:site.share }}</div>
-<div></div>
-</div>
-</div></div>
-{{ /user:can }}
+        <div class="roboto-flex-body grid md:grid-cols-[1fr_320px] gap-12">
+            <div>
+                {{ main_visual }}
+                <img class="rounded-2xl mb-[50px]" src="{{ url }}" alt="{{ alt ?? {trans:site.mainvisual} }}">
+                {{ /main_visual }}
+                <div class="chapeau">{{ chapeau }}</div>
+                <div class="blogContent">
+                    {{ html_content }}
+                    {{ partial src="sets/{type}" }}
+                    {{ /html_content }}
+                </div>
+            </div>
+            <div>
+                <div class="px-6 py-10 border border-gray90 rounded-lg">
+                    <div class="uppercase text-xl condensedMedium">{{ trans:site.share_article }}</div>
+                    <div class="share flex gap-2 align-middle mt-8">
+                        {{ asset url='/assets/share.svg' }}
+                            <img class="max-h-6" src="{{ url }}" alt="{{ alt }}"/>
+                        {{ /asset }}
+                        {{ trans:site.share }}</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{{ /if }}
