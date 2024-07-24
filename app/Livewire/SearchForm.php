@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Jonassiewertsen\LiveSearch\Http\Livewire\Search;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Site;
-use Statamic\Facades\Term;
+use Statamic\Facades\Taxonomy;
 
 class SearchForm extends Search
 {
@@ -13,7 +13,7 @@ class SearchForm extends Search
 
     public $q = '';
 
-    public $categories = [];
+    public $categoryArray = [];
 
     public $chosenCategory = '';
 
@@ -23,23 +23,26 @@ class SearchForm extends Search
 
     public $index;
 
+    public $results = [];
+
     protected $locale = 'default';
 
     public function hydrate()
     {
-        $this->categories = $this->getCategories();
-        $this->dateSpanArray = $this->getDateSpans();
+        $this->categoryArray = $this->getCategoryArray();
+        $this->dateSpanArray = $this->getDateSpanArray();
     }
 
-    protected function getCategories(): array
+    protected function getCategoryArray(): array
     {
-        return Term::query()
-            ->where('categories')
-            ->where('locale', 'default')
-            ->get()->toArray();
+        $tags = Taxonomy::findByHandle('categories');
+        $tags = $tags->queryTerms()->where('locale', $this->locale)->pluck('title')->toArray();
+        array_unshift($tags, __('site.all'));
+
+        return $tags;
     }
 
-    protected function getDateSpans()
+    protected function getDateSpanArray()
     {
         return [
             '0' => __('site.datealltime'),
@@ -55,33 +58,40 @@ class SearchForm extends Search
         // You can pass these as parameters or they can be hardcoded.
         $this->template = $template;
         $this->index = $index;
-        $this->categories = $this->getCategories($cat);
-        $this->dateSpanArray = $this->getDateSpans();
-        $this->getDateSpans();
+        $this->categoryArray = $this->getCategoryArray($cat);
+        $this->dateSpanArray = $this->getDateSpanArray();
+        $this->getDateSpanArray();
         $this->locale = Site::current()->handle();
 
     }
 
     public function render()
     {
-        return view($this->template, [
-            'results' => $this->getSimpleSearch(),
-        ]);
+        $this->results = $this->getSimpleSearch();
+
+        return view($this->template);
     }
 
     protected function getSimpleSearch()
     {
-        // Define cache key
-
-        // Use Laravel Cache::remember function to cache the results
-
-        return Entry::query()
+        $entries = Entry::query()
             ->where('collection', 'entre_les_lignes')
             ->where('locale', $this->locale)
             ->orderBy('date', 'desc')
             ->offset(3)
             ->limit(4)
-            ->get();
+            ->get()
+            ->map(function ($entry) {
+                return [
+                    'id' => $entry->id,
+                    'title' => $entry->title,
+                    'chapeau' => $entry->chapeau,
+                    'date' => $entry->date->format('Y-m-d'),
+                    'url' => $entry->url(),
+                    'image' => $entry->main_visual->toArray(),
+                ];
+            })->toArray();
 
+        return $entries;
     }
 }

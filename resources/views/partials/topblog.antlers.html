@@ -1,0 +1,30 @@
+<div class="grid grid-cols-2 gap-8">
+    <div>
+        {{ collection from="{pagecontent}" limit="1" }}
+        {{ main_visual }}
+            {{ partial:srcset url="{{url}}" dw="654" dh="400" tw="654" th="400" mw="315" mh="260" }}
+        {{ /main_visual }}
+       <div class="mt-6">
+        {{ partial:greenbutton }}{{ trans:site.btl }}{{ /partial:greenbutton }}
+        </div>
+            <h2 class="condensedMedium text-[54px]"><a href="{{ url }}">{{ title }}</a></h2>
+            <div class="roboto-flex-light font-light leading-7 text-lg">{{ chapeau }}</div>
+            <div class="font-light text-sm text-mediumGray mt-3">{{ date | format('Y-m-d') }}</div>
+        {{ /collection }}
+    </div>
+    <div>
+        {{ collection from="{pagecontent}" offset="1" limit="2" }}
+        <div class="grid grid-cols-2 gap-8 mb-8">
+            <div>
+                {{ main_visual }}{{ partial:image_blog url="{{url}}" dw="315" dh="260" }}{{ /main_visual }}
+            </div>
+            <div>
+                {{ partial:greenbutton }}{{ trans:site.btl }}{{ /partial:greenbutton }}
+                <h2 class="condensedSemiMedium text-4xl leading-9"><a href="{{ url }}">{{ title }}</a></h2>
+                <div class="chapeauSidebar">{{ chapeau }}</div>
+                <div class="font-light text-sm text-mediumGray mt-3">{{ date | format('Y-m-d') }}</div>
+            </div>
+        </div>
+        {{ /collection }}
+    </div>
+</div>
