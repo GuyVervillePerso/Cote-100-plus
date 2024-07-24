@@ -1,19 +1,39 @@
 <div>
+    <div class="formElements flex justify-between space-x-4 pt-6 pb-8">
+        {{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
+        <input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search" placeholder="
+        {{ trans:site.keywords }}">
+        {{ /partial:form_element }}
+        {{ partial:form_element arrow="true" id='{{trans:site.period}}' label="{trans:site.period}" }}
+        <select class="formField" name="
+        {{ trans:site.period }}" wire:model.live="chosenDateSpan">
+        {{ dateSpanArray }}
+            <option value="{{ index }}">{{ value }}</option>
+        {{ /dateSpanArray }}
+        </select>
+        {{ /partial:form_element }}
+        {{ partial:form_element arrow="true" id='{{trans:site.subject}}' label="{trans:site.subject}" }}
+        <select class="formField" name="
+        {{ trans:site.subject }}" wire:model.live="chosenCategory">
+        {{ categoryArray }}
+            <option value="{{ index }}">{{ value }}</option>
+        {{ /categoryArray }}
+        </select>
+        {{ /partial:form_element }}
+    </div>
 
-<select wire:model.live="chosenCategory">
-{{ dateSpanArray }}
-    <option value="{{ index }}">{{ value }}</option>
-{{ /dateSpanArray }}
-</select>
-<input wire:model.live="q" type="search">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {{ results }}
-            <div class="grid grid-cols-[150px_1fr] gap-4">
-                <div>{{ main_visual }}
-                    {{ partial:image_blog url="{{url}}" dw="150" dh="150" }}
-                    {{ /main_visual }}</div>
-                {{ title }}</div>
-            {{ /results }}
 
-</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {{ results }}
+        <div class="grid grid-cols-[150px_1fr] gap-4">
+            <div>
+                {{ image }}
+                {{ partial:image_blog url="{{url}}" dw="150" dh="150" }}
+                {{ /image }}</div>
+            <h2 class="condensedMedium"><a href="{{ url }}">{{ title }}</a></h2>
+        </div>
+        {{ /results }}
+
+    </div>
+
 </div>

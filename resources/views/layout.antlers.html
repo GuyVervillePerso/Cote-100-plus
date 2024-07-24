@@ -7,8 +7,7 @@
     <title>{{ title ?? site:name }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link as="font" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
-    {{ vite src="resources/js/site.js|resources/css/site.css" }}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">    {{ vite src="resources/js/site.js|resources/css/site.css" }}
     {{ livewire:styles }}
 </head>
 <body>
@@ -27,7 +26,6 @@
 </footer>
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/ui@3.14.1-beta.0/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 {{ stack:scripts }}
 {{ livewire:scripts }}
 </body>

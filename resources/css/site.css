@@ -22,20 +22,24 @@
 }
 
 p {
-    font-variation-settings: "wdth" 200;
+    font-weight: 200;
+}
+
+.robotoBold {
+    font-weight: 500;
 }
 
 .condensed {
-    font-variation-settings: "wdth" 70;
+    font-variation-settings: "wdth" 75;
 }
 
 .condensedSemiMedium {
-    font-variation-settings: "wdth" 70;
+    font-variation-settings: "wdth" 75;
     font-weight: 400;
 }
 
 .condensedMedium {
-    font-variation-settings: "wdth" 70;
+    font-variation-settings: "wdth" 75;
     font-weight: 500;
 }
 
@@ -55,7 +59,7 @@ h1 {
 }
 
 h1.title {
-    font-variation-settings: "wdth" 70;
+    font-variation-settings: "wdth" 75;
     @apply font-roboto-flex text-[72px] font-medium leading-none mb-7 uppercase
 }
 
@@ -70,6 +74,10 @@ h2 {
 .roboto-supertitle {
     font-variation-settings: "wdth" 70;
     @apply uppercase tracking-wider text-limeGreen font-light text-[36px] mb-3
+}
+
+select, input {
+    @apply w-full
 }
 
 .share {
@@ -168,5 +176,9 @@ header {
 
 .blogContent p {
     @apply mb-3
+}
+
+.formField {
+    @apply appearance-none py-3 px-4 pr-8 rounded-md border border-gray-700 bg-white text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
 }
 
