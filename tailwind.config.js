@@ -22,6 +22,7 @@ export default {
                 mb30: "30px",
             },
             colors: {
+                grayMenu: "#525356",
                 darkGray: "#343537",
                 gray80: "#F0F0F0",
                 gray70: "#EEEEEE",
@@ -41,7 +42,7 @@ export default {
                 robotoLight: [
                     'Roboto Flex", "sans-serif',
                     {
-                        fontVariationSettings: '"wght" 300',
+                        fontVariationSettings: '"wght" 200',
                     },
                 ],
                 robotoRegular: [

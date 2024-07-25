@@ -71,8 +71,7 @@ h2 {
 }
 
 .roboto-supertitle {
-    font-variation-settings: "wdth" 70;
-    @apply uppercase tracking-wider text-limeGreen font-light text-[36px] mb-3
+    @apply font-robotoCondensedMedium uppercase tracking-wider text-limeGreen text-[36px] mb-3
 }
 
 select, input {
@@ -97,7 +96,7 @@ footer {
 }
 
 header {
-    @apply w-full py-3 mb-6 border-b md:border-0 border-gray65 ;
+    @apply w-full pb-3 md:pb-1 mb-6 md:mb-6 border-b md:border-0 border-gray65 ;
 }
 
 #desktopNav a {
@@ -162,7 +161,7 @@ header {
 }
 
 .chapeau p {
-    @apply font-robotoLight text-lg leading-8 mb-3
+    @apply font-robotoLight text-2xl leading-8 mb-3
 }
 
 .chapeauSidebar p {
@@ -170,7 +169,7 @@ header {
 }
 
 .blogContent {
-    @apply font-robotoRegular text-[18px] leading-7
+    @apply font-robotoRegular text-[18px] leading-6
 }
 
 .blogContent p {

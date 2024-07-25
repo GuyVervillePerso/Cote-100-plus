@@ -1,16 +1,16 @@
-<div class="border-t border-b border-gray-300 mt-2 pt-2 maxContainer text-[13px]">
+<div class="border-b border-gray-300 pt-2 maxContainer text-[13px]">
     <nav id="desktopNav">
-        <ul class="flex space-x-8 flex-wrap items-center font-medium text-sm uppercase">
+        <ul class="flex space-x-8 flex-wrap items-center font-robotoMedium text-sm uppercase">
             {{ nav:collection:pages include_home="true" }}
             {{ if children }}
                 {{ partial:menu/lidrop }}
                     {{ slot:title }}{{ title }}{{ /slot:title }}
                     {{ children }}
                         {{ user:in group="clients" }}
-                            <li><a href="{{ url }}">{{ title }}</a></li>
+                            <li><a class="text-grayMenu" href="{{ url }}">{{ title }}</a></li>
                         {{ /user:in }}
                         {{ user:not_in group="clients" }}
-                            <li class="notAllowed cursor-not-allowed"><a href="#">{{ title }}{{partial:menu/lock}}</a></li>
+                            <li class="notAllowed cursor-not-allowed text-grayMenu"><a href="#">{{ title }}{{partial:menu/lock}}</a></li>
                         {{ /user:not_in }}
                     {{ /children }}
                 {{ /partial:menu/lidrop }}
