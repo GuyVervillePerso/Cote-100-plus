@@ -9,15 +9,11 @@ use Statamic\Facades\Taxonomy;
 
 class SearchForm extends Search
 {
-    public $template;
-
-    public $q = '';
+    public $bubble = '';
 
     public $categoryArray = [];
 
     public $chosenCategory = '';
-
-    public $tagCollection = '';
 
     public $chosenDateSpan = '0';
 
@@ -25,9 +21,17 @@ class SearchForm extends Search
 
     public $index;
 
+    public $currentOffset = 3;
+
+    public $preservedQuery;
+
+    public $q = '';
+
     public $results = [];
 
-    public $bubble = '';
+    public $tagCollection = '';
+
+    public $template;
 
     protected $locale = 'default';
 
@@ -68,9 +72,9 @@ class SearchForm extends Search
             '0' => __('site.datealltime'),
             '1' => __('site.datelast3months'),
             '2' => __('site.datelast6months'),
-            '3' => __('site.datelastyear'),
-            '4' => __('site.datelast2years'),
-            '5' => __('site.datelast3years'), ];
+            '3' => __('site.date1yearAgo'),
+            '4' => __('site.date2yearsAgo'),
+            '5' => __('site.date3yearsAgo'), ];
     }
 
     public function mount(string $template, ?string $index = null, string $cat = 'categories', string $collection = 'entre_les_lignes', string $bubble = '')
@@ -100,7 +104,7 @@ class SearchForm extends Search
         $query = Entry::query()
             ->where('collection', $this->collection)
             ->orderBy('date', 'desc')
-            ->offset(3)
+            ->offset($this->currentOffset)
             ->limit(4);
         $query->when(strlen($this->q) > 4, function ($query) {
             $query->where('title', 'like', '%'.$this->q.'%')
@@ -108,8 +112,30 @@ class SearchForm extends Search
                 ->orWhere('html_content', 'like', '%'.$this->q.'%');
         });
 
-        $query->when($this->chosenCategory != '', function ($query) {
+        $query->when($this->chosenCategory != '' && $this->chosenCategory != '0', function ($query) {
             $query->whereTaxonomy($this->tagCollection.'::'.$this->chosenCategory);
+        });
+
+        $query->when($this->chosenDateSpan != '0', function ($query) {
+            switch ($this->chosenDateSpan) {
+                case '1':
+                    $query->whereDate('date', '>=', date('Y-m-d', strtotime('-3 months')));
+                    break;
+                case '2':
+                    $query->whereDate('date', '>=', date('Y-m-d', strtotime('-6 months')));
+                    break;
+                case '3':
+                    $query->whereDate('date', '<', date('Y-m-d', strtotime('-1 year')))
+                        ->whereDate('date', '>=', date('Y-m-d', strtotime('-2 years')));
+                    break;
+                case '4':
+                    $query->whereDate('date', '<', date('Y-m-d', strtotime('-2 years')))
+                        ->whereDate('date', '>=', date('Y-m-d', strtotime('-3 years')));
+                    break;
+                case '5':
+                    $query->whereDate('date', '<', date('Y-m-d', strtotime('-3 years')));
+                    break;
+            }
         });
         $entries = $query->where('locale', $this->locale)->get()
             ->map(function ($entry) {
@@ -124,6 +150,18 @@ class SearchForm extends Search
             })->toArray();
 
         return $entries;
+    }
+
+    public function loadMore()
+    {
+        $this->currentOffset += 4;
+        $this->results = $this->getSimpleSearch();
+    }
+
+    public function loadLess()
+    {
+        $this->currentOffset -= 4;
+        $this->results = $this->getSimpleSearch();
     }
 
     protected function getWordSearch()

@@ -80,6 +80,12 @@ export default {
                         fontVariationSettings: '"wght" 500, "wdth" 75',
                     },
                 ],
+                robotoCondensedBold: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 700, "wdth" 75',
+                    },
+                ],
             },
         },
     },
