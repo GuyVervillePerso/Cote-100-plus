@@ -1,0 +1,41 @@
+{{ if currentOffset == 3 }}
+	<div wire:click="loadMore"
+		 class="relative text-center text-limeGreen font-robotoCondensedBold text-base pb-10 cursor-pointer">
+		<div>
+			{{ trans:site.seemore }}
+			{{ asset url='/assets/downarrowcircle.svg' }}
+				<img class="mt-1 mx-auto" src="{{ url }}" alt="{{ alt }}"/>
+			{{ /asset }}
+		</div>
+		<div wire:loading
+			 class="absolute text-limeGreen bottom-4 right-4">
+			{{trans:site.loading}}
+		</div>
+	</div>
+{{ else }}
+	<div relative class="flex justify-center space-x-8 w-full">
+		<div wire:click="loadLess"
+			 class="relative text-center text-limeGreen font-robotoCondensedBold text-base pb-10 cursor-pointer">
+			<div>
+				{{ trans:site.previous }}
+				{{ asset url='/assets/downarrowcircle.svg' }}
+					<img class="mt-1 mx-auto rotate-90" src="{{ url }}" alt="{{ alt }}"/>
+				{{ /asset }}
+			</div>
+		</div>
+		<div wire:click="loadMore"
+			 class="relative text-center text-limeGreen font-robotoCondensedBold text-base pb-10 cursor-pointer">
+			<div>
+				{{ trans:site.next }}
+				{{ asset url='/assets/downarrowcircle.svg' }}
+					<img class="mt-1 mx-auto -rotate-90" src="{{ url }}" alt="{{ alt }}"/>
+				{{ /asset }}
+			</div>
+
+		</div>
+		<div wire:loading
+			 class="absolute text-limeGreen font-robotoCondensedBold text-base right-8">
+			{{trans:site.loading}}
+		</div>
+	</div>
+{{ /if }}

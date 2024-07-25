@@ -1,79 +1,11 @@
 <div>
-	<div class="formElements flex justify-between space-x-6 pt-8 pb-12">
+	<div class="md:flex md:justify-between md:space-x-6 pt-8 pb-12">
 		{{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
 		<input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search"
 		placeholder="
-  
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
 		{{ trans:site.keywords }}">
 		{{ /partial:form_element }}
 		{{ partial:form_element arrow="true" id='{{trans:site.period}}' label="{trans:site.period}" }}
@@ -85,71 +17,10 @@
 		{{ /partial:form_element }}
 		{{ partial:form_element arrow="true" id='{{trans:site.subject}}' label="{trans:site.subject}" }}
 		<select class="formField" name="
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
 		{{ trans:site.subject }}"
 				wire:model.live="chosenCategory">
 		{{ categoryArray }}
@@ -158,13 +29,14 @@
 		</select>
 		{{ /partial:form_element }}
 	</div>
-	
+
 	{{ if results }}
+		<div class="md:hidden">{{ partial:contentnavigator }}</div>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
 			{{ results }}
 			<a href="{{ url }}">
-				<div class="bg-white rounded-2xl p-6 grid grid-cols-[150px_1fr] gap-4 shadow-xl">
-					<div>
+				<div class="bg-white rounded-2xl p-6 grid grid-cols-1 md:grid-cols-[150px_1fr] gap-4 shadow-xl">
+					<div class="hidden md:block">
 						{{ image }}
 						{{ partial:image_blog url="{{url}}" dw="150" dh="150" }}
 						{{ /image }}
@@ -181,47 +53,7 @@
 			</a>
 			{{ /results }}
 		</div>
-		{{ if currentOffset == 3 }}
-			<div wire:click="loadMore"
-				 class="relative text-center text-limeGreen font-robotoCondensedBold text-base pb-10 cursor-pointer">
-				<div>
-					{{ trans:site.seemore }}
-					{{ asset url='/assets/downarrowcircle.svg' }}
-						<img class="mt-1 mx-auto" src="{{ url }}" alt="{{ alt }}"/>
-					{{ /asset }}
-				</div>
-				<div wire:loading
-					 class="absolute text-limeGreen bottom-4 right-4">
-					{{trans:site.loading}}
-				</div>
-			</div>
-		{{ else }}
-			<div relative class="flex justify-center space-x-8 w-full">
-				<div wire:click="loadLess"
-					 class="relative text-center text-limeGreen font-robotoCondensedBold text-base pb-10 cursor-pointer">
-					<div>
-						{{ trans:site.previous }}
-						{{ asset url='/assets/downarrowcircle.svg' }}
-							<img class="mt-1 mx-auto rotate-90" src="{{ url }}" alt="{{ alt }}"/>
-						{{ /asset }}
-					</div>
-				</div>
-				<div wire:click="loadMore"
-					 class="relative text-center text-limeGreen font-robotoCondensedBold text-base pb-10 cursor-pointer">
-					<div>
-						{{ trans:site.next }}
-						{{ asset url='/assets/downarrowcircle.svg' }}
-							<img class="mt-1 mx-auto -rotate-90" src="{{ url }}" alt="{{ alt }}"/>
-						{{ /asset }}
-					</div>
-				
-				</div>
-				<div wire:loading
-					 class="absolute text-limeGreen font-robotoCondensedBold text-base right-8">
-					{{trans:site.loading}}
-				</div>
-			</div>
-		{{ /if }}
+		{{ partial:contentnavigator }}
 	{{ else }}
 		<div class="text-gray-900 text-center pt-6 pb-10 text-2xl w-full">
 			{{ trans:site.noresult }}

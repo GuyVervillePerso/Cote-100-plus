@@ -59,7 +59,7 @@ h1 {
 }
 
 h1.title {
-    @apply font-robotoCondensedMedium text-[72px] font-medium leading-none mb-7 uppercase
+    @apply font-robotoCondensedMedium text-5xl md:text-[72px] font-medium leading-none mb-7 uppercase
 }
 
 h2 {
@@ -85,7 +85,7 @@ select, input {
 
 
 section, footer, .maxContainer {
-    @apply w-full px-[15px] md:px-[30px] lg:px-[50px] lg:max-w-maxSite mx-auto
+    @apply w-full px-[15px] md:px-[30px] lg:px-[50px] md:max-w-maxSite md:mx-auto
 }
 
 .fondPerdu {
@@ -97,7 +97,7 @@ footer {
 }
 
 header {
-    @apply py-3 mb-6 border-b md:border-0 border-gray65 ;
+    @apply w-full py-3 mb-6 border-b md:border-0 border-gray65 ;
 }
 
 #desktopNav a {
@@ -181,3 +181,6 @@ header {
     @apply appearance-none py-3 px-4 pr-8 rounded-md border border-gray-700 bg-white text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
 }
 
+#topBlog {
+    @apply mt-20 md:mt-0
+}
