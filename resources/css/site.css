@@ -92,7 +92,7 @@ section, footer, .maxContainer {
 }
 
 footer {
-    @apply bg-darkGray text-white py-8
+    @apply bg-darkGray text-white py-8 relative
 }
 
 header {

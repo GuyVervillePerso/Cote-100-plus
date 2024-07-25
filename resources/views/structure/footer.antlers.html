@@ -13,3 +13,6 @@
 <div class="text-sm mt-8 text-gray65">
     ©2024 Cote 100. {{ trans:site.rights }}
 </div>
+{{ user:is role="redaction" }}
+	<div class="absolute bottom-4 right-4 text-black bg-amber-300 rounded px-4"><a href="{{ edit_url }}">Éditer</a></div>
+{{ /user:is }}
