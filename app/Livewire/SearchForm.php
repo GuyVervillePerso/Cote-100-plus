@@ -44,11 +44,22 @@ class SearchForm extends Search
 
     protected function getCategoryArray(): array
     {
+        $tagArray = [];
+        $tagArray[] = ['slug' => '0', 'title' => __('site.all')];
         $tags = Taxonomy::findByHandle($this->tagCollection);
-        $tags = $tags->queryTerms()->where('locale', $this->locale)->pluck('title')->toArray();
-        array_unshift($tags, __('site.all'));
 
-        return $tags;
+        $tags = $tags->queryTerms()
+            ->where('locale', $this->locale)
+            ->get()
+            ->toArray();
+        foreach ($tags as $tag) {
+            $tagArray[] = [
+                'slug' => $tag['slug'],
+                'title' => $tag['title'],
+            ];
+        }
+
+        return $tagArray;
     }
 
     protected function getDateSpanArray()
@@ -98,8 +109,7 @@ class SearchForm extends Search
         });
 
         $query->when($this->chosenCategory != '', function ($query) {
-            $category = $this->categoryArray[$this->chosenCategory];
-            $query->whereTaxonomy($this->tagCollection.'::'.$category);
+            $query->whereTaxonomy($this->tagCollection.'::'.$this->chosenCategory);
         });
         $entries = $query->where('locale', $this->locale)->get()
             ->map(function ($entry) {
@@ -115,13 +125,6 @@ class SearchForm extends Search
 
         return $entries;
     }
-
-    /*  public function updated()
-      {
-          if (strlen($this->q) > 4 || $this->chosenCategory != '' || $this->chosenDateSpan != '0') {
-              $this->results = $this->getSimpleSearch();
-          }
-      }*/
 
     protected function getWordSearch()
     {
