@@ -59,11 +59,11 @@ h1 {
 }
 
 h1.title {
-    @apply font-robotoCondensedMedium text-5xl md:text-[72px] font-medium leading-none mb-7 uppercase
+    @apply font-robotoCondensedMedium text-5xl md:text-[72px] font-medium leading-none mb-5 uppercase
 }
 
 h2 {
-    @apply text-[24px] font-medium leading-none mt-6 mb-4 uppercase
+    @apply text-[24px] font-medium mt-6 mb-4 uppercase
 }
 
 .montserrat-title {
@@ -174,7 +174,7 @@ header {
 }
 
 .blogContent p {
-    @apply mb-3
+    @apply font-robotoLight tracking-wide mb-3
 }
 
 .formField {

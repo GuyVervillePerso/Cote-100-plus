@@ -2,6 +2,7 @@
 id: c8017a8c-e4f1-4d56-873f-2364099e9a6b
 origin: 8a02d43c-d96d-4063-bec3-3ad0934866b1
 title: 'The Magic of Compound Interest'
+chapeau: 'For several years, I have been regularly listening to podcasts and audiobooks while driving or working on my house. The number of available podcasts keeps increasing, offering a plethora of options when it comes time to choose.'
 html_content:
   -
     type: paragraph
@@ -11,19 +12,19 @@ html_content:
         text: "One podcast I enjoy is called\_"
       -
         type: text
-        text: Acquired
         marks:
           -
             type: italic
+        text: Acquired
       -
         type: text
         text: ", hosted by Ben Gilbert and David Rosenthal. The goal of the podcast is to explore the genesis and evolution of a well-known company. For example, the most recent episode focused on Starbucks and its founder, Howard Schultz. I greatly appreciate\_"
       -
         type: text
-        text: Acquired
         marks:
           -
             type: italic
+        text: Acquired
       -
         type: text
         text: '’s podcasts because they allow me to understand the challenges companies face as they grow. I also learn more about their leaders and their good and bad decisions. I then try to draw parallels with other publicly traded companies.'
@@ -40,11 +41,15 @@ html_content:
         type: image
         attrs:
           src: 'asset::assets::blog/acquired.900x0-is.jpg'
+          alt: null
         marks:
           -
             type: link
             attrs:
               href: /site/assets/files/2326/acquired.jpg
+              rel: null
+              target: null
+              title: null
   -
     type: paragraph
     content:
@@ -52,7 +57,9 @@ html_content:
         type: text
         text: 'Upon seeing this graph, I immediately saw parallels with the world of investing.'
   -
-    type: paragraph
+    type: heading
+    attrs:
+      level: 2
     content:
       -
         type: text
@@ -77,15 +84,17 @@ html_content:
         text: "In the case of\_"
       -
         type: text
-        text: Acquired
         marks:
           -
             type: italic
+        text: Acquired
       -
         type: text
         text: ', the overall quality of the product has certainly contributed to its success.'
   -
-    type: paragraph
+    type: heading
+    attrs:
+      level: 2
     content:
       -
         type: text
@@ -103,7 +112,9 @@ html_content:
         type: text
         text: 'Whether in business or on the stock market, one generally must be patient before achieving success. Instant successes exist, but they are not the norm. As an investor, you need to give leaders time to execute their strategy and grow their business.'
   -
-    type: paragraph
+    type: heading
+    attrs:
+      level: 2
     content:
       -
         type: text
@@ -116,10 +127,10 @@ html_content:
         text: "In my opinion, the most important concept an investor should master is compound interest. Its beauty lies in the fact that growth is\_"
       -
         type: text
-        text: cumulative
         marks:
           -
             type: italic
+        text: cumulative
       -
         type: text
         text: .
@@ -147,33 +158,6 @@ html_content:
       -
         type: text
         text: 'Although it sounds simple, it’s not always easy to achieve. If it were, all podcasts would have hundreds of thousands of listeners and all investors would be millionaires.'
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: _______
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: 'Jean-Philippe Legault’s Blog is published in'
-      -
-        type: hardBreak
-      -
-        type: image
-        attrs:
-          src: 'https://plus.cote100.com/wp-content/uploads/2018/03/logo-les-affaires.png'
-          alt: logo-les-affaires.png
-        marks:
-          -
-            type: link
-            attrs:
-              href: 'https://www.lesaffaires.com/opinions-et-analyses/entre-les-lignes-2/'
-chapeau: |-
-  BY JEAN-PHILIPPE LEGAULT, GUEST CONTRIBUTOR
-
-  For several years, I have been regularly listening to podcasts and audiobooks while driving or working on my house. The number of available podcasts keeps increasing, offering a plethora of options when it comes time to choose.
-slug: the-magic-of-compound-interest
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1721930138
 ---

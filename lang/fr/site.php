@@ -1,7 +1,10 @@
 <?php
 
 return [
+    'affairesTextOne' => 'Le blogue de',
+    'affairesTextTwo' => 'est publié sur',
     'all' => 'Tout',
+    'blogger' => 'blogueur invité',
     'btl' => 'Entre les lignes',
     'cancel' => 'Annuler',
     'close' => 'Fermer',

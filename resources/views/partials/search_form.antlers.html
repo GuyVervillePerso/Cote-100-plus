@@ -2,11 +2,7 @@
 	<div class="md:flex md:justify-between md:space-x-6 pt-8 pb-12">
 		{{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
 		<input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search"
-		placeholder="
-
-
-
-		{{ trans:site.keywords }}">
+		placeholder="{{ trans:site.keywords }}">
 		{{ /partial:form_element }}
 		{{ partial:form_element arrow="true" id='{{trans:site.period}}' label="{trans:site.period}" }}
 			<select class="formField" name="{ trans:site.period }}" wire:model.live="chosenDateSpan">
@@ -16,12 +12,7 @@
 			</select>
 		{{ /partial:form_element }}
 		{{ partial:form_element arrow="true" id='{{trans:site.subject}}' label="{trans:site.subject}" }}
-		<select class="formField" name="
-
-
-
-
-		{{ trans:site.subject }}"
+		<select class="formField" name="{{ trans:site.subject }}"
 				wire:model.live="chosenCategory">
 		{{ categoryArray }}
 			<option value="{{ slug }}">{{ title }}</option>
@@ -43,7 +34,7 @@
 					</div>
 					<div>
 						{{ partial:greenbutton }}{{ bubble }}{{ /partial:greenbutton }}
-						<h2 class="font-robotoCondensedSemiMedium mt-2">
+						<h2 class="font-robotoCondensedSemiMedium my-2 ">
 							{{ title }}
 						</h2>
 						{{ chapeau | safe_truncate(200, '…') }}

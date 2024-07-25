@@ -2,6 +2,7 @@
 id: b99ce3cb-5f19-4838-9a32-372fca9c3be2
 origin: 01697028-0f7a-42fb-adc9-62ab3c170630
 title: 'The Stock Market Versus Facebook'
+chapeau: 'After several years of proud service, I finally parted with my 2007 Honda Civic. Given the poor condition of my car, I decided to list it at a relatively low price without much research on Facebook’s Marketplace platform.'
 html_content:
   -
     type: paragraph
@@ -93,33 +94,6 @@ html_content:
       -
         type: text
         text: 'The important point to remember is that you must ensure you get a sufficient margin of safety when buying a stock. This way, you significantly reduce the risk of an investment. Did the young man who bought my car need to know its precise value? I don’t think so. Thanks to a good margin of safety and a well-defined circle of competence, this buyer managed to make a few hundred dollars off my back. Well done, Julien!'
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: _______
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: 'Jean-Philippe Legault’s Blog is published in'
-      -
-        type: hardBreak
-      -
-        type: image
-        attrs:
-          src: 'https://plus.cote100.com/wp-content/uploads/2018/03/logo-les-affaires.png'
-          alt: logo-les-affaires.png
-        marks:
-          -
-            type: link
-            attrs:
-              href: 'https://www.lesaffaires.com/opinions/en-bourse-comme-sur-facebook/'
-chapeau: |-
-  BY JEAN-PHILIPPE LEGAULT, GUEST CONTRIBUTOR
-
-  After several years of proud service, I finally parted with my 2007 Honda Civic. Given the poor condition of my car, I decided to list it at a relatively low price without much research on Facebook’s Marketplace platform.
-slug: the-stock-market-versus-facebook
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1721930658
 ---

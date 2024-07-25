@@ -1,7 +1,10 @@
 <?php
 
 return [
+    'affairesTextOne' => '',
+    'affairesTextTwo' => '’s Blog is published in',
     'all' => 'All',
+    'blogger' => 'Guest Blogger',
     'btl' => 'Between The Lines',
     'cancel' => 'Cancel',
     'close' => 'Close',

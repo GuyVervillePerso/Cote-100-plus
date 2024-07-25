@@ -2,10 +2,7 @@
 id: 59690aa5-77ca-413c-a8a3-36e6b549234f
 origin: a497a4b0-0c52-4054-bd4d-63f28abd85ab
 title: 'Just Blame it on the Rain'
-chapeau: |-
-  BY JEAN-PHILIPPE LEGAULT, GUEST CONTRIBUTOR
-
-  Executives of publicly traded companies are accustomed to holding a conference call for analysts and investors after the release of their quarterly financial results. During these calls, they present their company’s results and compare performance to the same period of the previous year.
+chapeau: 'Executives of publicly traded companies are accustomed to holding a conference call for analysts and investors after the release of their quarterly financial results. During these calls, they present their company’s results and compare performance to the same period of the previous year.'
 html_content:
   -
     type: paragraph
@@ -93,33 +90,6 @@ html_content:
       -
         type: text
         text: 'In sports, the excuses of a losing team are rarely well-received. The same culture should be adopted in the corporate world.'
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: _______
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: 'Jean-Philippe Legault’s Blog is published in'
-      -
-        type: hardBreak
-      -
-        type: image
-        attrs:
-          src: 'asset::assets::blog/logo-les-affaires.png'
-          alt: logo-les-affaires.png
-        marks:
-          -
-            type: link
-            attrs:
-              href: 'https://www.lesaffaires.com/opinions-et-analyses/entre-les-lignes-2/'
-              rel: null
-              target: null
-              title: null
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1721745941
+updated_at: 1721927080
 ---

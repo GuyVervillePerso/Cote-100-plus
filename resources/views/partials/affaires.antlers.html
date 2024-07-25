@@ -1,0 +1,12 @@
+<div class="border-t border-limeGreen py-2 flex space-x-4 align-middle">
+	{{ if auteur_invite }}
+		<p class="text-md p-0">{{ {trans:site.affairesTextOne} | trim }} {{ author }}{{ name }}{{ /author }} {{ trans:site.affairesTextTwo }}</p>
+		<div>
+			<a href="{{ lien_les_affaires }}" target="_blank">
+				{{ asset url='/assets/lesaffaires.webp' }}
+					<img class="mt-1 h-[25px]" src="{{ url }}" alt="{{ alt }}"/>
+				{{ /asset }}
+			</a>
+		</div>
+	{{ /if }}
+</div>

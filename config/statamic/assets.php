@@ -102,7 +102,7 @@ return [
             'top' => ['w' => 1024, 'h' => 427, 'fit' => 'crop'],
             'desktop_blog' => ['w' => 654, 'h' => 400, 'fit' => 'crop'], // 'fit' => 'max
             'tablet_blog' => ['w' => 654, 'h' => 400, 'fit' => 'crop'],
-            'mobile_blog' => ['w' => 315, 'h' => 260, 'fit' => 'crop'],
+            'mobile_blog' => ['w' => 315, 'h' => 315, 'fit' => 'crop'],
         ],
 
         /*

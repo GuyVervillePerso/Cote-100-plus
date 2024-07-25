@@ -76,6 +76,14 @@ tabs:
                             mode: grid
                             restrict: true
           -
+            handle: lien_les_affaires
+            field:
+              type: link
+              display: 'Lien Les Affaires'
+              instructions: "Indiquez l'URL vers le journal Les Affaires"
+              localizable: false
+              instructions_position: below
+          -
             handle: main_visual
             field:
               container: assets
@@ -124,3 +132,9 @@ tabs:
               default: current
               localizable: true
               max_items: 1
+          -
+            handle: auteur_invite
+            field:
+              type: toggle
+              display: 'Auteur invité'
+              localizable: false
