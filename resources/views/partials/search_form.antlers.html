@@ -15,9 +15,9 @@
         {{ partial:form_element arrow="true" id='{{trans:site.subject}}' label="{trans:site.subject}" }}
         <select class="formField" name="
         {{ trans:site.subject }}" wire:model.live="chosenCategory">
-        {{ categoryArray }}
-            <option value="{{ index }}">{{ value }}</option>
-        {{ /categoryArray }}
+    {{ categoryArray }}
+        <option value="{{ slug }}">{{ title }}</option>
+    {{ /categoryArray }}
         </select>
         {{ /partial:form_element }}
     </div>
