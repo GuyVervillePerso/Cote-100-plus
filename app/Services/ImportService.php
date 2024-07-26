@@ -66,7 +66,6 @@ class ImportService
             $titleEn = $record['title_en'];
             $contentFr = $this->reformatImageContent($this->createEntry($record['content_fr']));
             $contentEn = $this->reformatImageContent($this->createEntry($record['content_en']));
-
             $dataFr = [
                 'title' => $titleFr,
                 'html_content' => $contentFr,

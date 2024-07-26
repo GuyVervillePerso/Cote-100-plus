@@ -1,0 +1,7 @@
+<section id="topBlog">
+	<h1 class="title text-limeGreen uppercase">{{ trans:site.monthlycommentaries }}</h1>
+	{{ partial:topblog pagecontent='billets_mensuels' bubble='{ trans:site.monthlycommentaries }' }}
+</section>
+<section class="bottomSection bg-gray70">
+	{{ livewire:search-form template='partials.search_form' index='blog' categories='categories' collection='billets_mensuels' bubble='{trans:site.monthlycommentaries}'}}
+</section>
