@@ -3,20 +3,24 @@ tabs:
   main:
     display: Principal
     sections:
-      - fields:
-          - handle: title
+      -
+        fields:
+          -
+            handle: title
             field:
               type: text
               required: true
               localizable: true
               validate:
                 - required
-          - handle: chapeau
+          -
+            handle: chapeau
             field:
               type: markdown
               display: Chapeau
               localizable: true
-          - handle: html_content
+          -
+            handle: html_content
             field:
               reading_time: true
               word_count: true
@@ -50,7 +54,8 @@ tabs:
                     table_set:
                       display: Tableau
                       fields:
-                        - handle: table_set
+                        -
+                          handle: table_set
                           field:
                             type: table_on_steroids
                             display: Tableau
@@ -58,7 +63,8 @@ tabs:
                     image:
                       display: Image
                       fields:
-                        - handle: image_inline
+                        -
+                          handle: image_inline
                           field:
                             container: assets
                             type: assets
@@ -69,7 +75,14 @@ tabs:
                             min_files: 1
                             mode: grid
                             restrict: true
-          - handle: main_visual
+          -
+            handle: lien_les_affaires
+            field:
+              type: link
+              display: 'Lien Les Affaires'
+              localizable: false
+          -
+            handle: main_visual
             field:
               container: assets
               type: assets
@@ -83,13 +96,16 @@ tabs:
   sidebar:
     display: Sidebar
     sections:
-      - fields:
-          - handle: slug
+      -
+        fields:
+          -
+            handle: slug
             field:
               type: slug
               localizable: true
               validate: 'max:200'
-          - handle: date
+          -
+            handle: date
             field:
               type: date
               required: true
@@ -97,7 +113,8 @@ tabs:
               localizable: false
               validate:
                 - required
-          - handle: categories
+          -
+            handle: categories
             field:
               type: terms
               taxonomies:
@@ -105,10 +122,17 @@ tabs:
               display: Catégories
               mode: select
               localizable: false
-          - handle: author
+          -
+            handle: author
             field:
               type: users
               display: Author
               default: current
-              localizable: true
+              localizable: false
               max_items: 1
+          -
+            handle: auteur_invite
+            field:
+              type: radio
+              display: 'Auteur invité'
+              localizable: false

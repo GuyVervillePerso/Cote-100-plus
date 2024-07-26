@@ -2,12 +2,16 @@ title: 'Billets mensuels'
 sites:
   - default
   - anglais
-propagate: true
+propagate: false
 template: billets_mensuels/show
 layout: layout
 mount: 9523823f-d45f-484a-9cfe-d30090cefd95
+taxonomies:
+  - categories
 revisions: false
-route: '{parent_uri}/{slug}'
+route:
+  default: '{parent_uri}/commentaires/billets-mensuels/{slug}'
+  anglais: '{parent_uri}/commentaries/monthly-blogs/{slug}'
 date: true
 sort_dir: desc
 date_behavior:

@@ -130,7 +130,7 @@ tabs:
               type: users
               display: Author
               default: current
-              localizable: true
+              localizable: false
               max_items: 1
           -
             handle: auteur_invite

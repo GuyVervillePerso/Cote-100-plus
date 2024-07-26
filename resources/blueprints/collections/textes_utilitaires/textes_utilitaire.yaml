@@ -1,0 +1,46 @@
+title: 'Textes utilitaire'
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              width: 75
+              localizable: true
+              validate:
+                - required
+          -
+            handle: handle
+            field:
+              type: text
+              display: Marqueur
+              localizable: false
+              width: 25
+          -
+            handle: content
+            field:
+              type: markdown
+              display: Content
+              localizable: true
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
