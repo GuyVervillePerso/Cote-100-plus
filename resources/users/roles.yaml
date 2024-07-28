@@ -63,3 +63,6 @@ redaction:
       tools: '@hide'
       settings: '@hide'
       users: '@hide'
+    locale: fr
+    start_page: collections
+    favorites: {  }
