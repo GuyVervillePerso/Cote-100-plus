@@ -1,0 +1,247 @@
+title: Portfolio
+tabs:
+  main:
+    display: Principal
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: true
+              validate:
+                - required
+          -
+            handle: courte_description
+            field:
+              type: markdown
+              display: 'Courte description'
+              localizable: true
+              width: 66
+          -
+            handle: devise_evaluation
+            field:
+              options:
+                ca: '$ CA'
+                us: '$ US'
+                nd: N.D.
+              type: radio
+              display: 'Devise de l’évaluation'
+              localizable: false
+              width: 33
+          -
+            handle: scenario_achat
+            field:
+              type: markdown
+              display: "Scénario d'achat initial"
+              localizable: true
+              width: 66
+          -
+            handle: cote_100
+            field:
+              type: integer
+              display: 'Cote 100'
+              localizable: false
+              width: 33
+          -
+            handle: date_de_recommandation
+            field:
+              format: Y-m
+              type: date
+              display: 'Date de recommandation'
+              localizable: false
+              width: 33
+          -
+            handle: opinion
+            field:
+              options:
+                conserver: Conserver
+                oublier: Oublier
+                retirer: Retirer
+              type: select
+              display: Opinion
+              localizable: false
+              width: 33
+          -
+            handle: nombre_actions
+            field:
+              type: integer
+              display: 'Nombre d’actions'
+              localizable: false
+              width: 33
+          -
+            handle: cout_moyen_par_action
+            field:
+              type: float
+              display: 'Coût moyen par action'
+              localizable: false
+              width: 33
+          -
+            handle: cout_total
+            field:
+              type: integer
+              display: 'Coût total'
+              localizable: false
+              width: 33
+          -
+            handle: cours_actuel
+            field:
+              type: float
+              display: 'Cours actuel'
+              localizable: false
+              width: 33
+          -
+            handle: valeur_au_marche
+            field:
+              type: float
+              display: 'Valeur au marché'
+              localizable: false
+              width: 33
+          -
+            handle: variation_annee_en_cours
+            field:
+              type: integer
+              display: 'Variation année en cours'
+              localizable: false
+              width: 33
+          -
+            handle: pourcentage_portefeuille
+            field:
+              type: integer
+              display: 'Pourcentage portefeuille'
+              localizable: false
+              width: 33
+          -
+            handle: site_web
+            field:
+              type: link
+              display: 'Site web'
+              localizable: false
+          -
+            handle: president
+            field:
+              type: text
+              display: Président(e)
+              localizable: false
+          -
+            handle: adresse
+            field:
+              type: text
+              display: Adresse
+              localizable: false
+          -
+            handle: trimestre_en_bref
+            field:
+              type: replicator
+              display: 'Trimestre en bref'
+              localizable: true
+              sets:
+                nouveau_groupe_densembles:
+                  display: "Nouveau groupe d'ensembles"
+                  sets:
+                    quaterly_comment:
+                      display: 'Quaterly comment'
+                      fields:
+                        -
+                          handle: icon
+                          field:
+                            type: icon
+                            display: Icône
+                            localizable: false
+                            width: 25
+                            directory: public/assets/icons
+                        -
+                          handle: comment
+                          field:
+                            type: text
+                            display: Commentaire
+                            localizable: true
+                            width: 75
+          -
+            handle: analyse
+            field:
+              buttons:
+                - h2
+                - h3
+                - h4
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+                - horizontalrule
+              smart_typography: true
+              reading_time: true
+              word_count: true
+              remove_empty_nodes: true
+              container: assets
+              type: bard
+              display: Analyse
+              localizable: true
+              sets:
+                nouveau_groupe_densembles:
+                  display: "Nouveau groupe d'ensembles"
+                  sets:
+                    tables:
+                      display: Tableaux
+                      icon: layout-table-column-insert
+                      fields:
+                        -
+                          handle: tableau_a_importer
+                          field:
+                            type: table_on_steroids
+                            display: 'Tableau à importer'
+                            localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: logo
+            field:
+              max_files: 1
+              min_files: 1
+              container: assets
+              folder: logos
+              restrict: true
+              type: assets
+              display: Logo
+              localizable: false
+              mode: grid
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: type_de_titre
+            field:
+              options:
+                canadien: Canadien
+                americain: Américain
+                general: Général
+              type: radio
+              display: 'Type de titre'
+              localizable: false
+          -
+            handle: symbole_en_bourse
+            field:
+              type: text
+              display: 'Symbole en bourse'
+              localizable: false
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              localizable: true
+              max_items: 1

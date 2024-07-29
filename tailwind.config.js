@@ -30,6 +30,7 @@ export default {
                 gray65: "#BDBEC1",
                 mediumGray: "#888888",
                 limeGreen: "#67B044",
+                ratingGreen: "#01944A",
             },
             fontSize: {
                 sm: ["14px", "20px"],
@@ -67,6 +68,12 @@ export default {
                     'Roboto Flex", "sans-serif',
                     {
                         fontVariationSettings: '"wght" 200, "wdth" 70',
+                    },
+                ],
+                robotoCondensed: [
+                    'Roboto Flex", "sans-serif',
+                    {
+                        fontVariationSettings: '"wght" 300, "wdth" 70',
                     },
                 ],
                 robotoCondensedMedium: [
