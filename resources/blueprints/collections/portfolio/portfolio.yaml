@@ -19,7 +19,6 @@ tabs:
               type: markdown
               display: 'Courte description'
               localizable: true
-              width: 66
           -
             handle: devise_evaluation
             field:
@@ -31,13 +30,6 @@ tabs:
               display: 'Devise de l’évaluation'
               localizable: false
               width: 33
-          -
-            handle: scenario_achat
-            field:
-              type: markdown
-              display: "Scénario d'achat initial"
-              localizable: true
-              width: 66
           -
             handle: cote_100
             field:
@@ -100,6 +92,13 @@ tabs:
               localizable: false
               width: 33
           -
+            handle: scenario_achat
+            field:
+              type: markdown
+              display: "Scénario d'achat initial"
+              localizable: true
+              width: 66
+          -
             handle: variation_annee_en_cours
             field:
               type: integer
@@ -107,30 +106,36 @@ tabs:
               localizable: false
               width: 33
           -
-            handle: pourcentage_portefeuille
+            handle: pourcentage_dans_portefeuille
             field:
-              type: integer
-              display: 'Pourcentage portefeuille'
+              type: replicator
+              display: 'Pourcentage dans portefeuille'
               localizable: false
-              width: 33
-          -
-            handle: site_web
-            field:
-              type: link
-              display: 'Site web'
-              localizable: false
-          -
-            handle: president
-            field:
-              type: text
-              display: Président(e)
-              localizable: false
-          -
-            handle: adresse
-            field:
-              type: text
-              display: Adresse
-              localizable: false
+              sets:
+                nouveau_groupe_densembles:
+                  display: "Nouveau groupe d'ensembles"
+                  sets:
+                    appartenances:
+                      display: 'Appartenances aux portefeuille'
+                      fields:
+                        -
+                          handle: appartenance_portefeuille
+                          field:
+                            mode: select
+                            taxonomies:
+                              - variantes_portefeuille
+                            type: terms
+                            display: 'Appartenance portefeuille'
+                            localizable: false
+                            width: 75
+                            max_items: 1
+                        -
+                          handle: pourcentage_valeur
+                          field:
+                            type: float
+                            display: 'Pourcentage valeur'
+                            localizable: false
+                            width: 25
           -
             handle: trimestre_en_bref
             field:
@@ -141,8 +146,8 @@ tabs:
                 nouveau_groupe_densembles:
                   display: "Nouveau groupe d'ensembles"
                   sets:
-                    quaterly_comment:
-                      display: 'Quaterly comment'
+                    en-bref:
+                      display: 'En bref'
                       fields:
                         -
                           handle: icon
@@ -198,6 +203,24 @@ tabs:
                             type: table_on_steroids
                             display: 'Tableau à importer'
                             localizable: false
+          -
+            handle: president
+            field:
+              type: text
+              display: Président(e)
+              localizable: false
+          -
+            handle: adresse
+            field:
+              type: text
+              display: Adresse
+              localizable: false
+          -
+            handle: site_web
+            field:
+              type: link
+              display: 'Site web'
+              localizable: false
   sidebar:
     display: Sidebar
     sections:
@@ -245,3 +268,12 @@ tabs:
               default: current
               localizable: true
               max_items: 1
+          -
+            handle: variantes_portefeuille
+            field:
+              type: terms
+              taxonomies:
+                - variantes_portefeuille
+              display: 'Variantes de portefeuille'
+              mode: select
+              localizable: false

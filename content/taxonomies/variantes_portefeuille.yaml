@@ -1,0 +1,11 @@
+title: 'Variantes de portefeuille'
+preview_targets:
+  -
+    label: Term
+    url: '{permalink}'
+    refresh: true
+template: default
+layout: layout
+sites:
+  - default
+  - anglais

@@ -9,7 +9,8 @@ opinion: conserver
 type_de_titre: americain
 symbole_en_bourse: 'NYSE:ACN'
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1722278486
+updated_at: 1722282020
 courte_description: "Offre des services de consultation et d'impartition"
 author: 9c55616c-7340-47e9-bc83-f0bc3da40785
+devise_evaluation: us
 ---

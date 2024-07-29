@@ -6,6 +6,8 @@ propagate: true
 template: portfolio/show
 layout: layout
 mount: 6d420a2b-f094-42ec-b7fa-1af5800210b8
+taxonomies:
+  - variantes_portefeuille
 revisions: false
 route:
   default: 'portefeuille/{slug}'
