@@ -9,7 +9,7 @@ opinion: conserver
 type_de_titre: americain
 symbole_en_bourse: 'NYSE:ACN'
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1722350655
+updated_at: 1722363593
 courte_description: "Offre des services de consultation et d'impartition"
 author: 9c55616c-7340-47e9-bc83-f0bc3da40785
 devise_evaluation: us
@@ -67,6 +67,8 @@ analyse:
               - 31/01/1989
               - '118693.53'
               - '132471.98'
+        tableau_titre: 'Un titre'
+        tableau_source: 'une source'
   -
     type: set
     attrs:
@@ -506,4 +508,28 @@ analyse:
           30/04/2024	 1799077.43	5212481.39
           31/05/2024	 1848911.39	5236128.52
           30/06/2024	 1822714.87	5203932.56
+        portfolio_titre: 'Un exemple'
+        portfolio_source: 'Une source'
+        portfolio_legende_des_x: 'Légende des X'
+        portfolio_legende_des_y: 'Légende des Y'
+trimestre_en_bref:
+  -
+    id: lz8l2oot
+    type: en-bref
+    enabled: true
+    icon: down
+    comment: 'Pas fort'
+  -
+    id: lz8qswpc
+    icon: equal
+    comment: Pareil
+    type: en-bref
+    enabled: true
+  -
+    id: lz8qt2pc
+    icon: up
+    comment: "C'est mieux"
+    type: en-bref
+    enabled: true
+date_de_recommandation: 2024-07
 ---

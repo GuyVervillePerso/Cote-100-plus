@@ -7,7 +7,7 @@
 			<div class="mt-6">
 				{{ partial:greenbutton }}{{ bubble }}{{ /partial:greenbutton }}
 			</div>
-			<h2 class="font-robotoCondensedMedium text-3xl md:leading-[54px] md:text-[54px] mt-2"><a href="{{ if is_logged_in && User:can:view }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></h2>
+			<h2 class="font-robotoCondensedMedium text-3xl md:leading-[54px] md:text-[54px] mt-2"><a href="{{ if logged_in }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></h2>
 			<div class="chapeau robotoLight font-light leading-7 text-lg">{{ chapeau }}</div>
 			<div class="robotoLight text-sm text-mediumGray mt-3">{{ date | format('Y-m-d') }}</div>
 		{{ /collection }}
@@ -21,7 +21,7 @@
 		</div>
 			<div>
 				{{ partial:greenbutton }}{{ bubble }}{{ /partial:greenbutton }}
-				<h2 class="font-robotoCondensedMedium text-4xl leading-10 py-0 my-2"><a href="{{ if is_logged_in && User:can:view }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></h2>
+				<h2 class="font-robotoCondensedMedium text-4xl leading-10 py-0 my-2"><a href="{{ if logged_in }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></h2>
 				<div class="chapeauSidebar">{{ chapeau }}</div>
 				<div class="font-light text-sm text-mediumGray mt-3">{{ date }}</div>
 			</div>

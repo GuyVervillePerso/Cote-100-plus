@@ -152,8 +152,23 @@ header {
 }
 
 .tableau table {
-    @apply border border-gray65
+    @apply my-6 w-1/2
+}
 
+.tableau table.wide {
+    @apply my-6 w-full
+}
+
+.tableau td, .tableau th {
+    @apply p-2
+}
+
+.tableau table td {
+    @apply border-b border-gray65 font-robotoLight text-left
+}
+
+.tableau table th {
+    @apply uppercase text-[12px] font-roboto-flex border-b border-gray65 text-mediumGray text-left
 }
 
 .chapeau {

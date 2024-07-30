@@ -1,0 +1,16 @@
+title: 'Titre et source'
+fields:
+  -
+    handle: titre
+    field:
+      type: text
+      display: Titre
+      localizable: true
+      width: 50
+  -
+    handle: source
+    field:
+      type: text
+      display: Source
+      localizable: true
+      width: 50

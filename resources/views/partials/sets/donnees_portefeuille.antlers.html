@@ -1,1 +1,48 @@
-{{ donnees_brutes }}
+<div id="container"></div>
+<div class="hidden" id="csv">{{ donnees_brutes }}</div>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script>
+    // Select text from #container div
+    let textData = document.querySelector('#csv').textContent;
+    // Split the text into lines
+    let lines = textData.split('\n');
+    let chartData1 = [];
+    let chartData2 = [];
+    let headers = lines.shift().split('\t');
+    for (let line of lines) {
+        let elements = line.split('\t');
+        if (elements.length >= 3) {
+            let convertedDate = elements[0].split('/');
+            let date = Date.parse(convertedDate[1] + "/" + convertedDate[0] + "/" + convertedDate[2]);
+
+            let value1 = Number(elements[1].replace(',', '.'));
+            chartData1.push([date, value1]);
+
+            let value2 = Number(elements[2].replace(',', '.'));
+            chartData2.push([date, value2]);
+        }
+    }
+        // Create the chart
+        Highcharts.stockChart('container', {
+            title: {
+                text: '{{title}}'
+            },
+            chart: {
+                height: 600
+            },
+            legend: {
+                enabled: true,
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+            },
+            series: [{
+                name: headers[1],
+                data: chartData1
+            }, {
+                name: headers[2],
+                data: chartData2
+            }]
+        });
+</script>
+

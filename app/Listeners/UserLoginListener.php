@@ -13,5 +13,9 @@ class UserLoginListener
     /**
      * Handle the event.
      */
-    public function handle(Login $event): void {}
+    public function handle(Login $event): void
+    {
+        $current_user = $event->user;
+        session(['portfolio' => $current_user->portfolio]);
+    }
 }

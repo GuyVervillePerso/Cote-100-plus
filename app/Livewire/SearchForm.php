@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Jonassiewertsen\LiveSearch\Http\Livewire\Search;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Site;
@@ -101,6 +102,9 @@ class SearchForm extends Search
 
     protected function getSimpleSearch()
     {
+        if (! Auth::check()) {
+            return false;
+        }
         $query = Entry::query()
             ->where('collection', $this->collection)
             ->orderBy('date', 'desc')

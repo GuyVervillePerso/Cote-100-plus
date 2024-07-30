@@ -1,3 +1,30 @@
 <div class="tableau">
-{{ tableau | table }}
+    <table>
+        {{ tableau }}
+        {{ if first && titres_premieres_rangees }}
+            <thead>
+            <tr>
+                {{ cells }}
+                <th>{{ value }}</th>
+                {{ /cells }}
+            </tr>
+            </thead>
+        <tbody>
+        {{ else }}
+        <tr>
+            {{ cells }}
+            {{ if index == 0 && titres_sur_premiere_colonne }}
+                <th>{{ value }}</th>
+            {{ else }}
+                <td>{{ value }}</td>
+            {{ /if }}
+            {{ /cells }}
+        {{ /if }}
+
+    </tr>
+        {{ if last }}
+        </tbody>
+        {{ /if }}
+        {{ /tableau }}
+    </table>
 </div>

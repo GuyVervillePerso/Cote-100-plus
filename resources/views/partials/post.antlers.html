@@ -23,8 +23,10 @@
 					{{ html_content }}
 					{{ partial src="sets/{type}" }}
 					{{ /html_content }}
-
-					{{ partial:affaires }}{{ author }}{{ /partial:affaires }}
+                    {{ author|dump }}
+                    {{ if auteur_invite }}
+					    {{ partial:affaires / }}
+                    {{ /if }}
 				</div>
 			</div>
 			<div>

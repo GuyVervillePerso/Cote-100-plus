@@ -1,0 +1,37 @@
+title: 'Contenu HTML'
+fields:
+  -
+    handle: champ_bard
+    field:
+      remove_empty_nodes: false
+      type: bard
+      display: 'Contenu HTML'
+      localizable: true
+      sets:
+        html_content:
+          display: 'Contenu HTML'
+          sets:
+            nouvel_ensemble:
+              display: 'Nouvel ensemble'
+              fields:
+                -
+                  handle: titre_tableau
+                  field:
+                    type: text
+                    display: 'Titre tableau'
+                    localizable: true
+                -
+                  handle: tableau
+                  field:
+                    type: table_on_steroids
+                    display: Tableau
+                    localizable: true
+            portfolio:
+              display: 'Données de portefeuille'
+              fields:
+                -
+                  handle: donnees_portefeuille
+                  field:
+                    type: textarea
+                    display: 'Données de portefeuille'
+                    localizable: true

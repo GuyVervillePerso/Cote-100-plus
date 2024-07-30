@@ -1,5 +1,4 @@
 <div>
-    {{ if logged_in }}
         <div class="md:flex md:justify-between md:space-x-6 pt-8 pb-12">
             {{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
             <input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search"
@@ -53,6 +52,4 @@
                 {{ trans:site.noresult }}
             </div>
         {{ /if }}
-    {{ /if }}
-
 </div>
