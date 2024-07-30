@@ -1,21 +1,21 @@
 <div class="border-b border-gray-300 pt-2 maxContainer text-[13px]">
     <nav id="desktopNav">
-        <ul class="flex space-x-8 flex-wrap items-center font-robotoMedium text-sm uppercase">
+        <ul class="flex space-x-8 flex-wrap items-center font-robotoMedium text-sm uppercase z-30">
             {{ nav:collection:pages include_home="true" }}
             {{ if children }}
                 {{ partial:menu/lidrop }}
                     {{ slot:title }}{{ title }}{{ /slot:title }}
                     {{ children }}
-                        {{ user:in group="clients" }}
+                        {{ user:is role="client|redaction" }}
                             <li><a class="text-grayMenu" href="{{ url }}">{{ title }}</a></li>
-                        {{ /user:in }}
-                        {{ user:not_in group="clients" }}
-                            <li class="notAllowed cursor-not-allowed text-grayMenu"><a href="#">{{ title }}{{partial:menu/lock}}</a></li>
-                        {{ /user:not_in }}
+                        {{ /user:is }}
+                        {{ user:isnt role="client|redaction" }}
+                            <li class="notAllowed cursor-not-allowed text-grayMenu"><a class="cursor-not-allowed" href="#">{{ title }}{{partial:menu/lock}}</a></li>
+                        {{ /user:isnt }}
                     {{ /children }}
                 {{ /partial:menu/lidrop }}
             {{ else }}
-                <li class="alone {{ if is_current || is_parent }}menuActive"{{ /if }}><a href="{{ if is_logged_in && User:can:view }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></li>
+                <li class="alone {{ if is_current || is_parent }}menuActive"{{ /if }}><a href="{{ if logged_in }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></li>
             {{ /if }}
             {{ /nav:collection:pages }}
         </ul>

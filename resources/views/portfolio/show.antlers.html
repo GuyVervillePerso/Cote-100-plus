@@ -1,0 +1,13 @@
+<section>
+    {{ analyse }}
+        {{ partial src="sets/{type}" }}
+    {{ /analyse }}
+    <div id="container" style="width:100%; height:400px;"></div>
+</section>
+
+
+{{ push:scripts }}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+{{ /push:scripts }}

@@ -66,3 +66,15 @@ redaction:
     locale: fr
     start_page: collections
     favorites: {  }
+client:
+  title: Client
+  permissions:
+    - 'access default site'
+    - 'access anglais site'
+    - 'view commentaires_trimestriels entries'
+    - 'view pages entries'
+    - 'view utilitaires_usagers entries'
+    - 'view pages_diverses entries'
+    - 'view billets_mensuels entries'
+    - 'view entre_les_lignes entries'
+    - 'view portfolio entries'

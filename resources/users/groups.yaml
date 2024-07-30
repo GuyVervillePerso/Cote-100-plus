@@ -1,5 +1,5 @@
 clients:
   title: Clients
   roles:
-    - prestige
     - redaction
+    - client

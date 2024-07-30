@@ -10,8 +10,10 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable,HasUuids;
+    use HasFactory, HasUuids,Notifiable;
+
     public $incrementing = false;
+
     protected $keyType = 'string';
 
     /**
@@ -20,6 +22,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'portfolio',
         'name',
         'email',
         'password',
@@ -46,6 +49,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'preferences' => 'json',
+            'portfolio' => 'string',
         ];
     }
 }

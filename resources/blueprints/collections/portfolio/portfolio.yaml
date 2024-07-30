@@ -193,15 +193,26 @@ tabs:
                 nouveau_groupe_densembles:
                   display: "Nouveau groupe d'ensembles"
                   sets:
-                    tables:
+                    table:
                       display: Tableaux
                       icon: layout-table-column-insert
                       fields:
                         -
-                          handle: tableau_a_importer
+                          handle: tableau
                           field:
                             type: table_on_steroids
                             display: 'Tableau à importer'
+                            localizable: false
+                            instructions: "Copiez/Collez à partir d'une feuille Excel. La première rangée est l'entête."
+                    donnees_portefeuille:
+                      display: 'Données de portefeuille'
+                      fields:
+                        -
+                          handle: donnees_brutes
+                          field:
+                            type: textarea
+                            display: 'Données brutes'
+                            instructions: "Copiez/Collez à partir d'Excel. La première rangée sont les étiquettes."
                             localizable: false
           -
             handle: president
