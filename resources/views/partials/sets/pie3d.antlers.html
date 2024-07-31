@@ -19,8 +19,6 @@
             chartData.push([text, value]);
         }
 
-        console.log(chartData)
-        // Create the chart
         Highcharts.chart(idContainer, {
             chart: {
                 type: 'pie',
@@ -30,9 +28,18 @@
                     beta: 0
                 }
             },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                useHTML: true,
+                labelFormatter: function() {
+                    return '<div style="color:' + this.color + '">' + this.name + '</div>';
+                }
+            },
             title: {
                 text: '{{ pie_titre }}',
-                align: 'center'
+                align: 'left'
             },
             subtitle: {
                 text: 'Source: ' + '{{ pie_source }}',
@@ -41,15 +48,19 @@
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
+
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
+                    innerSize: 100,
                     cursor: 'pointer',
-                    depth: 35,
+                    depth: 45,
                     dataLabels: {
-                        enabled: true,
+                        enabled: false,
                         format: '{point.name}'
-                    }
+                    },
+                    shadow:true,
+                    showInLegend: true
                 }
             },
             series: [{
