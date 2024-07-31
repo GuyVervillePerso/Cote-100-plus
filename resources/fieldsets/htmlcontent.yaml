@@ -1,7 +1,7 @@
 title: 'Contenu HTML'
 fields:
   -
-    handle: champ_bard
+    handle: champ_html
     field:
       remove_empty_nodes: false
       type: bard
@@ -11,27 +11,57 @@ fields:
         html_content:
           display: 'Contenu HTML'
           sets:
-            nouvel_ensemble:
-              display: 'Nouvel ensemble'
+            table:
+              display: Tableaux
+              icon: layout-table-column-insert
               fields:
                 -
-                  handle: titre_tableau
+                  import: titre_et_source
+                  prefix: tableau_
+                -
+                  handle: titres_premieres_rangees
                   field:
-                    type: text
-                    display: 'Titre tableau'
-                    localizable: true
+                    default: true
+                    type: toggle
+                    display: 'Titres en premières rangées'
+                    localizable: false
+                    width: 50
+                -
+                  handle: c
+                  field:
+                    type: toggle
+                    display: 'Titres sur première colonne'
+                    localizable: false
+                    width: 50
                 -
                   handle: tableau
                   field:
                     type: table_on_steroids
-                    display: Tableau
-                    localizable: true
-            portfolio:
+                    display: 'Tableau à importer'
+                    localizable: false
+                    instructions: "Copiez/Collez à partir d'une feuille Excel. La première rangée est l'entête."
+            donnees_portefeuille:
               display: 'Données de portefeuille'
               fields:
                 -
-                  handle: donnees_portefeuille
+                  import: titre_et_legendes
+                  prefix: portfolio_
+                -
+                  handle: donnees_brutes
                   field:
                     type: textarea
-                    display: 'Données de portefeuille'
-                    localizable: true
+                    display: 'Données brutes'
+                    instructions: "Copiez/Collez à partir d'Excel. La première rangée sont les étiquettes."
+                    localizable: false
+            pie3d:
+              display: Tarte
+              fields:
+                -
+                  import: titre_et_source
+                  prefix: pie_
+                -
+                  handle: donnees_tableau
+                  field:
+                    type: textarea
+                    display: 'Données tableau'
+                    localizable: false

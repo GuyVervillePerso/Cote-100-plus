@@ -1,0 +1,19 @@
+title: Portefeuilles
+sites:
+  - default
+  - anglais
+propagate: true
+template: portefeuilles/show
+layout: layout
+mount: 75afc028-1db1-460d-8a95-4aa0e3e52f44
+revisions: false
+route: 'portefeuilles/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

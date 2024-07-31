@@ -1,0 +1,8 @@
+{{ test = '/portefeuilles/{session:portfolio}' }}
+<section>
+    {{ usager }}
+    {{ get_content from="{test}" }}
+          {{ content }}
+    {{ /get_content }}
+
+</section>

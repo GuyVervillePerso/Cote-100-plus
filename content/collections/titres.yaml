@@ -1,17 +1,15 @@
-title: Portfolio
+title: Titres
 sites:
   - default
   - anglais
-propagate: true
-template: portfolio/show
+propagate: false
+template: titres/show
 layout: layout
 mount: 6d420a2b-f094-42ec-b7fa-1af5800210b8
-taxonomies:
-  - variantes_portefeuille
 revisions: false
 route:
-  default: 'portefeuille/{slug}'
-  anglais: 'en/portfolio/{slug}'
+  default: 'titres/{slug}'
+  anglais: 'titles/{slug}'
 sort_dir: asc
 date_behavior:
   past: public
