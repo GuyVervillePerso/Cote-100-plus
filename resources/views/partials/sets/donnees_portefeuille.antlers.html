@@ -1,6 +1,5 @@
-<div id="container"></div>
+<div id="{{id}}"></div>
 <div class="hidden" id="csv">{{ donnees_brutes }}</div>
-<script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script>
     // Select text from #container div
     let textData = document.querySelector('#csv').textContent;
@@ -8,6 +7,7 @@
     let lines = textData.split('\n');
     let chartData1 = [];
     let chartData2 = [];
+    let idContainer = "{{id}}";
     let headers = lines.shift().split('\t');
     for (let line of lines) {
         let elements = line.split('\t');
@@ -23,7 +23,7 @@
         }
     }
         // Create the chart
-        Highcharts.stockChart('container', {
+        Highcharts.stockChart(idContainer, {
             title: {
                 text: '{{title}}'
             },

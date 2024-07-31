@@ -26,6 +26,8 @@
     {{ /if }}
 </header>
 <div class="relative">
+
+    {{ stack:highcharts }}
     {{ template_content }}
 
     {{ user:isnt role="redaction|client" }}

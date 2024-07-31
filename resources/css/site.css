@@ -152,11 +152,11 @@ header {
 }
 
 .tableau table {
-    @apply my-6 w-1/2
+    @apply my-6
 }
 
 .tableau table.wide {
-    @apply my-6 w-full
+    @apply w-full
 }
 
 .tableau td, .tableau th {

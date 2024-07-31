@@ -9,7 +9,7 @@ opinion: conserver
 type_de_titre: americain
 symbole_en_bourse: 'NYSE:ACN'
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1722363593
+updated_at: 1722433200
 courte_description: "Offre des services de consultation et d'impartition"
 author: 9c55616c-7340-47e9-bc83-f0bc3da40785
 devise_evaluation: us
@@ -20,6 +20,20 @@ analyse:
       -
         type: text
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. '
+  -
+    type: set
+    attrs:
+      id: lz9vrw59
+      values:
+        type: pie3d
+        pie_titre: 'Titre tarte 2'
+        pie_source: 'Source tarte 2'
+        donnees_tableau: |-
+          Légende 1	Légende 2
+          Un essai	5
+          Une deuxième entrée	5
+          Une troisième entrée	5
+          Une quantité	40
   -
     type: set
     attrs:
@@ -69,6 +83,22 @@ analyse:
               - '132471.98'
         tableau_titre: 'Un titre'
         tableau_source: 'une source'
+        titres_premieres_rangees: true
+        c: false
+  -
+    type: set
+    attrs:
+      id: lz9w95bh
+      values:
+        type: pie3d
+        pie_titre: 'Titre tarte'
+        pie_source: 'Source tarte'
+        donnees_tableau: |-
+          Légende 1	Légende 2
+          Un essai	1000
+          Une deuxième entrée	500
+          Une troisième entrée	2000
+          Une quantité	40
   -
     type: set
     attrs:

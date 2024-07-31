@@ -3,20 +3,24 @@ tabs:
   main:
     display: Principal
     sections:
-      - fields:
-          - handle: title
+      -
+        fields:
+          -
+            handle: title
             field:
               type: text
               required: true
               localizable: true
               validate:
                 - required
-          - handle: courte_description
+          -
+            handle: courte_description
             field:
               type: markdown
               display: 'Courte description'
               localizable: true
-          - handle: devise_evaluation
+          -
+            handle: devise_evaluation
             field:
               options:
                 ca: '$ CA'
@@ -26,20 +30,23 @@ tabs:
               display: 'Devise de l’évaluation'
               localizable: false
               width: 33
-          - handle: cote_100
+          -
+            handle: cote_100
             field:
               type: integer
               display: 'Cote 100'
               localizable: false
               width: 33
-          - handle: date_de_recommandation
+          -
+            handle: date_de_recommandation
             field:
               format: Y-m
               type: date
               display: 'Date de recommandation'
               localizable: false
               width: 33
-          - handle: opinion
+          -
+            handle: opinion
             field:
               options:
                 conserver: Conserver
@@ -49,49 +56,57 @@ tabs:
               display: Opinion
               localizable: false
               width: 33
-          - handle: nombre_actions
+          -
+            handle: nombre_actions
             field:
               type: integer
               display: 'Nombre d’actions'
               localizable: false
               width: 33
-          - handle: cout_moyen_par_action
+          -
+            handle: cout_moyen_par_action
             field:
               type: float
               display: 'Coût moyen par action'
               localizable: false
               width: 33
-          - handle: cout_total
+          -
+            handle: cout_total
             field:
               type: integer
               display: 'Coût total'
               localizable: false
               width: 33
-          - handle: cours_actuel
+          -
+            handle: cours_actuel
             field:
               type: float
               display: 'Cours actuel'
               localizable: false
               width: 33
-          - handle: valeur_au_marche
+          -
+            handle: valeur_au_marche
             field:
               type: float
               display: 'Valeur au marché'
               localizable: false
               width: 33
-          - handle: scenario_achat
+          -
+            handle: scenario_achat
             field:
               type: markdown
               display: "Scénario d'achat initial"
               localizable: true
               width: 66
-          - handle: variation_annee_en_cours
+          -
+            handle: variation_annee_en_cours
             field:
               type: integer
               display: 'Variation année en cours'
               localizable: false
               width: 33
-          - handle: pourcentage_dans_portefeuille
+          -
+            handle: pourcentage_dans_portefeuille
             field:
               type: replicator
               display: 'Pourcentage dans portefeuille'
@@ -103,7 +118,8 @@ tabs:
                     appartenances:
                       display: 'Appartenances aux portefeuille'
                       fields:
-                        - handle: appartenance_portefeuille
+                        -
+                          handle: appartenance_portefeuille
                           field:
                             mode: select
                             taxonomies:
@@ -113,13 +129,15 @@ tabs:
                             localizable: false
                             width: 75
                             max_items: 1
-                        - handle: pourcentage_valeur
+                        -
+                          handle: pourcentage_valeur
                           field:
                             type: float
                             display: 'Pourcentage valeur'
                             localizable: false
                             width: 25
-          - handle: trimestre_en_bref
+          -
+            handle: trimestre_en_bref
             field:
               type: replicator
               display: 'Trimestre en bref'
@@ -131,20 +149,23 @@ tabs:
                     en-bref:
                       display: 'En bref'
                       fields:
-                        - handle: icon
+                        -
+                          handle: icon
                           field:
                             type: icon
                             display: Icône
                             localizable: false
                             width: 25
                             directory: public/assets/icons
-                        - handle: comment
+                        -
+                          handle: comment
                           field:
                             type: text
                             display: Commentaire
                             localizable: true
                             width: 75
-          - handle: analyse
+          -
+            handle: analyse
             field:
               buttons:
                 - h2
@@ -176,22 +197,26 @@ tabs:
                       display: Tableaux
                       icon: layout-table-column-insert
                       fields:
-                        - import: titre_et_source
+                        -
+                          import: titre_et_source
                           prefix: tableau_
-                        - handle: titres_premieres_rangees
+                        -
+                          handle: titres_premieres_rangees
                           field:
                             default: true
                             type: toggle
                             display: 'Titres en premières rangées'
                             localizable: false
                             width: 50
-                        - handle: c
+                        -
+                          handle: c
                           field:
                             type: toggle
                             display: 'Titres sur première colonne'
                             localizable: false
                             width: 50
-                        - handle: tableau
+                        -
+                          handle: tableau
                           field:
                             type: table_on_steroids
                             display: 'Tableau à importer'
@@ -200,25 +225,42 @@ tabs:
                     donnees_portefeuille:
                       display: 'Données de portefeuille'
                       fields:
-                        - import: titre_et_legendes
+                        -
+                          import: titre_et_legendes
                           prefix: portfolio_
-                        - handle: donnees_brutes
+                        -
+                          handle: donnees_brutes
                           field:
                             type: textarea
                             display: 'Données brutes'
                             instructions: "Copiez/Collez à partir d'Excel. La première rangée sont les étiquettes."
                             localizable: false
-          - handle: president
+                    pie3d:
+                      display: Tarte
+                      fields:
+                        -
+                          import: titre_et_source
+                          prefix: pie_
+                        -
+                          handle: donnees_tableau
+                          field:
+                            type: textarea
+                            display: 'Données tableau'
+                            localizable: false
+          -
+            handle: president
             field:
               type: text
               display: Président(e)
               localizable: false
-          - handle: adresse
+          -
+            handle: adresse
             field:
               type: text
               display: Adresse
               localizable: false
-          - handle: site_web
+          -
+            handle: site_web
             field:
               type: link
               display: 'Site web'
@@ -226,8 +268,10 @@ tabs:
   sidebar:
     display: Sidebar
     sections:
-      - fields:
-          - handle: logo
+      -
+        fields:
+          -
+            handle: logo
             field:
               max_files: 1
               min_files: 1
@@ -238,12 +282,14 @@ tabs:
               display: Logo
               localizable: false
               mode: grid
-          - handle: slug
+          -
+            handle: slug
             field:
               type: slug
               localizable: true
               validate: 'max:200'
-          - handle: type_de_titre
+          -
+            handle: type_de_titre
             field:
               options:
                 canadien: Canadien
@@ -252,19 +298,22 @@ tabs:
               type: radio
               display: 'Type de titre'
               localizable: false
-          - handle: symbole_en_bourse
+          -
+            handle: symbole_en_bourse
             field:
               type: text
               display: 'Symbole en bourse'
               localizable: false
-          - handle: author
+          -
+            handle: author
             field:
               type: users
               display: Author
               default: current
               localizable: true
               max_items: 1
-          - handle: variantes_portefeuille
+          -
+            handle: variantes_portefeuille
             field:
               type: terms
               taxonomies:

@@ -1,0 +1,66 @@
+<div id="{{ id }}"></div>
+<div id="csv{{ id }}" class="hidden">{{ donnees_tableau }}</div>
+
+<script>
+    createPie();
+
+    function createPie() {
+        var idContainer = "{{ id }}";
+        var idCSV = "#csv{{ id }}";
+        var textData = document.querySelector(idCSV).textContent;
+        // Split the text into lines
+        var lines = textData.split('\n');
+        var test = chartData = [];
+        var headers = lines.shift().split('\t');
+        for (var line of lines) {
+            var elements = line.split('\t');
+            var text = elements[0];
+            var value = Number(elements[1].replace(',', '.'));
+            chartData.push([text, value]);
+        }
+
+        console.log(chartData)
+        // Create the chart
+        Highcharts.chart(idContainer, {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: '{{ pie_titre }}',
+                align: 'center'
+            },
+            subtitle: {
+                text: 'Source: ' + '{{ pie_source }}',
+                align: 'left'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Distribution',
+                data: chartData
+            }]
+        });
+    }
+
+    // Select text from #container div
+
+</script>
+

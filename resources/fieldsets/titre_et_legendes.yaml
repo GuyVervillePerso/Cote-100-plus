@@ -1,28 +1,24 @@
 title: 'Titre et légendes'
 fields:
-  -
-    handle: titre
+  - handle: titretarte
     field:
       type: text
       display: Titre
       localizable: true
       width: 50
-  -
-    handle: source
+  - handle: source
     field:
       type: text
       display: Source
       localizable: true
       width: 50
-  -
-    handle: legende_des_x
+  - handle: legende_des_x
     field:
       type: text
       display: 'Légende des X'
       localizable: true
       width: 50
-  -
-    handle: legende_des_y
+  - handle: legende_des_y
     field:
       type: text
       display: 'Légende des Y'
