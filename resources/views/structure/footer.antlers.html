@@ -1,7 +1,9 @@
 <div class="flex justify-between">
     <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 text-md md:text-base">
         {{ collection:pages_diverses }}
+            {{ if dans_le_pied_de_page }}
                <a href="{{ url }}">{{ title }}</a>
+            {{ /if }}
         {{ /collection:pages_diverses }}
     </div>
     <div id="footerLanguage">

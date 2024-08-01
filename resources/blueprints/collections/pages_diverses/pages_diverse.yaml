@@ -43,6 +43,12 @@ tabs:
               type: template
               display: Template
               localizable: true
+          -
+            handle: dans_le_pied_de_page
+            field:
+              type: toggle
+              display: 'Dans le pied de page'
+              localizable: false
   sidebar:
     display: Sidebar
     sections:

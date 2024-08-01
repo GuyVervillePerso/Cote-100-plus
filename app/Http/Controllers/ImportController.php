@@ -24,4 +24,10 @@ class ImportController extends Controller
         // Call the importJSONEntries method of the ImportService
         $this->importService->importJSONEntries();
     }
+
+    public function importTitleEntries()
+    {
+        // Call the importJSONEntries method of the ImportService
+        $this->importService->importTitleEntries();
+    }
 }

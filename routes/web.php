@@ -8,4 +8,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/import/blog-entries', [ImportController::class, 'importMonthlyEntries']);
 Route::get('/import/json-entries', [ImportController::class, 'importJSONEntries']);
-
+Route::get('/import/title-entries', [ImportController::class, 'importTitleEntries']);

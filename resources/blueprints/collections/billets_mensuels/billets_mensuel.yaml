@@ -110,7 +110,7 @@ tabs:
               type: date
               required: true
               default: now
-              localizable: false
+              localizable: true
               validate:
                 - required
           -

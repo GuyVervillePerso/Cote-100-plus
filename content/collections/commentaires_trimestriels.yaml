@@ -7,8 +7,11 @@ template: commentaires_trimestriels/show
 layout: layout
 mount: 81cf2636-9a28-4500-8aa5-7d9b08a6e8f0
 revisions: false
+route:
+  default: 'commentaires/trimestriels/{year}/{month}/{day}/{slug}'
+  anglais: 'commentaries/quarterly/{year}/{month}/{day}/{slug}'
 date: true
-sort_dir: asc
+sort_dir: desc
 date_behavior:
   past: public
   future: private

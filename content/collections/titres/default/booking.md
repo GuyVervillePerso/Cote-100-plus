@@ -1,0 +1,16 @@
+---
+id: bc74f1f7-bd93-4fcc-8d27-079425679752
+blueprint: titre
+title: BOOKING
+courte_description: 'Agence de voyages en ligne'
+scenario_achat: '(Février 2019 : 1 690 $) Booking est le leader mondial des agences de voyages en ligne. L’entreprise possède des barrières à l’entrée élevées étant donné sa taille. Elle possède un bilan solide. Booking est en mesure de générer des flux de trésorerie libres importants et soutenables. L’entreprise connait une forte croissance des revenus de location d’appartements et de chalets grâce à sa facilitation des paiements. Son étendue mondiale lui permet de se positionner en vue d’une croissance de l’offre dans les pays émergents et en Chine. Mérite une évaluation supérieure à celle du marché.'
+type_de_titre: americain
+symbole_en_bourse: 'NASDAQ:BKNG'
+author: 9c87d8d7-e83f-438d-8d13-6efd9c2fae40
+adresse: '800 Connecticut Av. Norwak, CU, 06854'
+site_web: 'http://ir.bookingholdings.com/'
+updated_at: 2020-02-28T21:36:25+00:00
+slug: booking
+date_de_recommandation: 2020-02-28T21:36:25+00:00
+main_visual: 'assets::logos/bookingholdings_ogimage.png'
+---

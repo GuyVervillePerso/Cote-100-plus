@@ -3,50 +3,37 @@ tabs:
   main:
     display: Principal
     sections:
-      -
-        fields:
-          -
-            handle: title
+      - fields:
+          - handle: title
             field:
               type: text
               required: true
               localizable: false
               validate:
                 - required
-          -
-            handle: content
+          - handle: content
             field:
               type: markdown
               display: Content
               localizable: true
               antlers: true
-          -
-            handle: author
+          - handle: author
             field:
               type: users
               display: Author
               default: current
               localizable: true
               max_items: 1
-          -
-            handle: template
+          - handle: template
             field:
               type: template
               display: Template
               localizable: true
-          -
-            handle: champ_textarea
-            field:
-              type: textarea
-              display: 'Champ Textarea'
-              localizable: false
   sidebar:
     display: Sidebar
     sections:
-      -
-        fields:
-          -
-            handle: slug
+      - fields:
+          - handle: slug
             field:
               type: slug
               localizable: true

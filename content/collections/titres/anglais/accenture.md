@@ -1,7 +1,8 @@
 ---
-id: 5ddd4640-de2a-4e1a-aa88-cf8255689445
-origin: 86e1db71-315e-47ed-a007-54c35f5c32cd
-analyse: null
-updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1722453385
+id: 184e38f2-7794-420b-b4cd-bbedc353b4f6
+origin: 06e16acc-02a8-4ded-a4e4-f1e3080ac6af
+title: ACCENTURE
+courte_description: 'Offers consulting and outsourcing services'
+scenario_achat: '(September 2010 - $27) One of the biggest players in the industry of consultation and outsourcing services. Flexible business model. Exceptional financial health. Reasonable valuation. Well diversified in international markets. Growth in demand for digital solutions. Good track record of growth since it was spun-off from the accounting firm, Arthur Andersen. Deserves a premium to the market P/E.'
+slug: accenture
 ---

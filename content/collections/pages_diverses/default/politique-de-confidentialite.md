@@ -5,5 +5,6 @@ title: 'Politique de confidentialité'
 author: 9c55616c-7340-47e9-bc83-f0bc3da40785
 template: default
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1721051101
+updated_at: 1722513552
+dans_le_pied_de_page: true
 ---

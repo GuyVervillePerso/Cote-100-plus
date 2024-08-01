@@ -1,4 +1,4 @@
-title: 'Billets mensuels'
+title: 'Commentaires mensuels'
 sites:
   - default
   - anglais
@@ -10,8 +10,8 @@ taxonomies:
   - categories
 revisions: false
 route:
-  default: '{parent_uri}/commentaires/billets-mensuels/{slug}'
-  anglais: '{parent_uri}/commentaries/monthly-blogs/{slug}'
+  default: 'commentaires/mensuels/{year}/{month}/{day}/{slug}'
+  anglais: 'commentaries/monthly/{year}/{month}/{day}/{slug}'
 date: true
 sort_dir: desc
 date_behavior:

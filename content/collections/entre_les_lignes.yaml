@@ -10,8 +10,8 @@ taxonomies:
   - categories
 revisions: false
 route:
-  default: '{parent_uri}/commentaires/entre-les-lignes/{slug}'
-  anglais: '{parent_uri}/commentaries/between-the-lines/{slug}'
+  default: 'commentaires/entre-les-lignes/{slug}'
+  anglais: 'commentaries/between-the-lines/{slug}'
 date: true
 sort_dir: desc
 date_behavior:

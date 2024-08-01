@@ -51,6 +51,18 @@ class ImportService
         }
     }
 
+    public function importTitleEntries()
+    {
+        $csvPath = storage_path('app/import/titres_en_portefeuille.tsv');
+        // Create a CSV Reader instance
+        $csv = Reader::createFromPath($csvPath, 'r');
+        $csv->setDelimiter("\t");
+        $csv->setHeaderOffset(0);
+        foreach ($csv as $record) {
+            $this->importTitleEntry($record);
+        }
+    }
+
     protected function importTSVEntry($record): void
     {
         $slugFr = Str::slug($record['title_fr'], '-');
@@ -104,6 +116,68 @@ class ImportService
                         ->slug($slugEn) // Set the slug
                         ->data($dataEn) // Set the data fields
                         ->date($carbon)
+                        ->origin($entry_fr_id) // Set the origin ID
+                        ->save();
+                }
+            } catch (Exception $e) {
+                dd($e);
+            }
+        } else {
+            ray('existant')->green();
+        }
+    }
+
+    protected function importTitleEntry($record): void
+    {
+        $slugEn = $slugFr = Str::slug($record['title'], '-');
+        $entry_fr = Entry::query()
+            ->where('collection', 'titres')
+            ->where('slug', $slugFr)
+            ->first();
+
+        if (! $entry_fr) {
+            $carbon = Carbon::parse($record['date']);
+            $titleEn = $titleFr = $record['title'];
+            $dataFr = [
+                'title' => $titleFr,
+                'courte_description' => $record['profil_fr'],
+                'scenario_achat' => $record['scenario_fr'],
+                'type_de_titre' => $record['type_titre'],
+                'symbole_en_bourse' => $record['symbol'],
+                'author' => '9c87d8d7-e83f-438d-8d13-6efd9c2fae40',
+                'adresse' => $record['address'],
+                'site_web' => $record['website'],
+                'updated_at' => $carbon,
+                'slug' => $slugFr,
+                'date_de_recommandation' => $carbon,
+            ];
+            $dataEn = [
+                'title' => $titleEn,
+                'courte_description' => $record['profil_en'],
+                'scenario_achat' => $record['scenario_en'],
+                'slug' => $slugEn,
+            ];
+            $assetId = $this->moveImagesWhere($record['image'], 'logos');
+            if ($assetId) {
+                $dataFr['main_visual'] = $assetId;
+            }
+            try {
+                $entry_fr = Entry::make()
+                    ->locale('default') // Set the locale to French (default)
+                    ->collection('titres') // Set the collection handle
+                    ->slug($slugFr) // Set the slug
+                    ->data($dataFr) // Set the data fields
+                    ->save();
+                if ($entry_fr) {
+                    $entry_fr_id = Entry::query()
+                        ->where('collection', 'titres')
+                        ->where('slug', $slugFr)
+                        ->first()->id();
+                    Entry::make()
+                        ->locale('anglais') // Set the locale to English
+                        ->collection('titres') // Set the collection handle
+                        ->slug($slugEn) // Set the slug
+                        ->data($dataEn) // Set the data fields
                         ->origin($entry_fr_id) // Set the origin ID
                         ->save();
                 }
@@ -170,6 +244,41 @@ class ImportService
         if ($sendFilename) {
             return $filename;
         }
+
+        return $asset->id;
+    }
+
+    protected function moveImagesWhere($image, $where, $sendFilename = false)
+    {
+        $filename = basename($image);
+        $imageUrl = $image;
+        if (trim($imageUrl) == '' || $imageUrl == null) {
+            $imageUrl = 'https://via.placeholder.com/900x400';
+        }
+        // Get the image content from the URL
+        try {
+            $imageContent = file_get_contents($imageUrl);
+        } catch (Exception $e) {
+            return '';
+        }
+
+        // Define a temporary path to store the image
+        $tempPath = storage_path('app/public/temp.jpg');
+        // Use Laravel's File facade to put the image content into the temporary path
+        File::put($tempPath, $imageContent);
+
+        // Create an uploaded file instance for the image
+        $file = new UploadedFile($tempPath, $filename);
+        // Create an asset, set the container and the path, then upload the file
+        $asset = Asset::make()
+            ->container('assets')
+            ->path($where.'/'.$filename);
+        $asset->upload($file);
+        // Save the asset
+        $asset->save();
+
+        // Delete the temporary file
+        File::delete($tempPath);
 
         return $asset->id;
     }
@@ -294,7 +403,7 @@ class ImportService
         $csv->setHeaderOffset(0);
         // Get the header row from the CSV
         $header = $csv->fetchOne();
-        $converter = new HtmlConverter();
+        $converter = new HtmlConverter;
         // Loop through each row in the CSV (except the header row)
         foreach ($csv as $record) {
             // Map the CSV row data to Statamic fields

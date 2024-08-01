@@ -5,7 +5,7 @@ title: 'Termes et conditions'
 author: 9c55616c-7340-47e9-bc83-f0bc3da40785
 template: simple
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1721065381
+updated_at: 1722513543
 html_content:
   -
     type: paragraph
@@ -42,4 +42,5 @@ html_content:
               - '5668'
   -
     type: paragraph
+dans_le_pied_de_page: true
 ---
