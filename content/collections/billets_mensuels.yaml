@@ -11,7 +11,7 @@ taxonomies:
 revisions: false
 route:
   default: 'commentaires/mensuels/{year}/{month}/{day}/{slug}'
-  anglais: 'commentaries/monthly/{year}/{month}/{day}/{slug}'
+  anglais: 'en/commentaries/monthly/{year}/{month}/{day}/{slug}'
 date: true
 sort_dir: desc
 date_behavior:
