@@ -37,7 +37,7 @@ return [
     'recentpublications' => 'Recent publications',
     'register' => 'Register',
     'rights' => 'All rights reserved.',
-    'seemore' => 'See more srticles',
+    'seemore' => 'See more articles',
     'selectcategory' => 'Select a Category',
     'share' => 'Share',
     'share_article' => 'Share this article',

@@ -28,7 +28,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
                 {{ results }}
                 <a href="{{ url }}">
-                    <div class="bg-white rounded-2xl p-6 grid grid-cols-1 md:grid-cols-[150px_1fr] gap-4 shadow-xl">
+                    <div class="md:h-[280px] bg-white rounded-2xl p-6 grid grid-cols-1 md:grid-cols-[150px_1fr] gap-4 shadow-xl">
                         <div class="hidden md:block">
                             {{ image }}
                             {{ partial:image_blog url="{{url}}" dw="150" dh="150" }}
@@ -36,7 +36,7 @@
                         </div>
                         <div>
                             {{ partial:greenbutton }}{{ bubble }}{{ /partial:greenbutton }}
-                            <h2 class="font-robotoCondensedSemiMedium my-2 ">
+                            <h2 class="font-robotoCondensedSemiMedium my-2 leading-tight">
                                 {{ title }}
                             </h2>
                             {{ chapeau | safe_truncate(200, '…') }}
