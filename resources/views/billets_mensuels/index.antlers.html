@@ -3,5 +3,7 @@
 	{{ partial:topblog pagecontent='billets_mensuels' bubble='{ trans:site.monthlycommentaries }' }}
 </section>
 <section class="bottomSection bg-gray70">
-	{{ livewire:search-form template='partials.search_form' index='blog' cat='categories' collection='billets_mensuels' bubble='{trans:site.monthlycommentaries}'}}
+    {{ no_cache }}
+	{{ livewire:search-form template='partials.search_form' index='blog' tagCat='categories' collection='billets_mensuels' bubble='{trans:site.monthlycommentaries}'}}
+    {{ /no_cache }}
 </section>

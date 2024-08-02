@@ -51,9 +51,8 @@ class SearchForm extends Search
     {
         $this->collection = session('collection');
         $this->index = session('index');
-        $this->cat = session('category');
+        $this->tagCollection = session('category');
         $this->locale = session('locale');
-
     }
 
     protected function getCategoryArray(): array
@@ -87,20 +86,20 @@ class SearchForm extends Search
             '5' => __('site.date3yearsAgo'), ];
     }
 
-    public function mount(string $template, ?string $index = null, $cat = '', $collection = '', string $bubble = '')
+    public function mount(string $template, ?string $index = null, ?string $tagCat = '', $collection = '', string $bubble = '')
     {
         // You can pass these as parameters or they can be hardcoded.
         $this->template = $template;
         $this->bubble = $bubble;
         $this->index = $index;
-        $this->tagCollection = $cat;
+        $this->tagCollection = $tagCat;
         $this->collection = $collection;
         $this->categoryArray = $this->getCategoryArray();
         $this->dateSpanArray = $this->getDateSpanArray();
         $this->getDateSpanArray();
         $this->locale = Site::current()->handle();
         session(['collection' => $collection]);
-        session(['category' => $cat]);
+        session(['category' => $tagCat]);
         session(['index' => $index]);
         session(['locale' => $this->locale]);
     }
