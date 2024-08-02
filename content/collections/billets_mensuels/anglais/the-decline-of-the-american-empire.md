@@ -357,5 +357,6 @@ html_content:
               -
                 type: text
                 text: 'Again, the process of devaluation of the US dollar could take many years before being confirmed. Until then, the potential for such an event should guide our investment decisions. One thing, however, seems likely to me: the next decades will be more difficult and real returns will probably be lower than in the past.'
-slug: 'The Decline of the American Empire'
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722601858
 ---

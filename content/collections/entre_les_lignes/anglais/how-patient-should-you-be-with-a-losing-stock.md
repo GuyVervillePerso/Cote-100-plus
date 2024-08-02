@@ -2,6 +2,7 @@
 id: 1a5cd054-ae30-4d49-8059-8e3fb953a07e
 origin: 2fb4e695-f315-4105-a687-884359d3030a
 title: 'How Patient Should You Be With a Losing Stock?'
+chapeau: 'We all have stocks in our portfolio that are lagging.'
 html_content:
   -
     type: paragraph
@@ -117,10 +118,6 @@ html_content:
             type: italic
   -
     type: paragraph
-  -
-    type: paragraph
-  -
-    type: paragraph
     content:
       -
         type: text
@@ -143,6 +140,6 @@ html_content:
             type: link
             attrs:
               href: 'https://www.lesaffaires.com/blogues/philippe-leblanc/jusqu-a-quel-point-faut-il-etre-patient-avec-un-titre-perdant/649340'
-chapeau: 'We all have stocks in our portfolio that are lagging.'
-slug: how-patient-should-you-be-with-a-losing-stock
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722598385
 ---

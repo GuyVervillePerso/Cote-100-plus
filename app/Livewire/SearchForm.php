@@ -44,6 +44,15 @@ class SearchForm extends Search
     {
         $this->categoryArray = $this->getCategoryArray();
         $this->dateSpanArray = $this->getDateSpanArray();
+        $this->getSession();
+    }
+
+    protected function getSession()
+    {
+        $this->collection = session('collection');
+        $this->index = session('index');
+        $this->cat = session('category');
+        $this->locale = session('locale');
 
     }
 
@@ -78,7 +87,7 @@ class SearchForm extends Search
             '5' => __('site.date3yearsAgo'), ];
     }
 
-    public function mount(string $template, ?string $index = null, string $cat = 'categories', string $collection = 'entre_les_lignes', string $bubble = '')
+    public function mount(string $template, ?string $index = null, $cat = '', $collection = '', string $bubble = '')
     {
         // You can pass these as parameters or they can be hardcoded.
         $this->template = $template;
@@ -90,7 +99,10 @@ class SearchForm extends Search
         $this->dateSpanArray = $this->getDateSpanArray();
         $this->getDateSpanArray();
         $this->locale = Site::current()->handle();
-
+        session(['collection' => $collection]);
+        session(['category' => $cat]);
+        session(['index' => $index]);
+        session(['locale' => $this->locale]);
     }
 
     public function render()
@@ -102,9 +114,11 @@ class SearchForm extends Search
 
     protected function getSimpleSearch()
     {
+
         if (! Auth::check()) {
             return false;
         }
+        $this->getSession();
         $query = Entry::query()
             ->where('collection', $this->collection)
             ->orderBy('date', 'desc')
@@ -115,11 +129,9 @@ class SearchForm extends Search
                 ->orWhere('chapeau', 'like', '%'.$this->q.'%')
                 ->orWhere('html_content', 'like', '%'.$this->q.'%');
         });
-
         $query->when($this->chosenCategory != '' && $this->chosenCategory != '0', function ($query) {
             $query->whereTaxonomy($this->tagCollection.'::'.$this->chosenCategory);
         });
-
         $query->when($this->chosenDateSpan != '0', function ($query) {
             switch ($this->chosenDateSpan) {
                 case '1':
@@ -141,6 +153,7 @@ class SearchForm extends Search
                     break;
             }
         });
+
         $entries = $query->where('locale', $this->locale)->get()
             ->map(function ($entry) {
                 return [

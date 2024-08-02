@@ -73,7 +73,6 @@ tabs:
                             folder: blog
                             max_files: 1
                             min_files: 1
-                            mode: grid
                             restrict: true
           -
             handle: lien_les_affaires

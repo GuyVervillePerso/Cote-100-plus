@@ -19,7 +19,6 @@ tabs:
               type: markdown
               display: 'Courte description'
               localizable: true
-              width: 75
           -
             handle: devise_evaluation
             field:

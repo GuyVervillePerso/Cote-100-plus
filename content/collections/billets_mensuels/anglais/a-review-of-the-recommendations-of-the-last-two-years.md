@@ -2,13 +2,8 @@
 id: 206f0adf-520a-4791-9b1f-45f84a3fa36a
 origin: 4938ed5a-d25a-4820-ba19-41a4acc6b4da
 title: 'A Review of the Recommendations of the Last Two Years'
+chapeau: 'We published 23 Spotlights over the last two years (2023 and 2022), including 21 recommendations to purchase specific stocks and two special issues, a review of our best buying recommendations in January 2022 and a follow-up on the stocks of the COTE 100+ portfolio in December 2023. We have therefore achieved our goal of publishing 12 Spotlights per year for our “Platinum” subscribers.'
 html_content:
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: 'We published 23 Spotlights over the last two years (2023 and 2022), including 21 recommendations to purchase specific stocks and two special issues, a review of our best buying recommendations in January 2022 and a follow-up on the stocks of the COTE 100+ portfolio in December 2023. We have therefore achieved our goal of publishing 12 Spotlights per year for our “Platinum” subscribers.'
   -
     type: paragraph
     content:
@@ -22,14 +17,21 @@ html_content:
         type: text
         text: 'On average, the recommended stocks have appreciated by 28.4% since the publication of the Spotlight, when including dividends. Of the 21 recommendations, only two recorded a negative return (with dividends) since our recommendation:'
   -
-    type: image
-    attrs:
-      src: 'https://plus.cote100.com/wp-content/uploads/2024/04/1_eng-1.png'
-    marks:
+    type: paragraph
+    content:
       -
-        type: link
+        type: image
         attrs:
-          href: 'https://plus.cote100.com/wp-content/uploads/2024/04/1_eng-1.png'
+          src: 'asset::assets::blog/feng-1.png'
+          alt: null
+        marks:
+          -
+            type: link
+            attrs:
+              href: 'asset::assets::vxuploads/2024/04/1_eng-1.png'
+              rel: null
+              target: null
+              title: null
   -
     type: paragraph
     content:
@@ -37,23 +39,30 @@ html_content:
         type: text
         text: 'Six of our recommendations have appreciated by more than 50% (with dividends) since the date of our recommendation:'
   -
-    type: image
-    attrs:
-      src: 'https://plus.cote100.com/wp-content/uploads/2024/04/2_eng-1.png'
-    marks:
+    type: paragraph
+    content:
       -
-        type: link
+        type: image
         attrs:
-          href: 'https://plus.cote100.com/wp-content/uploads/2024/04/2_eng-1.png'
+          src: 'asset::assets::ffeng-1.png'
+          alt: null
+        marks:
+          -
+            type: link
+            attrs:
+              href: 'asset::assets::vxuploads/2024/04/2_eng-1.png'
+              rel: null
+              target: null
+              title: null
   -
     type: paragraph
     content:
       -
         type: text
-        text: 'Should We Wait for a Correction Before Investing in the Stock Market?'
         marks:
           -
             type: bold
+        text: 'Should We Wait for a Correction Before Investing in the Stock Market?'
   -
     type: paragraph
     content:
@@ -92,10 +101,10 @@ html_content:
         text: 'Personally, I have always believed that the best time to invest in the stock market is when we have liquidity that we will not need for a long time. When we manage to put aside money regularly, investing when we have enough liquidity to do so forces us to buy regularly, which is also called '
       -
         type: text
-        text: '“dollar averaging”'
         marks:
           -
             type: italic
+        text: '“dollar averaging”'
       -
         type: text
         text: ' and is often very effective.'
@@ -111,5 +120,6 @@ html_content:
       -
         type: text
         text: 'Finally, in any decision you must consider the alternatives, the opportunity cost. Once again, if you have a long-term investment horizon, I think it will be difficult to obtain returns higher than those of the stock markets. More often than not, the decision to sit on the sidelines can cost us much more than investing at an inopportune time. Talk to the investor who has done that in the last five months.'
-slug: 'A Review of the Recommendations of the Last Two Years'
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722539113
 ---

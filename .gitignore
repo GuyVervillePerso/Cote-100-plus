@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 /storage/debugbar/
 composer.lock
+/public/assets/vxuploads/

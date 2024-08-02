@@ -8,22 +8,29 @@ html_content:
     content:
       -
         type: text
-        text: '[wlm_private "Base|Or|Platine"]The COTE 100 Financial Bulletin portfolio ended 2023 with a return of 14.0%. I consider this to be an excellent performance, even if some North American indexes have done even better:I consider that our portfolios had a good year in 2023, even if some North American indexes have done even better:[/wlm_private]'
+        text: 'The COTE 100 Financial Bulletin portfolio ended 2023 with a return of 14.0%. I consider this to be an excellent performance, even if some North American indexes have done even better:I consider that our portfolios had a good year in 2023, even if some North American indexes have done even better:'
   -
     type: paragraph
     content:
       -
         type: text
-        text: '[wlm_private "Elite|Ambassadeur"]I consider that our portfolios had a good year in 2023, even if some North American indexes have done even better:[/wlm_private]'
+        text: 'I consider that our portfolios had a good year in 2023, even if some North American indexes have done even better:'
   -
-    type: image
-    attrs:
-      src: 'https://plus.cote100.com/wp-content/uploads/2024/01/Tableau_eng_1.png'
-    marks:
+    type: paragraph
+    content:
       -
-        type: link
+        type: image
         attrs:
-          href: 'https://plus.cote100.com/wp-content/uploads/2024/01/Tableau_eng_1.png'
+          src: 'asset::assets::blog/tableau_eng_1.png'
+          alt: null
+        marks:
+          -
+            type: link
+            attrs:
+              href: 'asset::assets::vxuploads/2024/01/Tableau_eng_1.png'
+              rel: null
+              target: null
+              title: null
   -
     type: paragraph
     content:
@@ -43,14 +50,21 @@ html_content:
         type: text
         text: 'However, if we take a step back, we see that the last decade and more has been dominated by American markets and their technology stocks. Here are the returns of the main stock indexes from various regions of the world over the last 10 and 20 years:'
   -
-    type: image
-    attrs:
-      src: 'https://plus.cote100.com/wp-content/uploads/2024/01/Tableau_eng_2.png'
-    marks:
+    type: paragraph
+    content:
       -
-        type: link
+        type: image
         attrs:
-          href: 'https://plus.cote100.com/wp-content/uploads/2024/01/Tableau_eng_2.png'
+          src: 'asset::assets::blog/tableau_eng_2.png'
+          alt: null
+        marks:
+          -
+            type: link
+            attrs:
+              href: 'asset::assets::vxuploads/2024/01/Tableau_eng_2.png'
+              rel: null
+              target: null
+              title: null
   -
     type: paragraph
     content:
@@ -89,6 +103,8 @@ html_content:
         text: 'Indeed, some phenomena work against the stocks of dominant companies in the long term:'
   -
     type: orderedList
+    attrs:
+      start: 1
     content:
       -
         type: listItem
@@ -98,6 +114,8 @@ html_content:
             content:
               -
                 type: orderedList
+                attrs:
+                  start: 1
                 content:
                   -
                     type: listItem
@@ -107,10 +125,10 @@ html_content:
                         content:
                           -
                             type: text
-                            text: 'Growth is becoming more and more difficult to maintain.'
                             marks:
                               -
                                 type: bold
+                            text: 'Growth is becoming more and more difficult to maintain.'
                           -
                             type: text
                             text: " It's a question of mass. Take the example of Apple. Its revenues amount to more than $383\_billion, while its market capitalization reaches nearly $2.9\_trillion ($2,900\_billion). Projecting a compound annual growth rate of 10% per year over the next 10 years, the company's revenues would approach $1.0\_trillion, and its capitalization would exceed $7.5\_trillion. To put things in perspective, the size of the Canadian economy is approximately $2.1\_trillion; that of the European Union is nearly $19.5\_billion."
@@ -122,10 +140,10 @@ html_content:
                         content:
                           -
                             type: text
-                            text: 'Competition becomes stronger.'
                             marks:
                               -
                                 type: bold
+                            text: 'Competition becomes stronger.'
                           -
                             type: text
                             text: ' Companies that achieve well-above-average profitability attract competition, which, over time, reduces their profit margins. It is not easy to attack the business model of companies such as Apple or Microsoft, but it is certain that many companies seek to attack certain segments of their activities. This is without mentioning the regulations which will probably increase.'
@@ -137,10 +155,10 @@ html_content:
                         content:
                           -
                             type: text
-                            text: 'Valuations are expected to decrease.'
                             marks:
                               -
                                 type: bold
+                            text: 'Valuations are expected to decrease.'
                           -
                             type: text
                             text: ' For example, Microsoft stock trades at nearly 33.0 times forecasted earnings for the next fiscal year (June 2024); that of Tesla, at more than 60.0 times forecasted 2024 earnings.'
@@ -152,6 +170,8 @@ html_content:
         text: 'In this context, here are the conclusions I arrive at:'
   -
     type: orderedList
+    attrs:
+      start: 1
     content:
       -
         type: listItem
@@ -160,49 +180,41 @@ html_content:
             type: paragraph
             content:
               -
-                type: orderedList
-                content:
-                  -
-                    type: listItem
-                    content:
-                      -
-                        type: paragraph
-                        content:
-                          -
-                            type: text
-                            text: 'Continue to favour quality company stocks at reasonable prices;'
-                  -
-                    type: listItem
-                    content:
-                      -
-                        type: paragraph
-                        content:
-                          -
-                            type: text
-                            text: 'Do not hesitate to invest outside the United States when opportunities arise to buy quality companies at a good price;'
-                  -
-                    type: listItem
-                    content:
-                      -
-                        type: paragraph
-                        content:
-                          -
-                            type: text
-                            text: 'Pay attention to your portfolio’s exposure to “magnificent seven” stocks;'
-                  -
-                    type: listItem
-                    content:
-                      -
-                        type: paragraph
-                        content:
-                          -
-                            type: text
-                            text: 'Do not compare the performance of your portfolio too much to that of American indexes; and, if you do so, exclude the magnificent seven from these.'
+                type: text
+                text: 'Continue to favour quality company stocks at reasonable prices;'
+      -
+        type: listItem
+        content:
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: 'Do not hesitate to invest outside the United States when opportunities arise to buy quality companies at a good price;'
+      -
+        type: listItem
+        content:
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: 'Pay attention to your portfolio’s exposure to “magnificent seven” stocks;'
+      -
+        type: listItem
+        content:
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: 'Do not compare the performance of your portfolio too much to that of American indexes; and, if you do so, exclude the magnificent seven from these.'
   -
     type: paragraph
     content:
       -
         type: text
         text: 'On behalf of the entire COTE 100 team, I would like to take this opportunity to offer you my best wishes for 2024!'
-slug: 'Review of 2023'
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722540274
 ---

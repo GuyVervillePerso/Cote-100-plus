@@ -2,13 +2,8 @@
 id: daeb16a0-dbc2-47d1-9a32-b1da2dced37a
 origin: fbcc012e-7188-4a3e-9e5a-1c1e8fd41143
 title: 'The Worst Deadly Sin?'
+chapeau: 'In my opinion, there are two related phenomena that affect most investors and encourage them to make mistakes.'
 html_content:
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: 'In my opinion, there are two related phenomena that affect most investors and encourage them to make mistakes.'
   -
     type: paragraph
     content:
@@ -28,14 +23,21 @@ html_content:
         type: text
         text: 'I remember as if it were yesterday an investor who called me several years ago (I think it must have been in the fall of 2018) and who wanted to buy Canopy Growth shares. From memory, he told me something like this: “All my golf buddies have made a fortune in cannabis stocks, and they can’t stop boasting about it! I cannot stand it anymore! I want to buy Canopy Growth shares and take advantage of this windfall!” The stock had experienced quite the rise in the stock market in previous years and was worth almost $600 per share (considering a 1-for-10 reverse split carried out in December 2023). Today it is worth almost $12. We managed to convince him not to invest in the stock, but if he had only listened to his emotions, he would have done so.'
   -
-    type: image
-    attrs:
-      src: 'https://plus.cote100.com/wp-content/uploads/2024/05/Image1.png'
-    marks:
+    type: paragraph
+    content:
       -
-        type: link
+        type: image
         attrs:
-          href: 'https://plus.cote100.com/wp-content/uploads/2024/05/Image1.png'
+          src: 'asset::assets::vxuploads/2024/05/Image1.png'
+          alt: null
+        marks:
+          -
+            type: link
+            attrs:
+              href: 'asset::assets::vxuploads/2024/05/Image1.png'
+              rel: null
+              target: null
+              title: null
   -
     type: paragraph
     content:
@@ -62,19 +64,19 @@ html_content:
         text: 'Charlie Munger has often said that of the seven deadly sins, envy is the worst of all: '
       -
         type: text
-        text: '“Envy is a really stupid sin because it’s the only one you could never possibly have any fun at. There’s a lot of pain and no fun. Why would you want to get on that trolley?” '
         marks:
           -
             type: italic
+        text: '“Envy is a really stupid sin because it’s the only one you could never possibly have any fun at. There’s a lot of pain and no fun. Why would you want to get on that trolley?” '
       -
         type: text
         text: 'However, envy and jealousy are omnipresent in everyday life and among investors. Still according to Munger, '
       -
         type: text
-        text: '“The world is not driven by greed: it’s driven by envy.”'
         marks:
           -
             type: italic
+        text: '“The world is not driven by greed: it’s driven by envy.”'
   -
     type: paragraph
     content:
@@ -105,5 +107,6 @@ html_content:
       -
         type: text
         text: 'The best reaction to the success of others would be to congratulate them for their good fortune. At the very least, we should be grateful for what we have.'
-slug: 'The Worst Deadly Sin?'
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722538685
 ---

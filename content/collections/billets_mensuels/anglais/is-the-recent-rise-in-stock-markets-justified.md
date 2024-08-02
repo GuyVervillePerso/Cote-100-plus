@@ -2,22 +2,8 @@
 id: e594a328-a1ed-4b8e-a30e-ab4a6d7d9e9e
 origin: 89a176c9-aa0f-4e69-81d0-ea8eea7a489b
 title: 'Is the Recent Rise in Stock Markets Justified?'
+chapeau: "Stock markets have literally exploded in recent months. Since its low reached on October 27, 2023, the S&P\_500 index has rebounded 23.6%. As for the Canadian S&P/TSX index, since the same date, it has appreciated by nearly 14.3%. If we wanted a confirmation that stock markets are unpredictable in the short term, they just gave us another one. This reinforces our conviction that we must always be present on the stock market."
 html_content:
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: "Stock markets have literally exploded in recent months. Since its low reached on October 27, 2023, the S&P\_500 index has rebounded 23.6%. As for the Canadian S&P/TSX index, since the same date, it has appreciated by nearly 14.3%. If we wanted a confirmation that stock markets are unpredictable in the short term, they just gave us another one. This reinforces our conviction that we must always be "
-      -
-        type: text
-        text: present
-        marks:
-          -
-            type: italic
-      -
-        type: text
-        text: ' on the stock market.'
   -
     type: paragraph
     content:
@@ -37,8 +23,11 @@ html_content:
         type: text
         text: "In my opinion, this data is reflected in the results of the companies we hold in the COTE\_100+ portfolio. As of February 26, 18 of the 25 portfolio companies (72%) had released their quarterly results in the last month; for most of them, these are results for the quarter ended December 31, 2023. I believe this is a large enough sample to get an idea of the general progress of the portfolio companies."
   -
-    type: text
-    text: 'So here is what I see:'
+    type: paragraph
+    content:
+      -
+        type: text
+        text: 'So here is what I see:'
   -
     type: paragraph
     content:
@@ -81,5 +70,6 @@ html_content:
       -
         type: text
         text: "It is obviously difficult to predict how much your companies' earnings growth will be over the next five to ten years. This growth will depend in part on unpredictable factors such as economic growth, changes in interest rates and geopolitical events. However, when I consider the companies we own, the sustainability of their business models, their competitive advantages, and their financial health, I do not believe I am wrong in suggesting that their EPS, as a whole, should have doubled ten years from now."
-slug: 'Is the Recent Rise in Stock Markets Justified?'
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722539203
 ---

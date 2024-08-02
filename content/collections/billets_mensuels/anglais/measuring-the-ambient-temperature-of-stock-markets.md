@@ -2,13 +2,8 @@
 id: b5b4947b-fa9f-46bd-b81f-d35e5471df8d
 origin: e2ba399b-c6c1-42f8-92f6-976e3411477b
 title: 'Measuring the Ambient Temperature of Stock Markets'
+chapeau: 'For several years, we have implemented a management tool that I consider very instructive regarding the affordability of the stock market as a whole and the attractiveness of our portfolios under management.'
 html_content:
-  -
-    type: paragraph
-    content:
-      -
-        type: text
-        text: 'For several years, we have implemented a management tool that I consider very instructive regarding the affordability of the stock market as a whole and the attractiveness of our portfolios under management.'
   -
     type: paragraph
     content:
@@ -46,14 +41,21 @@ html_content:
         type: text
         text: 'It is this statistic that I consider instructive, particularly when compared with those of the past. For the COTE 100 Financial Bulletin portfolio, we use a similar portfolio under our management. Thus, as of January 30, 2024, this portfolio showed an average expected return of 8.5% for the next 12 months. Is it attractive? How does this compare to past years (we started collecting this data in November 2021):'
   -
-    type: image
-    attrs:
-      src: 'https://plus.cote100.com/wp-content/uploads/2024/02/Billet_1_en.png'
-    marks:
+    type: paragraph
+    content:
       -
-        type: link
+        type: image
         attrs:
-          href: 'https://plus.cote100.com/wp-content/uploads/2024/02/Billet_1_en.png'
+          src: 'asset::assets::blog/billet_1_en-1536x860.png'
+          alt: null
+        marks:
+          -
+            type: link
+            attrs:
+              href: 'asset::assets::vxuploads/2024/02/Billet_1_en.png'
+              rel: null
+              target: null
+              title: null
   -
     type: paragraph
     content:
@@ -84,5 +86,6 @@ html_content:
       -
         type: text
         text: 'I would add that for a long-term investor like us, a 12-month horizon is not very long. We think more in terms of years than months.'
-slug: 'Measuring the Ambient Temperature of Stock Markets'
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722539472
 ---

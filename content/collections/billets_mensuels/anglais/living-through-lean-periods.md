@@ -80,7 +80,7 @@ html_content:
           -
             type: link
             attrs:
-              href: 'https://plus.cote100.com/wp-content/uploads/2024/07/2ENG-1.png'
+              href: 'asset::assets::vxuploads/2024/07/2ENG-1.png'
               rel: null
               target: null
               title: null
