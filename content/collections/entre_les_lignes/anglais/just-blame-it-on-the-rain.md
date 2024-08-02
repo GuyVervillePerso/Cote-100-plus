@@ -90,6 +90,7 @@ html_content:
       -
         type: text
         text: 'In sports, the excuses of a losing team are rarely well-received. The same culture should be adopted in the corporate world.'
+temps_lecture: 2.0
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1721927080
+updated_at: 1722610354
 ---

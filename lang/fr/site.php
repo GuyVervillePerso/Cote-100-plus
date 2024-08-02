@@ -8,6 +8,7 @@ return [
     'btl' => 'Entre les lignes',
     'btlurl' => '',
     'cancel' => 'Annuler',
+    'clock' => 'Horloge',
     'close' => 'Fermer',
     'closeModal' => 'Fermer la fenêtre',
     'connect' => 'Se connecter',

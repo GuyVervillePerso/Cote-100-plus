@@ -17,7 +17,9 @@ html_content:
         type: text
         text: 'Following this transaction, Facebook’s “intelligent” algorithm kept showing me 2007 Honda Civics in my Marketplace news feed. Two weeks later, I saw my car listed for sale again, this time at $1,500 more than I had sold it for! Despite this missed profit, I must admit that I found the experience interesting as I noticed several similarities with the world of investing. Here are three.'
   -
-    type: paragraph
+    type: heading
+    attrs:
+      level: 2
     content:
       -
         type: text
@@ -41,7 +43,9 @@ html_content:
         type: text
         text: 'At COTE 100, we take the time to complete our internal reports, read the press releases and conference calls, and discuss the important elements with the investment team before doing anything with a stock. We favor a methodical and thorough approach. As my story clearly demonstrates, acting under pressure and urgency can lead to mistakes.'
   -
-    type: paragraph
+    type: heading
+    attrs:
+      level: 2
     content:
       -
         type: text
@@ -65,7 +69,9 @@ html_content:
         type: text
         text: 'In investing, it is important to stay within your circle of competence. In my case, there are sectors where I understand the risks and growth potential of the companies better. It is in these sectors that I am more likely to discover investment opportunities. I believe it is therefore better to focus your energies on sectors where you are comfortable and avoid those where your knowledge is inferior. If you still decide to venture into them, you will certainly need to put in a lot of effort and time to thoroughly study the situation. In summary, you increase your chances of losing if you trade in a sector you know little about.'
   -
-    type: paragraph
+    type: heading
+    attrs:
+      level: 2
     content:
       -
         type: text
@@ -94,6 +100,7 @@ html_content:
       -
         type: text
         text: 'The important point to remember is that you must ensure you get a sufficient margin of safety when buying a stock. This way, you significantly reduce the risk of an investment. Did the young man who bought my car need to know its precise value? I don’t think so. Thanks to a good margin of safety and a well-defined circle of competence, this buyer managed to make a few hundred dollars off my back. Well done, Julien!'
+temps_lecture: 3.0
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1721930658
+updated_at: 1722610431
 ---

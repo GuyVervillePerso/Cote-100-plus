@@ -160,4 +160,5 @@ html_content:
         text: 'Although it sounds simple, it’s not always easy to achieve. If it were, all podcasts would have hundreds of thousands of listeners and all investors would be millionaires.'
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
 updated_at: 1721930138
+temps_lecture: 2.0
 ---

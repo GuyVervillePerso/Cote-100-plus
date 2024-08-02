@@ -8,6 +8,7 @@ return [
     'btl' => 'Between The Lines',
     'btlurl' => 'commentaries/between-the-lines',
     'cancel' => 'Cancel',
+    'clock' => 'Clock',
     'close' => 'Close',
     'closemodal' => 'Close Modal',
     'connect' => 'Connect',

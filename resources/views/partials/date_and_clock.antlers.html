@@ -1,0 +1,12 @@
+<div class="flex space-x-4 robotoLight {{ size or 'text-sm' }} text-mediumGray {{ extra_classes }} mt-3">
+    <div>{{ date | format('Y-m-d') }}</div>
+    <div class="flex space-x-1">
+        {{ if temps_lecture }}
+            {{ asset url="/assets/clock.svg" }}
+            <img src="{{ url }}" alt="
+
+            {{ trans:site.clock }}"><span>{{ temps_lecture }} min.</span>
+            {{ /asset }}
+        {{ /if }}
+    </div>
+</div>

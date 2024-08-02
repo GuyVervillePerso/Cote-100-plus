@@ -2,12 +2,10 @@
 	<section class="mb-10">
 		<div class="roboto-supertitle uppercase"><a href="{{ parent }}/{{ parenturl }}">{{ section }}</a></div>
 		<h1 class="title">{{ title }}</h1>
-		<div class="font-light text-lg text-mediumGray mb-[50px]">
-			{{ date | format('Y-m-d') }}
-		</div>
+        {{ partial:date_and_clock size="text-lg" extra_classes="mb-[30px]" }}
 		<div class="roboto-flex-body grid md:grid-cols-[1fr_320px] gap-12">
 			<div>
-				<div class="mb-8">
+				<div class="mb-12">
 					{{ main_visual }}
 					{{ partial:srcset url="{{url}}" dw="654" dh="400" tw="654" th="400" mw="315" mh="260" }}
 					{{ /main_visual }}

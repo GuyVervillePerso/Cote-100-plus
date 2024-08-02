@@ -135,3 +135,9 @@ tabs:
               type: radio
               display: 'Auteur invité'
               localizable: false
+          -
+            handle: temps_lecture
+            field:
+              type: integer
+              display: 'Temps de lecture'
+              localizable: true

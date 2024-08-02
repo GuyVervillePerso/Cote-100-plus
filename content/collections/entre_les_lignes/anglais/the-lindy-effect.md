@@ -133,6 +133,7 @@ html_content:
       -
         type: text
         text: "\_brand still be as popular in a few years? If you believe it will, the stock price seems attractive at around 18 times the expected earnings. As for me, I am still pondering, but I have yet to discover the elements that will allow me to answer confidently. In the meantime, every passing day improves its chances of survival."
+temps_lecture: 2.0
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
-updated_at: 1722354423
+updated_at: 1722610331
 ---
