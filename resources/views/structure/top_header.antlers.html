@@ -38,6 +38,11 @@
 					{{ /partial:menu/lidrop }}
 				</ul>
 			</nav>
+		{{ elseif {session:canreadarticle} }}
+            <div class="flex justify-end space-x-4 h-[45px]">
+                <div class="border-l border-gray-300 px-6 pt-2">
+                    <a href="#">{{ trans:site.subscribe }}</a></div>
+            </div>
 		{{ else }}
 			<div class="flex justify-end space-x-4 h-[45px]">
 				<div class="border-l border-gray-300 px-6 pt-2">

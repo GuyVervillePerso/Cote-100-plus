@@ -161,6 +161,7 @@ class SearchForm extends Search
                     'chapeau' => $entry->chapeau,
                     'date' => $entry->date->format('Y-m-d'),
                     'url' => $entry->url(),
+                    'temps_lecture' => $entry->temps_lecture,
                     'image' => $entry->main_visual ? $entry->main_visual->toArray() : null,
                 ];
             })->toArray();

@@ -40,7 +40,7 @@
                                 {{ title }}
                             </h2>
                             {{ chapeau | safe_truncate(200, '…') }}
-                            <div class="font-light text-sm text-mediumGray mt-3">{{ date }}</div>
+                            {{ partial:date_and_clock }}
                         </div>
                     </div>
                 </a>

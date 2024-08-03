@@ -4,8 +4,10 @@
 //    'title' => 'Example'
 // ]);
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\LireArticleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/import/blog-entries', [ImportController::class, 'importMonthlyEntries']);
 Route::get('/import/json-entries', [ImportController::class, 'importJSONEntries']);
 Route::get('/import/title-entries', [ImportController::class, 'importTitleEntries']);
+Route::get('/lirearticle/{token}', [LireArticleController::class, 'lireArticle'])->name('lirearticle');

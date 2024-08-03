@@ -1,0 +1,86 @@
+<div class="px-6 py-10 border border-gray90 rounded-lg mb-10">
+    <div class="uppercase text-xl condensedMedium">{{ trans:site.share_article }}</div>
+    <div class="share flex gap-2 align-middle mt-8">
+        {{ asset url='/assets/share.svg' }}
+            <img class="max-h-6" src="{{ url }}" alt="{{ alt }}"/>
+        {{ /asset }}
+        <div x-data="{ open: false }" class="flex justify-center">
+            <!-- Trigger -->
+            <span x-on:click="open = true">
+        <button type="button" class="inline-block">
+            {{ trans:site.share }}
+        </button>
+    </span>
+            <!-- Modal -->
+            <div
+                x-dialog
+                x-model="open"
+                style="display: none"
+                class="fixed inset-0 overflow-y-auto z-10"
+            >
+                <!-- Overlay -->
+                <div x-dialog:overlay x-transition.opacity
+                     class="fixed inset-0 from-transparent to-white bg-gradient-to-b"></div>
+
+                <!-- Panel -->
+                <div
+                    class="relative min-h-screen flex items-center justify-center p-4"
+                >
+                    <div
+                        x-dialog:panel
+                        x-transition
+                        class="relative max-w-xl w-full bg-white rounded-xl shadow-lg"
+                    >
+                        <!-- Body -->
+                        <div class="p-8">
+                            <!-- Title -->
+                            <h2 x-dialog:title
+                                class="text-2xl condensedMedium uppercase text-limeGreen">{{trans:site.share_article}}</h2>
+                            <p class="font-bold mb-4">{{ trans:site.insertemail }}</p>
+                            <!-- Content -->
+                            <form wire:submit="save">
+                                {{ if emailerror != '' }}
+                                    <div class="my-2 px-2 bg-red-500 text-white">
+                                        {{ emailerror }}
+                                    </div>
+                                {{ /if }}
+                                {{ if emailsuccess != '' }}
+                                    <div class="my-2 px-2 bg-lime-600 text-white">
+                                        {{ emailsuccess }}
+                                    </div>
+                                {{ /if }}
+                                <label for="email"
+                                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{trans:site.email}}</label>
+
+                                <input wire:model="destinee_email" type="email" name="email" value="{{ old:email }}"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       required/>
+
+                                {{ if success }}
+                                    <div class="bg-green-300 text-white p-2">
+                                        {{ success }}<br>
+                                    </div>
+                                {{ /if }}
+                                <!-- Footer -->
+                                <div class="p-4 mt-4 flex justify-end space-x-2">
+                                    <button type="button" x-on:click="$dialog.close()"
+                                            class="text-limeGreen focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg px-5 py-2.5">
+                                        {{trans:site.cancel}}
+                                    </button>
+                                    <button type="submit"
+                                            class="bg-limeGreen focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 px-5 py-2 rounded-lg text-white">
+                                        {{trans:site.send}}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
