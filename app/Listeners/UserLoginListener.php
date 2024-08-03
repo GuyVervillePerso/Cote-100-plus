@@ -17,5 +17,6 @@ class UserLoginListener
     {
         $current_user = $event->user;
         session(['portfolio' => $current_user->portfolio]);
+        session(['canreadarticle' => false]);
     }
 }

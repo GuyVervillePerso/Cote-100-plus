@@ -18,7 +18,7 @@ class LireArticleController extends Controller
     {
         $now = new DateTime;
         $canread = false;
-
+        session()->put('canreadarticle', $canread);
         $this->token = strip_tags($token);
         $this->sharedArticle = Share::where('token', $this->token)->first();
         if ($this->sharedArticle) {
