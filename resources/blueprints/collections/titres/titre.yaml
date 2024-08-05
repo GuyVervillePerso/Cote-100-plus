@@ -4,6 +4,7 @@ tabs:
     display: Principal
     sections:
       -
+        display: 'En bref'
         fields:
           -
             handle: title
@@ -14,11 +15,49 @@ tabs:
               validate:
                 - required
           -
+            handle: trimestre_en_bref
+            field:
+              type: replicator
+              display: 'Trimestre en bref'
+              localizable: true
+              sets:
+                nouveau_groupe_densembles:
+                  display: "Nouveau groupe d'ensembles"
+                  sets:
+                    en-bref:
+                      display: 'En bref'
+                      fields:
+                        -
+                          handle: icon
+                          field:
+                            type: icon
+                            display: Icône
+                            localizable: false
+                            width: 25
+                            directory: public/assets/icons
+                        -
+                          handle: comment
+                          field:
+                            type: text
+                            display: Commentaire
+                            localizable: true
+                            width: 75
+      -
+        fields:
+          -
+            handle: scenario_achat
+            field:
+              type: markdown
+              display: "Scénario d'achat initial"
+              localizable: true
+              width: 50
+          -
             handle: courte_description
             field:
               type: markdown
               display: 'Courte description'
               localizable: true
+              width: 50
           -
             handle: devise_evaluation
             field:
@@ -92,19 +131,12 @@ tabs:
               localizable: false
               width: 33
           -
-            handle: scenario_achat
-            field:
-              type: markdown
-              display: "Scénario d'achat initial"
-              localizable: true
-              width: 50
-          -
             handle: variation_annee_en_cours
             field:
               type: integer
               display: 'Variation année en cours'
               localizable: false
-              width: 50
+              width: 33
           -
             handle: statut
             field:
@@ -116,14 +148,17 @@ tabs:
               type: terms
               display: Statut
               localizable: false
-              width: 50
+              width: 33
           -
             handle: date_vendu
             field:
               type: date
               display: 'Date vendu'
               localizable: false
-              width: 50
+              width: 33
+      -
+        display: Portefeuilles
+        fields:
           -
             handle: pourcentage_dans_portefeuille
             field:
@@ -155,34 +190,9 @@ tabs:
                             display: 'Pourcentage valeur'
                             localizable: false
                             width: 25
-          -
-            handle: trimestre_en_bref
-            field:
-              type: replicator
-              display: 'Trimestre en bref'
-              localizable: true
-              sets:
-                nouveau_groupe_densembles:
-                  display: "Nouveau groupe d'ensembles"
-                  sets:
-                    en-bref:
-                      display: 'En bref'
-                      fields:
-                        -
-                          handle: icon
-                          field:
-                            type: icon
-                            display: Icône
-                            localizable: false
-                            width: 25
-                            directory: public/assets/icons
-                        -
-                          handle: comment
-                          field:
-                            type: text
-                            display: Commentaire
-                            localizable: true
-                            width: 75
+      -
+        display: Coordonnées
+        fields:
           -
             handle: president
             field:
@@ -257,7 +267,7 @@ tabs:
               type: terms
               taxonomies:
                 - variantes_portefeuille
-              display: 'Variantes de portefeuille'
+              display: Portefeuilles
               mode: select
               localizable: false
           -

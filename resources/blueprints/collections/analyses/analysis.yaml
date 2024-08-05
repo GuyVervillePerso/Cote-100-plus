@@ -47,8 +47,10 @@ tabs:
               collections:
                 - titres
               type: entries
-              display: Titre
+              display: 'Titre analysé'
               localizable: false
+              validate:
+                - required
           -
             handle: slug
             field:

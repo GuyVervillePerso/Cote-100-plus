@@ -10,8 +10,8 @@
            <div class="text-4xl font-robotoCondensed uppercase mb-8">{{ title }}</div>
         {{ /if }}
     {{ /taxonomy:variantes_portefeuille }}
-
-    <div class="grid grid-cols-1 md:grid-cols-3  gap-8">
+    {{ livewire:search-title template='partials.search_title'}}
+   {{#  <div class="grid grid-cols-1 md:grid-cols-3  gap-8">
         {{ collection:titres taxonomy:variantes_portefeuille="{portfolio}" }}
             <div class="bg-white rounded-2xl">
                 {{ get_date_ago date="{updated_at}" }}
@@ -19,7 +19,7 @@
                 <a href="{{ url }}">{{ title }} </a>
             </div>
         {{ /collection:titres }}
-    </div>
+    </div> #}}
     {{ get_content from="{test}" }}
         {{ content }}
     {{ /get_content }}
