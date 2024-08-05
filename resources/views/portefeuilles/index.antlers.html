@@ -1,3 +1,19 @@
+{{ portfolio = {session:portfolio} }}
+<h1>{{ parent }}{{ title }}{{ /parent }}</h1>
 
-{{ partial src="/portefeuilles/{ session:portfolio }" }}
+<section>
+    <ul>
+        {{collection:titres taxonomy:variantes_portefeuille="{portfolio}" }}
+            <li>
+                <a href="{{ url }}">{{ title }} </a>
+            </li>
+        {{ /collection:titres }}
+    </ul>
+    {{ get_content from="{test}" }}
+        {{ content }}
+    {{ /get_content }}
+
+</section>
+
+{{ partial src="/portefeuilles/{ portfolio }" }}
 

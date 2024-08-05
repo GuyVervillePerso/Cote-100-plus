@@ -1,13 +1,13 @@
-title: Portefeuilles
+title: Analyses
 sites:
   - default
   - anglais
-propagate: true
-template: portefeuilles/show
+propagate: false
+template: default
 layout: layout
 revisions: false
-route: 'portefeuilles/{slug}'
-sort_dir: asc
+date: true
+sort_dir: desc
 date_behavior:
   past: public
   future: private

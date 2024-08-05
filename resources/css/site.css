@@ -96,7 +96,7 @@ footer {
 }
 
 header {
-    @apply w-full pb-3 md:pb-1 mb-6 md:mb-6 border-b md:border-0 border-gray65 ;
+    @apply w-full pb-3 md:pb-0 border-b md:border-0 border-gray65 ;
 }
 
 #desktopNav a {

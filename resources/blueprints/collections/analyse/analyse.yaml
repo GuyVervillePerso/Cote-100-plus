@@ -1,4 +1,4 @@
-title: Page
+title: Analyse
 tabs:
   main:
     display: Principal
@@ -10,7 +10,7 @@ tabs:
             field:
               type: text
               required: true
-              localizable: true
+              localizable: false
               validate:
                 - required
           -
@@ -33,6 +33,16 @@ tabs:
               type: template
               display: Template
               localizable: true
+          -
+            handle: champ_entries
+            field:
+              max_items: 1
+              create: false
+              collections:
+                - titres
+              type: entries
+              display: 'Champ Entries'
+              localizable: false
   sidebar:
     display: Sidebar
     sections:
@@ -44,28 +54,3 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
-          -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - pages
-              max_items: 1
-              listable: false
-              localizable: true
-          -
-            handle: date
-            field:
-              type: date
-              required: true
-              default: now
-              localizable: false
-              validate:
-                - required
-          -
-            handle: dans_menu
-            field:
-              default: true
-              type: toggle
-              display: 'Dans menu'
-              localizable: false

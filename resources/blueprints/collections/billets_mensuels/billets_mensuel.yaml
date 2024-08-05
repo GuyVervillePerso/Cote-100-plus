@@ -126,9 +126,12 @@ tabs:
             field:
               type: users
               display: Author
-              default: current
+              default:
+                - 9c87d8d7-e83f-438d-8d13-6efd9c2fae40
               localizable: false
               max_items: 1
+              query_scopes:
+                - "role='redaction'"
           -
             handle: auteur_invite
             field:

@@ -1,4 +1,4 @@
-title: Page
+title: Analysis
 tabs:
   main:
     display: Principal
@@ -24,7 +24,8 @@ tabs:
             field:
               type: users
               display: Author
-              default: current
+              default:
+                - 9c55616c-7340-47e9-bc83-f0bc3da40785
               localizable: true
               max_items: 1
           -
@@ -39,20 +40,21 @@ tabs:
       -
         fields:
           -
+            handle: titre
+            field:
+              max_items: 1
+              mode: typeahead
+              collections:
+                - titres
+              type: entries
+              display: Titre
+              localizable: false
+          -
             handle: slug
             field:
               type: slug
               localizable: true
               validate: 'max:200'
-          -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - pages
-              max_items: 1
-              listable: false
-              localizable: true
           -
             handle: date
             field:
@@ -62,10 +64,3 @@ tabs:
               localizable: false
               validate:
                 - required
-          -
-            handle: dans_menu
-            field:
-              default: true
-              type: toggle
-              display: 'Dans menu'
-              localizable: false

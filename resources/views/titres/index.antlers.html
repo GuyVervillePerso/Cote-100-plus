@@ -1,5 +1,27 @@
-<section>
-    {{ collection from="titres" }}
-        <a href="{{ url }}">{{ title }}</a>
-    {{ /collection }}
+{{ portfolio = {session:portfolio} }}
+
+<section class="bg-gray70 py-8">
+    <div class="roboto-supertitle uppercase">
+        {{ parent }}{{ title }}{{ /parent }}
+    </div>
+    <h1 class="font-robotoCondensed text-7xl uppercase">{{ title }}</h1>
+    {{ taxonomy:variantes_portefeuille }}
+        {{ if slug == "{portfolio}" }}
+           <div class="text-4xl font-robotoCondensed uppercase mb-8">{{ title }}</div>
+        {{ /if }}
+    {{ /taxonomy:variantes_portefeuille }}
+
+    <div class="grid grid-cols-1 md:grid-cols-3  gap-8">
+        {{ collection:titres taxonomy:variantes_portefeuille="{portfolio}" }}
+            <div class="bg-white rounded-2xl">
+                {{ get_date_ago date="{updated_at}" }}
+                <div class="header">header</div>
+                <a href="{{ url }}">{{ title }} </a>
+            </div>
+        {{ /collection:titres }}
+    </div>
+    {{ get_content from="{test}" }}
+        {{ content }}
+    {{ /get_content }}
+
 </section>

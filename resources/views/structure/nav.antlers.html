@@ -6,16 +6,19 @@
                 {{ partial:menu/lidrop }}
                     {{ slot:title }}{{ title }}{{ /slot:title }}
                     {{ children }}
-                        {{ user:is role="client|redaction" }}
-                            <li><a class="text-grayMenu" href="{{ url }}">{{ title }}</a></li>
-                        {{ /user:is }}
-                        {{ user:isnt role="client|redaction" }}
-                            <li class="notAllowed cursor-not-allowed text-grayMenu"><a class="cursor-not-allowed" href="#">{{ title }}{{partial:menu/lock}}</a></li>
-                        {{ /user:isnt }}
+                                {{ user:is role="client|redaction" }}
+                                    <li><a class="text-grayMenu" href="{{ url }}">{{ title }}</a></li>
+                                {{ /user:is }}
+                                {{ user:isnt role="client|redaction" }}
+                                    <li class="notAllowed cursor-not-allowed text-grayMenu"><a class="cursor-not-allowed" href="#">{{ title }}{{partial:menu/lock}}</a></li>
+                                {{ /user:isnt }}
+
                     {{ /children }}
                 {{ /partial:menu/lidrop }}
             {{ else }}
+                {{ if dans_menu }}
                 <li class="alone {{ if is_current || is_parent }}menuActive"{{ /if }}><a href="{{ if logged_in }}{{url}}{{ else }}#{{ /if }}">{{title}}</a></li>
+                {{ /if }}
             {{ /if }}
             {{ /nav:collection:pages }}
         </ul>

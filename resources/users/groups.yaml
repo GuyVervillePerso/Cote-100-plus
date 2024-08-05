@@ -1,5 +1,4 @@
 clients:
   title: Clients
   roles:
-    - redaction
     - client

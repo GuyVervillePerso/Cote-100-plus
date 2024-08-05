@@ -6,11 +6,14 @@ propagate: false
 template: titres/show
 layout: layout
 mount: 6d420a2b-f094-42ec-b7fa-1af5800210b8
+taxonomies:
+  - variantes_portefeuille
 revisions: false
 route:
   default: 'titres/{slug}'
   anglais: 'titles/{slug}'
-sort_dir: asc
+date: true
+sort_dir: desc
 date_behavior:
   past: public
   future: private

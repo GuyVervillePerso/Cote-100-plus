@@ -9,8 +9,26 @@ symbole_en_bourse: 'NYSE:BABA'
 author: 9c87d8d7-e83f-438d-8d13-6efd9c2fae40
 adresse: '969 West Wen Yi Road, Hangzhou, Zhejiang, Chine'
 site_web: 'http://www.alibabagroup.com/'
-updated_at: 2021-05-06T15:25:25+00:00
+updated_at: 1722876861
 slug: alibaba
-date_de_recommandation: 2021-05-06T15:25:25+00:00
-main_visual: 'assets::logos/baba_logo-1.png'
+date_de_recommandation: 2021-05
+main_visual: logos/baba_logo-1.png
+variantes_portefeuille:
+  - cote-100-croissance
+  - cote-100-valeur
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+statut: en-portefeuille
+pourcentage_dans_portefeuille:
+  -
+    id: lzh8dpz4
+    portefeuille: cote-100-croissance
+    pourcentage_valeur: 4.0
+    type: appartenance
+    enabled: true
+  -
+    id: lzh8dwoe
+    portefeuille: cote-100-valeur
+    pourcentage_valeur: 4.0
+    type: appartenance
+    enabled: true
 ---

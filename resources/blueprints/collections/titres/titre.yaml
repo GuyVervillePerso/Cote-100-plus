@@ -97,14 +97,33 @@ tabs:
               type: markdown
               display: "Scénario d'achat initial"
               localizable: true
-              width: 66
+              width: 50
           -
             handle: variation_annee_en_cours
             field:
               type: integer
               display: 'Variation année en cours'
               localizable: false
-              width: 33
+              width: 50
+          -
+            handle: statut
+            field:
+              max_items: 1
+              mode: select
+              create: false
+              taxonomies:
+                - statut_portefeuille
+              type: terms
+              display: Statut
+              localizable: false
+              width: 50
+          -
+            handle: date_vendu
+            field:
+              type: date
+              display: 'Date vendu'
+              localizable: false
+              width: 50
           -
             handle: pourcentage_dans_portefeuille
             field:
@@ -115,17 +134,17 @@ tabs:
                 nouveau_groupe_densembles:
                   display: "Nouveau groupe d'ensembles"
                   sets:
-                    appartenances:
-                      display: 'Appartenances aux portefeuille'
+                    appartenance:
+                      display: Appartenance
                       fields:
                         -
-                          handle: appartenance_portefeuille
+                          handle: portefeuille
                           field:
                             mode: select
                             taxonomies:
                               - variantes_portefeuille
                             type: terms
-                            display: 'Appartenance portefeuille'
+                            display: Portefeuille
                             localizable: false
                             width: 75
                             max_items: 1
@@ -226,9 +245,12 @@ tabs:
             field:
               type: users
               display: Author
-              default: current
+              default:
+                - 9c87d916-5626-4536-a8b2-05db37dd87d1
               localizable: true
               max_items: 1
+              query_scopes:
+                - "role='redaction'"
           -
             handle: variantes_portefeuille
             field:
@@ -238,3 +260,12 @@ tabs:
               display: 'Variantes de portefeuille'
               mode: select
               localizable: false
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              localizable: false
+              validate:
+                - required
