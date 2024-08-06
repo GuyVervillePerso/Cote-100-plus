@@ -14,6 +14,25 @@
             <div class="uppercase text-sm text-mediumGray2 font-robotoMedium">{{ trans:site.initialscenario }}</div>
             <div class="pt-2 font-robotoLight text-base">{{ date_de_recommandation }} - {{ cours_actuel }}</div>
         </div>
+        <div class="mt-4 border-b border-gray-200 pb-4 space-y-2">
+            <div class="uppercase text-sm text-mediumGray2 font-robotoMedium">{{ trans:site.quarterInBrief }}</div>
+            <div class="space-y-2">
+                {{ bref }}
+                    <div class="grid grid-cols-[30px_1fr] gap-2 items-center">
+                       <img class="block mx-auto" src="/assets/icons/{{ icon }}.svg" alt="{{ icon }}"/>
+                        <div class="text-base text-mediumGray2">{{ comment }}</div>
+                    </div>
+                {{ /bref }}
+            </div>
+        </div>
+        {{ if url }}
+            <div class="grid grid-cols-[30px_1fr] items-center gap-2 mt-4 font-robotoMedium text-base text-mediumGray2">
+                {{ asset url='/assets/visuals/grayarrowright.svg' }}
+                    <img class="mt-1" src="{{ url }}" alt="{{ alt }}"/>
+                {{ /asset }}
+                <a href="{{ url }}">{{ trans:site.readdetailed }}</a>
+            </div>
+        {{ /if }}
     </div>
 
 </div>

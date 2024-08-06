@@ -126,6 +126,7 @@ class SearchTitle extends Search
                 'cours_actuel' => $this->actualValueInDollars($entry->cours_actuel, $entry->devise_evaluation),
                 'update' => $entry->updated_at->format('Y-m-d'),
                 'url' => $url,
+                'bref' => $this->createInBriefArray($entry),
                 'stock' => $entry->symbole_en_bourse,
                 'hasAnalysis' => $hasAnalysis,
                 'image' => $entry->main_visual ? $entry->main_visual->permalink : null,
@@ -139,6 +140,20 @@ class SearchTitle extends Search
         });
 
         return $entries;
+    }
+
+    protected function createInBriefArray($entry): array
+    {
+        $array = [];
+        $trimestreEnBref = $entry->augmentedValue('trimestre_en_bref');
+        foreach ($trimestreEnBref as $set) {
+            $fields = $set->all();
+            $icon = $fields['icon'] ?? null;
+            $comment = $fields['comment'] ?? null;
+            $array[] = ['icon' => $icon->raw(), 'comment' => $comment->raw()];
+        }
+
+        return $array;
     }
 
     protected function actualValueInDollars($value, $format)
