@@ -13,7 +13,7 @@ updated_at: 2017-12-01T05:00:07+00:00
 slug: elevance-health
 variantes_portefeuille:
     - cote-100-croissance
-    - cote-100-prestige
+    - cote-100-abonne
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
 devise_evaluation: us
 date_de_recommandation: 2017-12-01T05:00:07+00:00

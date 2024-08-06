@@ -84,7 +84,7 @@ class SearchTitle extends Search
                 if ($this->portfolio === $term) {
                     $included = true;
                     $blocked = false;
-                } elseif ($this->portfolio === 'cote-100-prestige' && in_array($term, $termsAllowed)) {
+                } elseif ($this->portfolio === 'cote-100-abonne' && in_array($term, $termsAllowed)) {
                     $included = true;
                     $blocked = true;
                 }

@@ -23,7 +23,7 @@ pourcentage_dans_portefeuille:
     enabled: true
   -
     id: lzgy4prd
-    appartenance_portefeuille: cote-100-prestige
+    appartenance_portefeuille: cote-100-abonne
     pourcentage_valeur: 5.0
     type: appartenances
     enabled: true
@@ -48,6 +48,7 @@ trimestre_en_bref:
     enabled: true
 variantes_portefeuille:
   - cote-100-croissance
+  - cote-100-abonne
 updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
 statut: vendu
 date_vendu: '2024-08-05'
