@@ -1,0 +1,10 @@
+title: 'Acheté récemment'
+updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+updated_at: 1722956722
+blueprint: statut_portefeuille
+localizations:
+  anglais:
+    title: 'Recently purchased'
+    slug: achete-recemment
+    updated_by: 9c55616c-7340-47e9-bc83-f0bc3da40785
+    updated_at: 1722956746

@@ -150,10 +150,10 @@ tabs:
               localizable: false
               width: 33
           -
-            handle: date_vendu
+            handle: date_achat_vente
             field:
               type: date
-              display: 'Date vendu'
+              display: 'Date Achat/Vente'
               localizable: false
               width: 33
       -

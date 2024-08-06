@@ -84,7 +84,29 @@ class SearchTitle extends Search
                     $blocked = true;
                 }
             });
-            $new = Carbon::parse($entry->updated_at)->gt(Carbon::now()->subDays(10));
+            $new = false;
+            switch ($entry->statut) {
+                case 'achat-recemment':
+                    $header = __('site.statusBought').' '.$entry->date_achat_vente->format('d/m/Y');
+                    $new = Carbon::parse($entry->date_achat_vente)->gt(Carbon::now()->subDays(10));
+                    break;
+                case 'vendu':
+                    $header = __('site.statusSold').' '.$entry->date_achat_vente->format('d/m/Y');
+                    $new = Carbon::parse($entry->date_achat_vente)->gt(Carbon::now()->subDays(10));
+                    break;
+                case 'acquisition-potentielle':
+                    $header = __('site.statusUnderReview');
+                    break;
+                default:
+                    if ($hasAnalysis) {
+                        $header = __('site.statusUpdated').' '.$entry->updated_at->format('d/m/Y');
+                        $new = Carbon::parse($entry->updated_at)->gt(Carbon::now()->subDays(10));
+                    } else {
+                        $header = __('site.statusBought').' '.$entry->date_de_recommandation->format('d/m/Y');
+                        $new = Carbon::parse($entry->date_de_recommandation)->gt(Carbon::now()->subDays(10));
+                    }
+                    break;
+            }
 
             return [
                 'id' => $entry->id,
@@ -92,10 +114,12 @@ class SearchTitle extends Search
                 'date' => $entry->date->format('Y-m-d'),
                 'update' => $entry->updated_at->format('Y-m-d'),
                 'url' => $url,
+                'stock' => $entry->symbole_en_bourse,
                 'hasAnalysis' => $hasAnalysis,
                 'image' => $entry->main_visual ? $entry->main_visual->permalink : null,
                 'included' => $included,
                 'blocked' => $blocked,
+                'header' => $header,
                 'new' => $new,
             ];
         })->reject(function ($entry) {
@@ -107,38 +131,37 @@ class SearchTitle extends Search
 
     protected function getSimpleSearch()
     {
-
         if (! Auth::check()) {
             return false;
         }
+
         $this->getSession();
         $entries = $this->getAllTitles();
 
-        ///TODO sort entries from search here
-        ///
-        $entries = $entries->sortBy('blocked')->values()->all();
-        /*
-             $query->when(strlen($this->q) > 4, function ($query) {
-            $query->where('title', 'like', '%'.$this->q.'%')
-        });
-$query->when($this->chosenCategory != '' && $this->chosenCategory != '0', function ($query) {
-            $query->whereTaxonomy($this->tagCollection.'::'.$this->chosenCategory);
-        });
-        */
+        // Sorting and partitioning entries
+        $blockedEntries = [];
+        $allowedEntries = [];
 
-        /* $entries = $query->where('locale', $this->locale)->get()
-             ->map(function ($entry) {
-                 return [
-                     'id' => $entry->id,
-                     'title' => $entry->title,
-                     'chapeau' => $entry->chapeau,
-                     'date' => $entry->date->format('Y-m-d'),
-                     'url' => $entry->url(),
-                     'temps_lecture' => $entry->temps_lecture,
-                     'image' => $entry->main_visual ? $entry->main_visual->toArray() : null,
-                 ];
-             })->toArray();*/
+        foreach ($entries as $entry) {
+            if ($entry['blocked']) {
+                $blockedEntries[] = $entry;
+            } else {
+                $allowedEntries[] = $entry;
+            }
+        }
 
-        return $entries;
+        // Sorting each partition by 'new' in descending order
+        usort($blockedEntries, function ($a, $b) {
+            return $b['new'] <=> $a['new'];
+        });
+
+        usort($allowedEntries, function ($a, $b) {
+            return $b['new'] <=> $a['new'];
+        });
+
+        // Merging sorted partitions
+        $finalSortedEntries = array_merge($allowedEntries, $blockedEntries);
+
+        return $finalSortedEntries;
     }
 }

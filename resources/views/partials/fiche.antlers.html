@@ -1,0 +1,13 @@
+<div class="bg-white rounded-2xl">
+    <div class="header
+        {{ if new }} bg-orange {{ else }} bg-mediumGray{{ /if }} rounded-t-2xl text-center text-white text-xs uppercase font-robotoMedium py-1">{{ header }}</div>
+    <div class="px-[36px] py-6">
+        <div class="grid grid-cols-[1fr_150px] gap-2 align-middle">
+            <div>
+                <h2 class="m-0 text-4xl uppercase font-robotoCondensed"><a href="{{ url }}">{{ title }}</a></h2>
+            </div>
+            <div class="justify-self-end"><img class="max-h-[80px]" src="{{ image }}" alt="logo of {{ title }}"></div>
+        </div>
+    </div>
+
+</div>

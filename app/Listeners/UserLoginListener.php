@@ -16,7 +16,7 @@ class UserLoginListener
     public function handle(Login $event): void
     {
         $current_user = $event->user;
-        session()->put('porfolio', $current_user->portfolio);
-        session()->put('canreadarticle', false);
+        session(['portfolio' => $current_user->portfolio]);
+        session(['canreadarticle' => false]);
     }
 }

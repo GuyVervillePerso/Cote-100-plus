@@ -19,7 +19,6 @@ class UserLogoutListener
      */
     public function handle(Logout $event): void
     {
-        session()->forget('portfolio');
-        session()->forget('canreadarticle');
+        session()->flush();
     }
 }
