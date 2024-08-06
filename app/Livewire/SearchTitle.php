@@ -117,7 +117,6 @@ class SearchTitle extends Search
         ///TODO sort entries from search here
         ///
         $entries = $entries->sortBy('blocked')->values()->all();
-        ray($entries);
         /*
              $query->when(strlen($this->q) > 4, function ($query) {
             $query->where('title', 'like', '%'.$this->q.'%')
