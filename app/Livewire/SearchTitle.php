@@ -60,6 +60,15 @@ class SearchTitle extends Search
 
     protected function getAllTitles()
     {
+        switch ($this->locale) {
+            case 'anglais':
+                $lang = 'en';
+                break;
+            case 'default':
+                $lang = 'fr';
+                break;
+        }
+        Carbon::setLocale($lang);
         $query = Entry::query()
             ->where('collection', 'titres')
             ->where('locale', $this->locale)
@@ -111,7 +120,10 @@ class SearchTitle extends Search
             return [
                 'id' => $entry->id,
                 'title' => $entry->title,
+                'description' => $entry->courte_description,
                 'date' => $entry->date->format('Y-m-d'),
+                'date_de_recommandation' => ucfirst($entry->date_de_recommandation->translatedFormat('F Y')),
+                'cours_actuel' => $this->actualValueInDollars($entry->cours_actuel, $entry->devise_evaluation),
                 'update' => $entry->updated_at->format('Y-m-d'),
                 'url' => $url,
                 'stock' => $entry->symbole_en_bourse,
@@ -127,6 +139,23 @@ class SearchTitle extends Search
         });
 
         return $entries;
+    }
+
+    protected function actualValueInDollars($value, $format)
+    {
+        switch ($format) {
+            case 'ca':
+                $string = $this->locale = 'default' ? $value.' $CAN' : '$'.$value.'CAN';
+                break;
+            case 'us':
+                $string = $this->locale = 'default' ? $value.' $US' : '$'.$value.'US';
+                break;
+            default:
+                $string = $value;
+                break;
+        }
+
+        return $string;
     }
 
     protected function getSimpleSearch()

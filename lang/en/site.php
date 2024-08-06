@@ -23,6 +23,7 @@ return [
     'emailrequired' => 'The email field is required.',
     'emailsuccess' => 'Your invtation has been sent!',
     'goodRead' => 'Enjoy your reading!',
+    'initialscenario' => 'Initial purchase scenario',
     'insertemail' => 'Write the destinee’s email',
     'keywords' => 'Keywords',
     'loading' => 'Loading',

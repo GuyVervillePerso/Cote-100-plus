@@ -2,11 +2,17 @@
     <div class="header
         {{ if new }} bg-orange {{ else }} bg-mediumGray{{ /if }} rounded-t-2xl text-center text-white text-xs uppercase font-robotoMedium py-1">{{ header }}</div>
     <div class="px-[36px] py-6">
-        <div class="grid grid-cols-[1fr_150px] gap-2 align-middle">
+        <div class="grid grid-cols-[1fr_130px] gap-1 align-middle">
             <div>
                 <h2 class="m-0 text-4xl uppercase font-robotoCondensed"><a href="{{ url }}">{{ title }}</a></h2>
+                <p class="font-robotoCondensedMedium uppercase text-2xl text-mediumGray2">{{ stock }}</p>
             </div>
-            <div class="justify-self-end"><img class="max-h-[80px]" src="{{ image }}" alt="logo of {{ title }}"></div>
+            <div class="justify-self-end"><img class="max-h-[60px]" src="{{ image }}" alt="logo of {{ title }}"></div>
+        </div>
+        <div class="font-roboto text-[15px] text-grayMenu py-4">{{ description }}</div>
+        <div class="border-b border-t border-gray-200 py-4">
+            <div class="uppercase text-sm text-mediumGray2 font-robotoMedium">{{ trans:site.initialscenario }}</div>
+            <div class="pt-2 font-robotoLight text-base">{{ date_de_recommandation }} - {{ cours_actuel }}</div>
         </div>
     </div>
 

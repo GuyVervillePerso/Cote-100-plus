@@ -25,6 +25,7 @@ export default {
                 grayMenu: "#525356",
                 darkGray: "#343537",
                 mediumGray: "#888888",
+                mediumGray2: "#818285",
                 gray65: "#BDBEC1",
                 gray90: "#D9D9D9",
                 gray80: "#F0F0F0",

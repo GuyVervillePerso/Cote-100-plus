@@ -23,6 +23,7 @@ return [
     'emailrequired' => 'Le champ email est obligatoire',
     'emailsuccess' => 'Votre invitation a été envoyée!',
     'goodRead' => 'Bonne lecture!',
+    'initialscenario' => 'Scénario d’achat initial',
     'insertemail' => 'Inscrivez l’adresse électronique du destinaire.',
     'keywords' => 'Mots-clés',
     'loading' => 'Chargement',
