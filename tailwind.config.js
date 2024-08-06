@@ -31,6 +31,7 @@ export default {
                 gray70: "#EEEEEE",
                 limeGreen: "#67B044",
                 ratingGreen: "#01944A",
+                orange: "#E75425",
             },
             fontSize: {
                 sm: ["14px", "20px"],

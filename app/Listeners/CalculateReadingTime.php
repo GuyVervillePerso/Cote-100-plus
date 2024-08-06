@@ -32,7 +32,6 @@ class CalculateReadingTime
 
         $content = $event->entry->get('html_content');
         $wordCount = str_word_count(strip_tags($this->bardToHtml($content)));
-
         $event->entry->set('temps_lecture', round($wordCount / $this->wordsPerMinute));
     }
 

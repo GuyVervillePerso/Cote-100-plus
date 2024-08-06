@@ -1,5 +1,4 @@
 {{ portfolio = {session:portfolio} }}
-
 <section class="bg-gray70 py-8">
     <div class="roboto-supertitle uppercase">
         {{ parent }}{{ title }}{{ /parent }}
@@ -11,17 +10,9 @@
         {{ /if }}
     {{ /taxonomy:variantes_portefeuille }}
     {{ livewire:search-title template='partials.search_title'}}
-   {{#  <div class="grid grid-cols-1 md:grid-cols-3  gap-8">
-        {{ collection:titres taxonomy:variantes_portefeuille="{portfolio}" }}
-            <div class="bg-white rounded-2xl">
-                {{ get_date_ago date="{updated_at}" }}
-                <div class="header">header</div>
-                <a href="{{ url }}">{{ title }} </a>
-            </div>
-        {{ /collection:titres }}
-    </div> #}}
-    {{ get_content from="{test}" }}
+
+    {{ collection:portefeuilles query_scope="portefeuille_scope" slug="{portfolio}" }}
         {{ content }}
-    {{ /get_content }}
+    {{ /collection:portefeuilles }}
 
 </section>

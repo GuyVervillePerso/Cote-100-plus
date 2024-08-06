@@ -1,0 +1,10 @@
+<div>
+    <div class="grid grid-cols-1 md:grid-cols-3  gap-8">
+        {{ results }}
+            <div class="bg-white rounded-2xl">
+                <div class="header {{ if new }} bg-orange {{ else }} bg-mediumGray{{ /if }} rounded-t-2xl text-center text-white text-xs uppercase font-robotoMedium py-1">header</div>
+                <a href="{{ url }}">{{ title }} </a>
+            </div>
+        {{ /results }}
+    </div>
+</div>
