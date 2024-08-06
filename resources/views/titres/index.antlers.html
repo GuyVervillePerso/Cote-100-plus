@@ -10,9 +10,10 @@
         {{ /if }}
     {{ /taxonomy:variantes_portefeuille }}
     {{ livewire:search-title template='partials.search_title'}}
-
     {{ collection:portefeuilles query_scope="portefeuille_scope" slug="{portfolio}" }}
         {{ content }}
     {{ /collection:portefeuilles }}
-
+<div>
+    {{ portfolio }}
+</div>
 </section>
