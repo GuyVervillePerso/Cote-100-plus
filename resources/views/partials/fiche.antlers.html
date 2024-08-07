@@ -1,5 +1,12 @@
 <div class="{{ if blocked }}bg-gray-150 {{ else }}bg-white{{ /if }} rounded-2xl relative shadow-md">
-    <div class="header {{ if new }} bg-orange {{ else }} bg-mediumGray{{ /if }} rounded-t-2xl text-center text-white text-xs uppercase font-robotoMedium py-1">{{ header }}</div>
+    <div class="header flex justify-center space-x-2 items-center {{ if new }} bg-orange {{ else }} bg-mediumGray{{ /if }} rounded-t-2xl text-center text-white text-xs uppercase font-robotoMedium py-1">
+        {{ if blocked }}
+            {{ asset url='/assets/visuals/securitywhite.svg' }}
+            <span><img class="h-[10px]" src="{{ url }}" alt="{{ trans:site.bigLock }}"></span>
+            {{ /asset }}
+        {{ /if }}
+        <span>{{ header }}</span>
+    </div>
     <div class="px-[36px] py-6 ">
         <div class="grid grid-cols-[1fr_130px] gap-1 align-middle">
             <div>

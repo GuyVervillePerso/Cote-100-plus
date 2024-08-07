@@ -3,11 +3,30 @@
 namespace App\Traits;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 use Statamic\Facades\Entry;
 
 trait Cards
 {
     protected $locale = 'default';
+
+    protected $entries = [];
+
+    protected $portfolio = '';
+
+    public function __construct()
+    {
+        $this->locale = App::getLocale();
+        switch (App::getLocale()) {
+            case 'en':
+                $this->locale = 'anglais';
+                break;
+            default:
+                $this->locale = 'default';
+                break;
+        }
+        $this->getSession();
+    }
 
     protected function setLanguage()
     {
@@ -23,17 +42,45 @@ trait Cards
 
     }
 
-    protected function searchCards($locale)
+    protected function getAnalyses($id)
     {
-        $this->locale = $locale;
-        $this->setLanguage();
+        $entry = Entry::query()
+            ->where('collection', 'analyses')
+            ->where('titre', $id)
+            ->orderBy('date', 'desc')
+            ->first();
 
+        if ($entry) {
+            return $entry->url();
+        }
+
+        return '';
+
+    }
+
+    protected function createInBriefArray($entry): array
+    {
+        $array = [];
+        $trimestreEnBref = $entry->augmentedValue('trimestre_en_bref');
+        foreach ($trimestreEnBref as $set) {
+            $fields = $set->all();
+            $icon = $fields['icon'] ?? null;
+            $comment = $fields['comment'] ?? null;
+            $array[] = ['icon' => $icon->raw(), 'comment' => $comment->raw()];
+        }
+
+        return $array;
+    }
+
+    protected function searchCards()
+    {
+        $this->setLanguage();
         $query = Entry::query()
             ->where('collection', 'titres')
             ->where('locale', $this->locale)
             ->orderBy('date', 'desc');
-        $entries = $query->get();
-        $entries = $entries->map(function ($entry) {
+        $this->entries = $query->get();
+        $this->entries = $this->entries->map(function ($entry) {
             $hasAnalysis = false;
             $included = false;
             $blocked = false;
@@ -100,8 +147,9 @@ trait Cards
         })->reject(function ($entry) {
             return ! $entry['included'];
         });
+        $this->sortEntries();
 
-        return $entries;
+        return $this->entries;
     }
 
     protected function actualValueInDollars($value, $format)
@@ -119,5 +167,38 @@ trait Cards
         }
 
         return $string;
+    }
+
+    protected function sortEntries()
+    {
+        // Sorting and partitioning entries
+        $blockedEntries = [];
+        $allowedEntries = [];
+
+        foreach ($this->entries as $entry) {
+            if ($entry['blocked']) {
+                $blockedEntries[] = $entry;
+            } else {
+                $allowedEntries[] = $entry;
+            }
+        }
+
+        // Sorting each partition by 'new' in descending order
+        usort($blockedEntries, function ($a, $b) {
+            return $b['new'] <=> $a['new'];
+        });
+
+        usort($allowedEntries, function ($a, $b) {
+            return $b['new'] <=> $a['new'];
+        });
+
+        // Merging sorted partitions
+        $this->entries = array_merge($allowedEntries, $blockedEntries);
+
+    }
+
+    protected function getSession()
+    {
+        $this->portfolio = session('portfolio');
     }
 }
