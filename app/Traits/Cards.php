@@ -34,7 +34,7 @@ trait Cards
             case 'anglais':
                 $lang = 'en';
                 break;
-            case 'default':
+            default:
                 $lang = 'fr';
                 break;
         }
@@ -72,13 +72,16 @@ trait Cards
         return $array;
     }
 
-    protected function searchCards()
+    protected function searchCards($q = '')
     {
         $this->setLanguage();
         $query = Entry::query()
             ->where('collection', 'titres')
             ->where('locale', $this->locale)
             ->orderBy('date', 'desc');
+        if ($q != '') {
+            $query->where('title', 'like', '%'.$q.'%');
+        }
         $this->entries = $query->get();
         $this->entries = $this->entries->map(function ($entry) {
             $hasAnalysis = false;

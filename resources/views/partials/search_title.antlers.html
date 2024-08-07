@@ -1,7 +1,15 @@
 <div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-        {{ results }}
+    <div>
+        <div class="mb-8">
+            {{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
+            <input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search"
+            placeholder="{{ trans:site.keywords }}">
+            {{ /partial:form_element }}
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            {{ results }}
             {{ partial:fiche }}
-        {{ /results }}
+            {{ /results }}
+        </div>
     </div>
 </div>
