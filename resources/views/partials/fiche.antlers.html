@@ -1,7 +1,6 @@
-<div class="bg-white rounded-2xl">
-    <div class="header
-        {{ if new }} bg-orange {{ else }} bg-mediumGray{{ /if }} rounded-t-2xl text-center text-white text-xs uppercase font-robotoMedium py-1">{{ header }}</div>
-    <div class="px-[36px] py-6">
+<div class="{{ if blocked }}bg-gray-150 {{ else }}bg-white{{ /if }} rounded-2xl relative shadow-md">
+    <div class="header {{ if new }} bg-orange {{ else }} bg-mediumGray{{ /if }} rounded-t-2xl text-center text-white text-xs uppercase font-robotoMedium py-1">{{ header }}</div>
+    <div class="px-[36px] py-6 ">
         <div class="grid grid-cols-[1fr_130px] gap-1 align-middle">
             <div>
                 <h2 class="m-0 text-4xl uppercase font-robotoCondensed"><a href="{{ url }}">{{ title }}</a></h2>
@@ -18,10 +17,10 @@
             <div class="uppercase text-sm text-mediumGray2 font-robotoMedium">{{ trans:site.quarterInBrief }}</div>
             <div class="space-y-2">
                 {{ bref }}
-                    <div class="grid grid-cols-[30px_1fr] gap-2 items-center">
-                       <img class="block mx-auto" src="/assets/icons/{{ icon }}.svg" alt="{{ icon }}"/>
-                        <div class="text-base text-mediumGray2">{{ comment }}</div>
-                    </div>
+                <div class="grid grid-cols-[30px_1fr] gap-2 items-center">
+                    <img class="block mx-auto" src="/assets/icons/{{ icon }}.svg" alt="{{ icon }}"/>
+                    <div class="text-base text-mediumGray2">{{ comment }}</div>
+                </div>
                 {{ /bref }}
             </div>
         </div>
@@ -30,9 +29,21 @@
                 {{ asset url='/assets/visuals/grayarrowright.svg' }}
                     <img class="mt-1" src="{{ url }}" alt="{{ alt }}"/>
                 {{ /asset }}
-                <a href="{{ url }}">{{ trans:site.readdetailed }}</a>
+                {{ if !blocked }}
+                    <a href="{{ url }}">{{ trans:site.readdetailed }}</a>
+                {{ /if }}
             </div>
         {{ /if }}
-    </div>
 
+    </div>
+    {{ if blocked }}
+        <div class="absolute inset-0 bg-white opacity-60 rounded-2xl"></div>
+        <div class="absolute inset-0 cursor-not-allowed">
+            <div class="flex h-full justify-center items-center">
+                {{ asset url='/assets/visuals/biglock.svg' }}
+                <img class="h-[80px]" src="{{ url }}" alt="{{ trans:site.bigLock }}">
+            {{ /asset }}
+            </div>
+        </div>
+    {{ /if }}
 </div>

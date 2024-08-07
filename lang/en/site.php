@@ -4,6 +4,7 @@ return [
     'affairesTextOne' => '',
     'affairesTextTwo' => '’s Blog is published in',
     'all' => 'All',
+    'bigLock' => 'lock',
     'blogger' => 'Guest Contributor',
     'btl' => 'Between The Lines',
     'btlurl' => 'commentaries/between-the-lines',

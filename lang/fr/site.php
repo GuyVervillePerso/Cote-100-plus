@@ -4,6 +4,7 @@ return [
     'affairesTextOne' => 'Le blogue de',
     'affairesTextTwo' => 'est publié sur',
     'all' => 'Tout',
+    'bigLock' => 'cadenas',
     'blogger' => 'blogueur invité',
     'btl' => 'Entre les lignes',
     'btlurl' => '',
