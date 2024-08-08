@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
-use Jonassiewertsen\LiveSearch\Http\Livewire\Search;
+use Livewire\Component;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Taxonomy;
 
-class SearchForm extends Search
+class SearchForm extends Component
 {
     public $bubble = '';
 
