@@ -1,55 +1,51 @@
 <div>
-        <div class="md:flex md:justify-between md:space-x-6 pt-8 pb-12">
-            {{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
-            <input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search"
-            placeholder="
-            {{ trans:site.keywords }}">
-            {{ /partial:form_element }}
-            {{ partial:form_element arrow="true" id='{{trans:site.period}}' label="{trans:site.period}" }}
-                <select class="formField" name="{ trans:site.period }}" wire:model.live="chosenDateSpan">
-                    {{ dateSpanArray }}
-                    <option value="{{ index }}">{{ value }}</option>
-                    {{ /dateSpanArray }}
-                </select>
-            {{ /partial:form_element }}
-            {{ partial:form_element arrow="true" id='{{trans:site.subject}}' label="{trans:site.subject}" }}
-            <select class="formField" name="
-            {{ trans:site.subject }}"
-                    wire:model.live="chosenCategory">
-            {{ categoryArray }}
-                <option value="{{ slug }}">{{ title }}</option>
-            {{ /categoryArray }}
+    <div class="md:flex md:justify-between md:space-x-6 pt-8 pb-12">
+        {{ partial:form_element id='{{trans:site.keywords}}' label="{trans:site.keywords}" }}
+        <input class="formField" name="{{ trans:site.keywords }}" wire:model.live="q" type="search"
+        placeholder="{{ trans:site.keywords }}">
+    {{ /partial:form_element }}
+        {{ partial:form_element arrow="true" id='{{trans:site.period}}' label="{trans:site.period}" }}
+            <select class="formField" name="{ trans:site.period }}" wire:model.change="chosenDateSpan">
+                {{ dateSpanArray }}
+                <option value="{{ index }}">{{ value }}</option>
+                {{ /dateSpanArray }}
             </select>
-            {{ /partial:form_element }}
-        </div>
-
-        {{ if results }}
+        {{ /partial:form_element }}
+        {{ partial:form_element arrow="true" id='{{trans:site.subject}}' label="{trans:site.subject}" }}
+        <select class="formField" name="{{ trans:site.subject }}" wire:model.change="chosenCategory">
+    {{ categoryArray }}
+        <option value="{{ slug }}">{{ title }}</option>
+    {{ /categoryArray }}
+    </select>
+    {{ /partial:form_element }}
+    </div>
+    {{ if results }}
             <div class="md:hidden">{{ partial:contentnavigator }}</div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
                 {{ results }}
                 <a href="{{ url }}">
                     <div class="md:h-[280px] bg-white rounded-2xl p-6 grid grid-cols-1 md:grid-cols-[150px_1fr] gap-4 shadow-xl">
                         <div class="hidden md:block">
-                            {{ image }}
-                            {{ partial:image_blog url="{{url}}" dw="150" dh="150" }}
-                            {{ /image }}
+                            <img class='block z-10 rounded-md border border-gray-300 w-full' src='{{ glide src="{{image}}" width="150" height="150"}}' alt=''>
                         </div>
                         <div>
                             {{ partial:greenbutton }}{{ bubble }}{{ /partial:greenbutton }}
                             <h2 class="font-robotoCondensedSemiMedium my-2 leading-tight">
                                 {{ title }}
                             </h2>
-                            {{ chapeau | safe_truncate(200, '…') }}
+                            {{ chapeau }}
                             {{ partial:date_and_clock }}
                         </div>
                     </div>
                 </a>
                 {{ /results }}
             </div>
-            {{ partial:contentnavigator }}
-        {{ else }}
-            <div class="text-gray-900 text-center pt-6 pb-10 text-2xl w-full">
-                {{ trans:site.noresult }}
-            </div>
-        {{ /if }}
+            {{ if noSearch }}
+                {{ partial:contentnavigator }}
+            {{ /if }}
+    {{ else }}
+        <div class="text-gray-900 text-center pt-6 pb-10 text-2xl w-full">
+            {{ trans:site.noresult }}
+        </div>
+    {{ /if }}
 </div>

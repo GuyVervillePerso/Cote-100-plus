@@ -93,7 +93,16 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
-
+        'redis' => [
+            'client' => env('REDIS_CLIENT', 'phpredis'),
+            'default' => [
+                'url' => env('REDIS_URL'),
+                'host' => env('REDIS_HOST', '127.0.0.1'),
+                'password' => env('REDIS_PASSWORD', null),
+                'port' => env('REDIS_PORT', 6379),
+                'database' => env('REDIS_DB', 0),
+            ],
+        ],
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DB_URL'),
