@@ -123,20 +123,16 @@ class SearchForm extends Component
 
     protected function getAllEntries()
     {
-        $key = $this->collection.'_'.$this->locale;
-        $cacheKey = 'cache:'.$key;
-        $tagKey = 'tag:'.$this->collection;
+        /*        $key = $this->collection.'_'.$this->locale;
+                $cacheKey = 'cache:'.$key;
+                $tagKey = 'tag:'.$this->collection;*/
 
-        $this->protectedResults = Cache::remember($cacheKey, now()->addDay(), function () {
-            return $this->getCachedEntries();
-        });
+        $this->protectedResults = $this->getCachedEntries();
 
-        // Update the tag set
-        $tagEntries = Cache::get($tagKey, []);
-        if (! in_array($cacheKey, $tagEntries)) {
-            $tagEntries[] = $cacheKey;
-            Cache::put($tagKey, $tagEntries, now()->addDay());
-        }
+        /*        $this->protectedResults = Cache::remember($cacheKey, now()->addDay(), function () {
+                    return $this->getCachedEntries();
+                });*/
+
     }
 
     public function clearCacheByTag()
