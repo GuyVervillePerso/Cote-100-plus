@@ -2,21 +2,15 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Str;
-use Livewire\Component;
+use Jonassiewertsen\LiveSearch\Http\Livewire\Search;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Taxonomy;
 
-class SearchForm extends Component
+class SearchForm extends Search
 {
     public $bubble = '';
-
-    public $noSearch = true;
-
-    protected $tagEntries;
 
     public $categoryArray = [];
 
@@ -30,9 +24,11 @@ class SearchForm extends Component
 
     public $currentOffset = 3;
 
-    public $q = '';
+    public $noOffset = false;
 
-    protected $protectedResults = [];
+    public $preservedQuery;
+
+    public $q = '';
 
     public $results = [];
 
@@ -44,15 +40,9 @@ class SearchForm extends Component
 
     protected $entries;
 
-    public $collection = 'entre_les_lignes';
+    protected $collection = 'entre_les_lignes';
 
-    protected function getSession()
-    {
-        $this->collection = session('collection');
-        $this->index = session('index');
-        $this->tagCollection = session('category');
-        $this->locale = session('locale');
-    }
+    public function hydrate() {}
 
     protected function getCategoryArray(): array
     {
@@ -85,214 +75,162 @@ class SearchForm extends Component
             '5' => __('site.date3yearsAgo'), ];
     }
 
-    public function mount(string $template, ?string $index = null, ?string $tagCat = '', $collection = '', string $bubble = '')
+    public function mount(string $template, ?string $index = null, string $cat = 'categories', string $collection = 'entre_les_lignes', string $bubble = '')
     {
-        switch (App::getLocale()) {
-            case 'en':
-                $this->locale = 'anglais';
-                break;
-            default:
-                $this->locale = 'default';
-                break;
-        }
         // You can pass these as parameters or they can be hardcoded.
         $this->template = $template;
         $this->bubble = $bubble;
         $this->index = $index;
-        $this->tagCollection = $tagCat;
+        $this->tagCollection = $cat;
         $this->collection = $collection;
         $this->categoryArray = $this->getCategoryArray();
         $this->dateSpanArray = $this->getDateSpanArray();
         $this->getDateSpanArray();
-        session(['collection' => $collection]);
-        session(['category' => $tagCat]);
-        session(['index' => $index]);
-        session(['locale' => $this->locale]);
-        $this->getAllEntries();
-        $this->getSimpleSearch();
+        $this->results = $this->getSimpleSearch();
+
     }
 
     public function render()
     {
-        $this->categoryArray = $this->getCategoryArray();
-        $this->dateSpanArray = $this->getDateSpanArray();
-        $this->getSession();
-
         return view($this->template, ['bubble' => $this->bubble]);
     }
 
-    protected function getAllEntries()
+    public function getCachedEntries()
     {
-        /*        $key = $this->collection.'_'.$this->locale;
-                $cacheKey = 'cache:'.$key;
-                $tagKey = 'tag:'.$this->collection;*/
+        $key = $this->collection.'_'.$this->locale;
+        $entries = Cache::tags([$this->collection])
+            ->remember($key, now()->addDay(), function () {
+                return Entry::query()
+                    ->where('collection', $this->collection)
+                    ->where('locale', $this->locale)
+                    ->orderBy('date', 'desc')
+                    ->get()
+                    ->toArray();
+            });
 
-        $this->protectedResults = $this->getCachedEntries();
-
-        /*        $this->protectedResults = Cache::remember($cacheKey, now()->addDay(), function () {
-                    return $this->getCachedEntries();
-                });*/
-
+        return collect($entries);
     }
 
-    public function clearCacheByTag()
+    protected function getSimpleSearch()
     {
-        $tagKey = 'tag:'.$this->collection;
-        $tagEntries = Cache::get($tagKey, []);
-
-        foreach ($tagEntries as $cacheKey) {
-            Cache::forget($cacheKey);
-        }
-
-        Cache::forget($tagKey);
-    }
-
-    protected function getCachedEntries()
-    {
-        $entries = Entry::query()
-            ->where('collection', $this->collection)
-            ->orderBy('date', 'desc')
-            ->where('locale', $this->locale)
-            ->get();
-        $transformedEntries = $entries->map(function ($entry) {
-            $html_content_blocks = $entry->html_content;
-            $html_string = '';
-            foreach ($html_content_blocks as $block) {
-                if ($block['type'] == 'text') {
-                    $html_string .= strip_tags($block['text']);
+        $collection = $this->getCachedEntries();
+        $searchResults = $collection->when(strlen($this->q) > 4, function ($collection) {
+            return $collection->filter(function ($entry) {
+                $html_content_blocks = $entry['html_content'];
+                $html_string = '';
+                foreach ($html_content_blocks as $block) {
+                    if ($block['type'] == 'text') {
+                        $html_string .= strip_tags($block['text']);
+                    }
                 }
+                $result = str_contains($entry['title'], $this->q) ||
+                    str_contains($entry['chapeau'], $this->q) ||
+                    str_contains($html_string, $this->q);
+
+                return $result;
+            });
+        })->when($this->chosenCategory != '' && $this->chosenCategory != '0', function ($collection) {
+            return $collection->filter(function ($entry) {
+                return in_array($this->chosenCategory, $entry['categories']);
+            });
+        })->when($this->chosenDateSpan != '0', function ($collection) {
+            $fromDate = null;
+            $toDate = null;
+            switch ($this->chosenDateSpan) {
+                case '1':
+                    $fromDate = Carbon::now()->subMonths(6);
+                    $toDate = Carbon::now()->subMonths(3);
+                    break;
+                case '2':
+                    $fromDate = Carbon::now()->subYears(1);
+                    $toDate = Carbon::now()->subMonths(6);
+                    break;
+                case '3':
+                    $fromDate = Carbon::now()->subYears(2);
+                    $toDate = Carbon::now()->subYears(1);
+                    break;
+                case '4':
+                    $fromDate = Carbon::now()->subYears(3);
+                    $toDate = Carbon::now()->subYears(2);
+                    break;
+                case '5':
+                    $fromDate = Carbon::now()->subYears(3);
+                    break;
             }
-            $particles = ['l’', 'd’', 'm’', 'n’', '’s', 'les', 'des', 'mes', 'ses', 'ont', 'ils', 'elles', 'they', 'she', 'he', 'une'];
-            $str = strtolower($entry->title.' '.strip_tags($entry->chapeau).' '.$html_string);
-            $str = str_replace("'", '’', $str);
-            $str = str_ireplace($particles, '', $str);
-            $str = preg_replace('/\b\w{1,2}\b/u', ' ', $str);
-            $str = preg_replace('/\s+/', ' ', $str);
-            $termSlugs = collect($entry->categories->toAugmentedArray('slug'))
-                ->map(function ($term) {
-                    return $term['slug']->value();
-                })
-                ->implode(',');
 
-            $data = [
-                'id' => $entry->id,
-                'title' => $entry->title,
-                'chapeau' => Str::limit($entry->chapeau, 200, '…', true),
-                'image' => $entry->main_visual ? $entry->main_visual->url : null,
-                'categories' => $termSlugs,
-                'url' => $entry->url(),
-                'date' => $entry->date->format('Y-m-d'),
-                'temps_lecture' => $entry->temps_lecture,
-                'text' => $str,
+            return $collection->filter(function ($entry) use ($fromDate, $toDate) {
+                $entryDate = new Carbon($entry['date']);
+                if ($fromDate && $toDate) {
+                    return $entryDate->gt($fromDate) && $entryDate->lte($toDate);
+                } elseif ($fromDate) {
+                    return $entryDate->gte($fromDate);
+                } elseif ($toDate) {
+                    return $entryDate->lte($toDate);
+                }
+
+                return true;
+            });
+        })->values();
+        $searchResults = $searchResults->map(function ($entry) {
+            return [
+                'id' => $entry['id'],
+                'title' => $entry['title'],
+                'chapeau' => $entry['chapeau'],
+                'date' => $entry['date']->format('Y-m-d'),
+                'url' => $entry['url'],
+                'image' => $entry['main_visual'] ? $entry['main_visual']['id'] : null,
             ];
-
-            return $data; // Use the id as key and the filtered string as value
-        });
-
-        return $transformedEntries->toArray();
-    }
-
-    public function getSimpleSearch()
-    {
-
-        if (! Auth::check()) {
-            return false;
+        })->toArray();
+        if (count($searchResults) < 5) {
+            $this->noOffset = true;
         }
-        $this->results = array_slice($this->protectedResults, $this->currentOffset, 4);
+        ray($searchResults);
 
+        if (! $this->noOffset) {
+            $searchResults = array_slice($searchResults, $this->currentOffset, 4);
+        }
+
+        return $searchResults;
     }
 
     public function loadMore()
     {
-        $this->getAllEntries();
         $this->currentOffset += 4;
+        $this->results = $this->getSimpleSearch();
     }
 
     public function loadLess()
     {
-        $this->getAllEntries();
         $this->currentOffset -= 4;
-    }
-
-    public function resetSearch($value)
-    {
-        $this->getAllEntries();
-        // If the search query is empty, we should not do a search.
-        if (empty($value)) {
-            $this->results = $this->protectedResults;
-            $this->noSearch = true;
-
-            return;
-        }
-        $this->noSearch = false;
+        $this->results = $this->getSimpleSearch();
     }
 
     public function updatedQ($value)
     {
         $this->resetSearch($value);
-        // Perform search using the updated search query.
-        // Perform search using the updated search query.
-        $this->results = array_filter($this->protectedResults, function ($item) use ($value) {
-            return Str::contains(Str::lower($item['text']), Str::lower($value));
-        });
+        $this->results = $this->getSimpleSearch();
     }
 
     public function updatedChosenCategory($value)
     {
         $this->resetSearch($value);
-        $this->results = array_filter($this->protectedResults, function ($item) use ($value) {
-            return Str::contains(Str::lower($item['categories']), Str::lower($value));
-        });
+        $this->results = $this->getSimpleSearch();
     }
 
     public function updatedChosenDateSpan($value)
     {
         $this->resetSearch($value);
+        $this->results = $this->getSimpleSearch();
+    }
 
-        // Get current timestamp
-        $dateNow = strtotime(date('Y-m-d'));
-
-        // Apply filters based on chosenDateSpan
-        switch ($this->chosenDateSpan) {
-            case '1':
-                $threshold = strtotime('-3 months', $dateNow);
-                $results = array_filter($this->protectedResults, function ($item) use ($threshold) {
-                    return strtotime($item['date']) >= $threshold;
-                });
-                break;
-            case '2':
-                $threshold = strtotime('-6 months', $dateNow);
-                $results = array_filter($this->protectedResults, function ($item) use ($threshold) {
-                    return strtotime($item['date']) >= $threshold;
-                });
-                break;
-            case '3':
-                $thresholdMin = strtotime('-2 years', $dateNow);
-                $thresholdMax = strtotime('-1 year', $dateNow);
-                $results = array_filter($this->protectedResults, function ($item) use ($thresholdMin, $thresholdMax) {
-                    $itemDate = strtotime($item['date']);
-
-                    return $itemDate >= $thresholdMin && $itemDate < $thresholdMax;
-                });
-                break;
-            case '4':
-                $thresholdMin = strtotime('-3 years', $dateNow);
-                $thresholdMax = strtotime('-2 years', $dateNow);
-                $results = array_filter($this->protectedResults, function ($item) use ($thresholdMin, $thresholdMax) {
-                    $itemDate = strtotime($item['date']);
-
-                    return $itemDate >= $thresholdMin && $itemDate < $thresholdMax;
-                });
-                break;
-            case '5':
-                $threshold = strtotime('-3 years', $dateNow);
-                $results = array_filter($this->protectedResults, function ($item) use ($threshold) {
-                    return strtotime($item['date']) < $threshold;
-                });
-                break;
-            default:
-                $results = $this->protectedResults;
+    public function resetSearch($value)
+    {
+        if ($value == '' || $value == '0' || $value == null) {
+            $this->noOffset = false;
+            $this->currentOffset = 0;
+        } else {
+            $this->noOffset = true;
         }
-        $this->results = $results;
+        ray($this->noOffset);
     }
 }
