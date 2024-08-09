@@ -184,7 +184,6 @@ class SearchForm extends Search
         if (count($searchResults) < 5) {
             $this->noOffset = true;
         }
-        ray($searchResults);
 
         if (! $this->noOffset) {
             $searchResults = array_slice($searchResults, $this->currentOffset, 4);
@@ -231,6 +230,5 @@ class SearchForm extends Search
         } else {
             $this->noOffset = true;
         }
-        ray($this->noOffset);
     }
 }
