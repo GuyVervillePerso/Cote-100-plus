@@ -1,3 +1,4 @@
+{{ cache key="{key}" }}
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
     <div>
         {{ collection from="{pagecontent}" limit="1" }}
@@ -33,3 +34,4 @@
         {{ /collection }}
     </div>
 </div>
+{{ /cache }}

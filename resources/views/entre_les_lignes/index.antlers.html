@@ -1,7 +1,7 @@
 
 <section id="topBlog">
 <h1 class="title text-limeGreen uppercase">{{ trans:site.btl }}</h1>
-	{{ partial:topblog pagecontent='entre_les_lignes' bubble='{ trans:site.btl }' }}
+{{ partial:topblog pagecontent="entre_les_lignes" key="btl_{{ locale }}" bubble="{{ trans:site.btl }}" }}
 </section>
 <section class="bottomSection bg-gray70">
         {{ livewire:search-form template='partials.search_form' index='blog' tagCat='categories' collection='entre_les_lignes' bubble='{trans:site.btl}'}}
